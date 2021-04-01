@@ -2,8 +2,10 @@ using UnityEngine.UI;
 using UnityEngine;
 using BreakInfinity;
 using System;
+using TMPro;
 using static BreakInfinity.BigDouble;
 
+[Serializable]
 public class PlayerData
 {
     // Recursos
@@ -25,18 +27,43 @@ public class PlayerData
     public BigDouble ProduccionMejora2Coste;
     public BigDouble ProduccionMejora2Poder;
     public BigDouble ProduccionMejora2Nivel;
-    
+
     //Prestigio
     public BigDouble diamantes;
     public BigDouble diamantesMejora;
     public BigDouble diamantesConseguidos;
+
+    public PlayerData()
+    {
+        FullReset();
+    }
+
+    public void FullReset()
+    {
+        recursos = 0;
+        recursosClickValor = 1;
+
+        diamantes = 0;
+
+        clickMejora1Nivel = 0;
+        clickMejora1Coste = 10;
+
+        clickMejora2Nivel = 0;
+        clickMejora2Coste = 100;
+
+        ProduccionMejora1Nivel = 0;
+        ProduccionMejora1Coste = 25;
+
+        ProduccionMejora2Nivel = 0;
+        ProduccionMejora2Poder = 5;
+        ProduccionMejora2Coste = 250;
+    }
 }
 
 public class IdleManager : MonoBehaviour
 {
-
     public PlayerData data;
-    
+
     //Textos
     public Text textoRecursos;
     public Text textoRecursosClick;
@@ -62,12 +89,20 @@ public class IdleManager : MonoBehaviour
     public CanvasGroup ventanaPrincipalGrupo;
     public CanvasGroup ventanaMejorasGrupo;
 
+    //Opciones
+    public GameObject opciones;
+
+    public TMP_InputField textFieldImportar;
+    public TMP_InputField textFieldExportar;
+
     // Start is called before the first frame update
     void Start()
     {
         Application.targetFrameRate = 60;
         CambiadorDeCanvas(true, ventanaPrincipalGrupo);
         CambiadorDeCanvas(false, ventanaMejorasGrupo);
+
+        SaveSystem.LoadPlayer(ref data);
     }
 
     public void CambiadorDeCanvas(bool x, CanvasGroup y)
@@ -133,8 +168,9 @@ public class IdleManager : MonoBehaviour
         textoDiamantes.text = "Diamantes: " + MetodoNotacion(Floor(data.diamantes), "F0");
         textoMejoraDiamantes.text = MetodoNotacion(data.diamantesMejora, "F2") + "x Mejora";
 
-        data.recursosPorSegundo = (data.ProduccionMejora1Nivel + (data.ProduccionMejora2Poder * data.ProduccionMejora2Nivel)) *
-                                  data.diamantesMejora;
+        data.recursosPorSegundo =
+            (data.ProduccionMejora1Nivel + (data.ProduccionMejora2Poder * data.ProduccionMejora2Nivel)) *
+            data.diamantesMejora;
 
 
         textoRecursosClick.text = "Click \n" + MetodoNotacion(data.recursosClickValor, "F0") + " Recursos";
@@ -155,12 +191,14 @@ public class IdleManager : MonoBehaviour
                                  " recursos\nPoder +5 Click\nNivel: " +
                                  data.clickMejora2Nivel;
 
-        textoMejoraProduccion1.text = "Produccion Mejora 1\nCoste: " + MetodoNotacion(data.ProduccionMejora1Coste, "F0") +
+        textoMejoraProduccion1.text = "Produccion Mejora 1\nCoste: " +
+                                      MetodoNotacion(data.ProduccionMejora1Coste, "F0") +
                                       " recursos\nPoder + " + MetodoNotacion(data.diamantesMejora, "F0") +
                                       " Recursos/s\nNivel: " +
                                       data.ProduccionMejora1Nivel;
 
-        textoMejoraProduccion2.text = "Produccion Mejora 2\nCoste: " + MetodoNotacion(data.ProduccionMejora2Coste, "F0") +
+        textoMejoraProduccion2.text = "Produccion Mejora 2\nCoste: " +
+                                      MetodoNotacion(data.ProduccionMejora2Coste, "F0") +
                                       " recursos\nPoder +" +
                                       MetodoNotacion((data.ProduccionMejora2Poder * data.diamantesMejora), "F0") +
                                       " Recursos/s\nNivel: " +
@@ -183,6 +221,8 @@ public class IdleManager : MonoBehaviour
         }
 
         textoMejoraClick1Max.text = "Comprar todo (" + CompraClick1MaxContador() + ")";
+
+        SaveSystem.SavePlayer(data);
     }
 
     public string MetodoNotacion(BigDouble x, string y)
@@ -322,23 +362,32 @@ public class IdleManager : MonoBehaviour
         }
     }
 
+    public void irAOpciones()
+    {
+        opciones.gameObject.SetActive(true);
+    }
+
+    public void atrasOpciones()
+    {
+        opciones.gameObject.SetActive(false);
+    }
+
+    public void BotonGuardar()
+    {
+        SaveSystem.SavePlayer(data);
+        Debug.Log("Guardado Manual");
+    }
+
+    public void BorrarCampos()
+    {
+
+        textFieldExportar.text = "";
+        textFieldImportar.text = "";
+        Debug.Log("Borrar Campos");
+    }
+
     public void FullReset()
     {
-        data.recursos = 0;
-        data.recursosClickValor = 1;
-
-        data.diamantes = 0;
-
-        data.clickMejora1Nivel = 0;
-        data.clickMejora1Coste = 10;
-
-        data.clickMejora2Nivel = 0;
-        data.clickMejora2Coste = 100;
-
-        data.ProduccionMejora1Nivel = 0;
-        data.ProduccionMejora1Coste = 25;
-
-        data.ProduccionMejora2Nivel = 0;
-        data.ProduccionMejora2Coste = 250;
+        data.FullReset();
     }
 }
