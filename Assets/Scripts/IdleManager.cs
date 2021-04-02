@@ -2,7 +2,9 @@ using UnityEngine.UI;
 using UnityEngine;
 using BreakInfinity;
 using System;
+using System.Collections.Generic;
 using TMPro;
+using UnityEngine.SocialPlatforms.Impl;
 using static BreakInfinity.BigDouble;
 
 [Serializable]
@@ -10,6 +12,7 @@ public class PlayerData
 {
     // Recursos
     public BigDouble recursos;
+    public BigDouble recursosTotales;
     public BigDouble recursosClickValor;
     public BigDouble recursosPorSegundo;
 
@@ -21,17 +24,20 @@ public class PlayerData
     public BigDouble clickMejora2Nivel;
 
     //Pasivos
-    public BigDouble ProduccionMejora1Coste;
-    public BigDouble ProduccionMejora1Nivel;
+    public BigDouble produccionMejora1Coste;
+    public BigDouble produccionMejora1Nivel;
 
-    public BigDouble ProduccionMejora2Coste;
-    public BigDouble ProduccionMejora2Poder;
-    public BigDouble ProduccionMejora2Nivel;
+    public BigDouble produccionMejora2Coste;
+    public BigDouble produccionMejora2Poder;
+    public BigDouble produccionMejora2Nivel;
 
     //Prestigio
     public BigDouble diamantes;
     public BigDouble diamantesMejora;
     public BigDouble diamantesConseguidos;
+
+    public BigDouble logroNivel1;
+    public BigDouble logroNivel2;
 
     public PlayerData()
     {
@@ -41,6 +47,7 @@ public class PlayerData
     public void FullReset()
     {
         recursos = 0;
+        recursosTotales = 0;
         recursosClickValor = 1;
 
         diamantes = 0;
@@ -51,12 +58,15 @@ public class PlayerData
         clickMejora2Nivel = 0;
         clickMejora2Coste = 100;
 
-        ProduccionMejora1Nivel = 0;
-        ProduccionMejora1Coste = 25;
+        produccionMejora1Nivel = 0;
+        produccionMejora1Coste = 25;
 
-        ProduccionMejora2Nivel = 0;
-        ProduccionMejora2Poder = 5;
-        ProduccionMejora2Coste = 250;
+        produccionMejora2Nivel = 0;
+        produccionMejora2Poder = 5;
+        produccionMejora2Coste = 250;
+
+        logroNivel1 = 0;
+        logroNivel2 = 0;
     }
 }
 
@@ -83,11 +93,15 @@ public class IdleManager : MonoBehaviour
 
 
     //Barras de progreso
-    public Image MejoraBarraClick1;
+    public Image mejoraBarraClick1;
+    public Image mejoraBarraClick1Suave;
+
+    public BigDouble recursosTemporal;
 
     //Cambia Ventanas
     public CanvasGroup ventanaPrincipalGrupo;
     public CanvasGroup ventanaMejorasGrupo;
+    public CanvasGroup ventanaLogrosGrupo;
 
     //Opciones
     public GameObject opciones;
@@ -95,10 +109,24 @@ public class IdleManager : MonoBehaviour
     public TMP_InputField textFieldImportar;
     public TMP_InputField textFieldExportar;
 
+    public bool musicaFondo = true;
+    public Image musicaFondoIcono;
+
+    public GameObject logroVentana;
+    public GameObject soundManager;
+
+    public List<Logros> ListaLogros = new List<Logros>();
+
     // Start is called before the first frame update
     void Start()
     {
         Application.targetFrameRate = 60;
+
+        foreach (var obj in logroVentana.GetComponentsInChildren<Logros>())
+        {
+            ListaLogros.Add(obj);
+        }
+
         CambiadorDeCanvas(true, ventanaPrincipalGrupo);
         CambiadorDeCanvas(false, ventanaMejorasGrupo);
 
@@ -120,46 +148,16 @@ public class IdleManager : MonoBehaviour
         y.blocksRaycasts = false;
     }
 
-    //Carga con PlayerPrefs
-    /*
-    public void Cargar()
-    {
-        recursos = Parse(PlayerPrefs.GetString("recursos", "0"));
-        recursosClickValor = Parse(PlayerPrefs.GetString("recursosClickValor", "1"));
-        clickMejora2Coste = Parse(PlayerPrefs.GetString("clickMejora2Coste", "100"));
-        ProduccionMejora1Coste = Parse(PlayerPrefs.GetString("ProduccionMejora1Coste", "25"));
-        ProduccionMejora2Coste = Parse(PlayerPrefs.GetString("ProduccionMejora2Coste", "250"));
-        ProduccionMejora2Poder = Parse(PlayerPrefs.GetString("ProduccionMejora2Poder", "5"));
-
-        diamantes = Parse(PlayerPrefs.GetString("diamantes", "0"));
-
-        clickMejora1Nivel = Parse(PlayerPrefs.GetString("clickMejora1Nivel", "0"));
-        clickMejora2Nivel = Parse(PlayerPrefs.GetString("clickMejora2Nivel", "0"));
-        ProduccionMejora1Nivel = Parse(PlayerPrefs.GetString("ProduccionMejora1Nivel", "0"));
-        ProduccionMejora2Nivel = Parse(PlayerPrefs.GetString("ProduccionMejora2Nivel", "0"));
-    }
-
-    //Guardado con PlayerPrefs
-    public void Guardar()
-    {
-        PlayerPrefs.SetString("recursos", recursos.ToString());
-        PlayerPrefs.SetString("recursosClickValor", recursosClickValor.ToString());
-        PlayerPrefs.SetString("clickMejora2Coste", clickMejora2Coste.ToString());
-        PlayerPrefs.SetString("ProduccionMejora1Coste", ProduccionMejora1Coste.ToString());
-        PlayerPrefs.SetString("ProduccionMejora2Coste", ProduccionMejora2Coste.ToString());
-        PlayerPrefs.SetString("ProduccionMejora2Poder", ProduccionMejora2Poder.ToString());
-
-        PlayerPrefs.SetString("diamantes", diamantes.ToString());
-
-        PlayerPrefs.SetString("clickMejora1Nivel", clickMejora1Nivel.ToString());
-        PlayerPrefs.SetString("clickMejora2Nivel", clickMejora2Nivel.ToString());
-        PlayerPrefs.SetString("ProduccionMejora1Nivel", ProduccionMejora1Nivel.ToString());
-        PlayerPrefs.SetString("ProduccionMejora2Nivel", ProduccionMejora2Nivel.ToString());
-    }*/
-
     // Update is called once per frame
     void Update()
     {
+        IniciarLogros();
+
+        //Barras de progreso
+        NumeroSuave(ref recursosTemporal, data.recursos);
+        BigDoubleRellenar(data.recursos, 10 * Pow(1.07, data.clickMejora1Nivel), mejoraBarraClick1);
+        BigDoubleRellenar(recursosTemporal, 10 * Pow(1.07, data.clickMejora1Nivel), mejoraBarraClick1Suave);
+
         data.diamantesConseguidos = 150 * Sqrt(data.recursos / 1e7);
         data.diamantesMejora = data.diamantes * 0.05 + 1;
 
@@ -169,7 +167,7 @@ public class IdleManager : MonoBehaviour
         textoMejoraDiamantes.text = MetodoNotacion(data.diamantesMejora, "F2") + "x Mejora";
 
         data.recursosPorSegundo =
-            (data.ProduccionMejora1Nivel + (data.ProduccionMejora2Poder * data.ProduccionMejora2Nivel)) *
+            (data.produccionMejora1Nivel + (data.produccionMejora2Poder * data.produccionMejora2Nivel)) *
             data.diamantesMejora;
 
 
@@ -192,37 +190,99 @@ public class IdleManager : MonoBehaviour
                                  data.clickMejora2Nivel;
 
         textoMejoraProduccion1.text = "Produccion Mejora 1\nCoste: " +
-                                      MetodoNotacion(data.ProduccionMejora1Coste, "F0") +
+                                      MetodoNotacion(data.produccionMejora1Coste, "F0") +
                                       " recursos\nPoder + " + MetodoNotacion(data.diamantesMejora, "F0") +
                                       " Recursos/s\nNivel: " +
-                                      data.ProduccionMejora1Nivel;
+                                      data.produccionMejora1Nivel;
 
         textoMejoraProduccion2.text = "Produccion Mejora 2\nCoste: " +
-                                      MetodoNotacion(data.ProduccionMejora2Coste, "F0") +
+                                      MetodoNotacion(data.produccionMejora2Coste, "F0") +
                                       " recursos\nPoder +" +
-                                      MetodoNotacion((data.ProduccionMejora2Poder * data.diamantesMejora), "F0") +
+                                      MetodoNotacion((data.produccionMejora2Poder * data.diamantesMejora), "F0") +
                                       " Recursos/s\nNivel: " +
-                                      data.ProduccionMejora2Nivel;
+                                      data.produccionMejora2Nivel;
 
         data.recursos += data.recursosPorSegundo * Time.deltaTime;
 
-        //Barras de progreso
-        if (data.recursos / clickMejora1Coste < 0.01)
-        {
-            MejoraBarraClick1.fillAmount = 0;
-        }
-        else if (data.recursos / clickMejora1Coste > 10)
-        {
-            MejoraBarraClick1.fillAmount = 1;
-        }
-        else
-        {
-            MejoraBarraClick1.fillAmount = (float) (data.recursos / clickMejora1Coste).ToDouble();
-        }
+
+        data.recursosTotales += data.recursosPorSegundo * Time.deltaTime;
+
 
         textoMejoraClick1Max.text = "Comprar todo (" + CompraClick1MaxContador() + ")";
 
         SaveSystem.SavePlayer(data);
+    }
+
+    private static string[] LogrosString => new string[] {"Recursos actuales", "Recursos totales"};
+    private BigDouble[] Logros => new BigDouble[] {data.recursos, data.recursosTotales};
+
+    private void IniciarLogros()
+    {
+        ActualizarLogros(LogrosString[0], Logros[0], ref data.logroNivel1, ref ListaLogros[0].barraProgreso,
+            ref ListaLogros[0].titulo, ref ListaLogros[0].progreso);
+
+        ActualizarLogros(LogrosString[1], Logros[1], ref data.logroNivel2, ref ListaLogros[1].barraProgreso,
+            ref ListaLogros[1].titulo, ref ListaLogros[1].progreso);
+    }
+
+    private void ActualizarLogros(string nombre, BigDouble numero, ref BigDouble nivel, ref Image rellenar,
+        ref Text titulo, ref Text progreso)
+    {
+        var capacidad = BigDouble.Pow(10, nivel);
+
+        titulo.text = $"{nombre}\n({nivel})";
+        progreso.text = $"{MetodoNotacion(numero, "F2")} / {MetodoNotacion(capacidad, "F2")}";
+
+        BigDoubleRellenar(numero, capacidad, rellenar);
+
+        if (numero < capacidad) return;
+        BigDouble niveles = 0;
+
+        if (numero / capacidad >= 1)
+        {
+            niveles = Floor(Log10(numero / capacidad)) + 1;
+        }
+
+        nivel += niveles;
+    }
+
+    public void BigDoubleRellenar(BigDouble x, BigDouble y, Image rellenar)
+    {
+        float z;
+        var a = x / y;
+        if (a < 0.001)
+        {
+            z = 0;
+        }
+        else if (a > 10)
+        {
+            z = 1;
+        }
+        else
+        {
+            z = (float) a.ToDouble();
+            rellenar.fillAmount = z;
+        }
+    }
+
+    public void NumeroSuave(ref BigDouble suave, BigDouble actual)
+    {
+        if (suave > actual & actual == 0)
+        {
+            suave -= (suave - actual) / 10 + 0.1 * Time.deltaTime;
+        }
+        else if (Floor(suave) < actual)
+        {
+            suave += (actual - suave) / 10 + 0.1 * Time.deltaTime;
+        }
+        else if (Floor(suave) > actual)
+        {
+            suave -= (suave - actual) / 10 + 0.1 * Time.deltaTime;
+        }
+        else
+        {
+            suave = actual;
+        }
     }
 
     public string MetodoNotacion(BigDouble x, string y)
@@ -245,14 +305,14 @@ public class IdleManager : MonoBehaviour
             data.recursos = 0;
             data.recursosClickValor = 1;
             data.clickMejora2Coste = 100;
-            data.ProduccionMejora1Coste = 25;
-            data.ProduccionMejora2Coste = 250;
-            data.ProduccionMejora2Poder = 5;
+            data.produccionMejora1Coste = 25;
+            data.produccionMejora2Coste = 250;
+            data.produccionMejora2Poder = 5;
 
             data.clickMejora1Nivel = 0;
             data.clickMejora2Nivel = 0;
-            data.ProduccionMejora1Nivel = 0;
-            data.ProduccionMejora2Nivel = 0;
+            data.produccionMejora1Nivel = 0;
+            data.produccionMejora2Nivel = 0;
 
             data.diamantes += data.diamantesConseguidos;
         }
@@ -261,6 +321,7 @@ public class IdleManager : MonoBehaviour
     public void Click()
     {
         data.recursos += data.recursosClickValor;
+        data.recursosTotales += data.recursosClickValor;
     }
 
     //Mejoras
@@ -321,21 +382,21 @@ public class IdleManager : MonoBehaviour
                 break;
 
             case "M1":
-                if (data.recursos >= data.ProduccionMejora1Coste)
+                if (data.recursos >= data.produccionMejora1Coste)
                 {
-                    data.ProduccionMejora1Nivel++;
-                    data.recursos -= data.ProduccionMejora1Coste;
-                    data.ProduccionMejora1Coste *= 1.07;
+                    data.produccionMejora1Nivel++;
+                    data.recursos -= data.produccionMejora1Coste;
+                    data.produccionMejora1Coste *= 1.07;
                 }
 
                 break;
 
             case "M2":
-                if (data.recursos >= data.ProduccionMejora2Coste)
+                if (data.recursos >= data.produccionMejora2Coste)
                 {
-                    data.ProduccionMejora2Nivel++;
-                    data.recursos -= data.ProduccionMejora2Coste;
-                    data.ProduccionMejora2Coste *= 1.07;
+                    data.produccionMejora2Nivel++;
+                    data.recursos -= data.produccionMejora2Coste;
+                    data.produccionMejora2Coste *= 1.07;
                 }
 
                 break;
@@ -353,21 +414,29 @@ public class IdleManager : MonoBehaviour
             case "Mejoras":
                 CambiadorDeCanvas(false, ventanaPrincipalGrupo);
                 CambiadorDeCanvas(true, ventanaMejorasGrupo);
+                CambiadorDeCanvas(false, ventanaLogrosGrupo);
                 break;
 
             case "Principal":
                 CambiadorDeCanvas(true, ventanaPrincipalGrupo);
                 CambiadorDeCanvas(false, ventanaMejorasGrupo);
+                CambiadorDeCanvas(false, ventanaLogrosGrupo);
+                break;
+
+            case "Logros":
+                CambiadorDeCanvas(false, ventanaPrincipalGrupo);
+                CambiadorDeCanvas(false, ventanaMejorasGrupo);
+                CambiadorDeCanvas(true, ventanaLogrosGrupo);
                 break;
         }
     }
 
-    public void irAOpciones()
+    public void IrAOpciones()
     {
         opciones.gameObject.SetActive(true);
     }
 
-    public void atrasOpciones()
+    public void AtrasOpciones()
     {
         opciones.gameObject.SetActive(false);
     }
@@ -380,10 +449,25 @@ public class IdleManager : MonoBehaviour
 
     public void BorrarCampos()
     {
-
         textFieldExportar.text = "";
         textFieldImportar.text = "";
         Debug.Log("Borrar Campos");
+    }
+
+    public void MusicaFondo()
+    {
+        if (musicaFondo)
+        {
+            soundManager.GetComponent<AudioSource>().enabled = false;
+            musicaFondo = false;
+            musicaFondoIcono.color = Color.red;
+        }
+        else if (!musicaFondo)
+        {
+            soundManager.GetComponent<AudioSource>().enabled = true;
+            musicaFondo = true;
+            musicaFondoIcono.color = Color.green;
+        }
     }
 
     public void FullReset()

@@ -149,24 +149,37 @@ public class SaveSystem : MonoBehaviour
     //Falla cuando la clave no cumple los requisitos
     public void ImportPlayer(IdleManager playerData)
     {
-        if (importValue.text == "")
+        try
         {
-            Debug.Log("Importar esta Vacio");
-        }
-        else
-        {
-            using (StreamWriter writer = new StreamWriter(Application.persistentDataPath + savePath))
+            if (importValue.text == "")
             {
-                Debug.Log(importValue.text);
-                writer.WriteLine(importValue.text);
-                writer.Close();
-                using (StreamReader reader = new StreamReader(Application.persistentDataPath + savePath))
+                importValue.text = "Introduce la clave de exportación aquí";
+            }
+            else
+            {
+                using (StreamWriter writer = new StreamWriter(Application.persistentDataPath + savePath))
                 {
-                    json = ConvertBase64ToString(reader);
-                    playerData.data = JsonUtility.FromJson<PlayerData>(json);
-                    reader.Close();
+                    Debug.Log(importValue.text);
+                    writer.WriteLine(importValue.text);
+                    writer.Close();
+                    using (StreamReader reader = new StreamReader(Application.persistentDataPath + savePath))
+                    {
+                        json = ConvertBase64ToString(reader);
+                        playerData.data = JsonUtility.FromJson<PlayerData>(json);
+                        reader.Close();
+                    }
                 }
             }
+        }
+        catch (FormatException ex)
+        {
+            Debug.Log("La clave no es correcta");
+            importValue.text = "Este import no es correcto";
+        }
+        catch (CryptographicException ex)
+        {
+            Debug.Log("La clave no es correcta");
+            importValue.text = "Este import no es correcto";
         }
     }
 
