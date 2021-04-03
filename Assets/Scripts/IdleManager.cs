@@ -99,9 +99,9 @@ public class IdleManager : MonoBehaviour
     public BigDouble recursosTemporal;
 
     //Cambia Ventanas
-    public CanvasGroup ventanaPrincipalGrupo;
-    public CanvasGroup ventanaMejorasGrupo;
-    public CanvasGroup ventanaLogrosGrupo;
+    public Canvas ventanaPrincipalGrupo;
+    public Canvas ventanaMejorasGrupo;
+    public Canvas ventanaLogrosGrupo;
 
     //Opciones
     public GameObject opciones;
@@ -127,8 +127,8 @@ public class IdleManager : MonoBehaviour
             ListaLogros.Add(obj);
         }
 
-        Metodos.CambiadorDeCanvas(true, ventanaPrincipalGrupo);
-        Metodos.CambiadorDeCanvas(false, ventanaMejorasGrupo);
+        ventanaPrincipalGrupo.gameObject.SetActive(true);
+        ventanaMejorasGrupo.gameObject.SetActive(false);
 
         SaveSystem.LoadPlayer(ref data);
     }
@@ -146,55 +146,65 @@ public class IdleManager : MonoBehaviour
         data.diamantesConseguidos = 150 * Sqrt(data.recursos / 1e7);
         data.diamantesMejora = data.diamantes * 0.05 + 1;
 
-        textodiamantesConseguidos.text =
-            "Prestigio:\n+" + MetodoNotacion(Floor(data.diamantesConseguidos), "F0") + " Diamantes";
-        textoDiamantes.text = "Diamantes: " + MetodoNotacion(Floor(data.diamantes), "F0");
-        textoMejoraDiamantes.text = MetodoNotacion(data.diamantesMejora, "F2") + "x Mejora";
-
         data.recursosPorSegundo =
             (data.produccionMejora1Nivel + (data.produccionMejora2Poder * data.produccionMejora2Nivel)) *
             data.diamantesMejora;
 
 
-        textoRecursosClick.text = "Click \n" + MetodoNotacion(data.recursosClickValor, "F0") + " Recursos";
+        if (ventanaPrincipalGrupo.gameObject.activeSelf)
+        {
+            textodiamantesConseguidos.text =
+                "Prestigio:\n+" + MetodoNotacion(Floor(data.diamantesConseguidos), "F0") + " Diamantes";
+
+            textoRecursosClick.text = "Click \n" + MetodoNotacion(data.recursosClickValor, "F0") + " Recursos";
+        }
+
+
+        textoDiamantes.text = "Diamantes: " + MetodoNotacion(Floor(data.diamantes), "F0");
+        textoMejoraDiamantes.text = MetodoNotacion(data.diamantesMejora, "F2") + "x Mejora";
+
+
         textoRecursos.text = "Recursos: " + MetodoNotacion(data.recursos, "F0");
 
 
         textoRecursosPorSegundo.text = " Recursos/s " + MetodoNotacion(data.recursosPorSegundo, "F0");
 
-        var clickMejora1Coste = 10 * Pow(1.07, data.clickMejora1Nivel);
 
-        //Texto de mejoras
+        //Si hay autocompradores esto va fuera
+        if (ventanaMejorasGrupo.gameObject.activeSelf)
+        {
+            var clickMejora1Coste = 10 * Pow(1.07, data.clickMejora1Nivel);
 
-        textoMejoraClick1.text = "Click Mejora 1\nCoste: " + MetodoNotacion(clickMejora1Coste, "F0") +
-                                 " recursos\nPoder +1 Click\nNivel: " +
-                                 data.clickMejora1Nivel;
+            //Texto de mejoras
+            textoMejoraClick1.text = "Click Mejora 1\nCoste: " + MetodoNotacion(clickMejora1Coste, "F0") +
+                                     " recursos\nPoder +1 Click\nNivel: " +
+                                     data.clickMejora1Nivel;
 
-        textoMejoraClick2.text = "Click Mejora 2\nCoste: " + MetodoNotacion(data.clickMejora2Coste, "F0") +
-                                 " recursos\nPoder +5 Click\nNivel: " +
-                                 data.clickMejora2Nivel;
+            textoMejoraClick2.text = "Click Mejora 2\nCoste: " + MetodoNotacion(data.clickMejora2Coste, "F0") +
+                                     " recursos\nPoder +5 Click\nNivel: " +
+                                     data.clickMejora2Nivel;
 
-        textoMejoraProduccion1.text = "Produccion Mejora 1\nCoste: " +
-                                      MetodoNotacion(data.produccionMejora1Coste, "F0") +
-                                      " recursos\nPoder + " + MetodoNotacion(data.diamantesMejora, "F0") +
-                                      " Recursos/s\nNivel: " +
-                                      data.produccionMejora1Nivel;
+            textoMejoraProduccion1.text = "Produccion Mejora 1\nCoste: " +
+                                          MetodoNotacion(data.produccionMejora1Coste, "F0") +
+                                          " recursos\nPoder + " + MetodoNotacion(data.diamantesMejora, "F0") +
+                                          " Recursos/s\nNivel: " +
+                                          data.produccionMejora1Nivel;
 
-        textoMejoraProduccion2.text = "Produccion Mejora 2\nCoste: " +
-                                      MetodoNotacion(data.produccionMejora2Coste, "F0") +
-                                      " recursos\nPoder +" +
-                                      MetodoNotacion((data.produccionMejora2Poder * data.diamantesMejora), "F0") +
-                                      " Recursos/s\nNivel: " +
-                                      data.produccionMejora2Nivel;
+            textoMejoraProduccion2.text = "Produccion Mejora 2\nCoste: " +
+                                          MetodoNotacion(data.produccionMejora2Coste, "F0") +
+                                          " recursos\nPoder +" +
+                                          MetodoNotacion((data.produccionMejora2Poder * data.diamantesMejora), "F0") +
+                                          " Recursos/s\nNivel: " +
+                                          data.produccionMejora2Nivel;
 
-        //Comprar Max
-        textoMejoraClick1Max.text = ComprarTodoFormato(CompraClick1MaxContador());
+            //Comprar Max
+            textoMejoraClick1Max.text = ComprarTodoFormato(CompraClick1MaxContador());
+        }
 
         string ComprarTodoFormato(BigDouble x)
         {
             return $"Comprar Todo ({x})";
         }
-
 
         //Update de recursos
         data.recursos += data.recursosPorSegundo * Time.deltaTime;
@@ -202,8 +212,17 @@ public class IdleManager : MonoBehaviour
 
 
         //Guardado Automatico
-        SaveSystem.SavePlayer(data);
+        contadorGuardado += Time.deltaTime;
+
+        if (!(contadorGuardado >= 15)) return;
+        {
+            SaveSystem.SavePlayer(data);
+            contadorGuardado = 0;
+            Debug.Log("Guardado Automatico");
+        }
     }
+
+    public float contadorGuardado;
 
     private static string[] LogrosString => new string[] {"Recursos actuales", "Recursos totales"};
     private BigDouble[] Logros => new BigDouble[] {data.recursos, data.recursosTotales};
@@ -222,10 +241,13 @@ public class IdleManager : MonoBehaviour
     {
         var capacidad = BigDouble.Pow(10, nivel);
 
-        titulo.text = $"{nombre}\n({nivel})";
-        progreso.text = $"{MetodoNotacion(numero, "F2")} / {MetodoNotacion(capacidad, "F2")}";
+        if (ventanaLogrosGrupo.gameObject.activeSelf)
+        {
+            titulo.text = $"{nombre}\n({nivel})";
+            progreso.text = $"{MetodoNotacion(numero, "F2")} / {MetodoNotacion(capacidad, "F2")}";
 
-        BigDoubleRellenar(numero, capacidad, rellenar);
+            BigDoubleRellenar(numero, capacidad, rellenar);
+        }
 
         if (numero < capacidad) return;
         BigDouble niveles = 0;
@@ -404,21 +426,21 @@ public class IdleManager : MonoBehaviour
         switch (id)
         {
             case "Mejoras":
-                Metodos.CambiadorDeCanvas(false, ventanaPrincipalGrupo);
-                Metodos.CambiadorDeCanvas(true, ventanaMejorasGrupo);
-                Metodos.CambiadorDeCanvas(false, ventanaLogrosGrupo);
+                ventanaPrincipalGrupo.gameObject.SetActive(false);
+                ventanaMejorasGrupo.gameObject.SetActive(true);
+                ventanaLogrosGrupo.gameObject.SetActive(false);
                 break;
 
             case "Principal":
-                Metodos.CambiadorDeCanvas(true, ventanaPrincipalGrupo);
-                Metodos.CambiadorDeCanvas(false, ventanaMejorasGrupo);
-                Metodos.CambiadorDeCanvas(false, ventanaLogrosGrupo);
+                ventanaPrincipalGrupo.gameObject.SetActive(true);
+                ventanaMejorasGrupo.gameObject.SetActive(false);
+                ventanaLogrosGrupo.gameObject.SetActive(false);
                 break;
 
             case "Logros":
-                Metodos.CambiadorDeCanvas(false, ventanaPrincipalGrupo);
-                Metodos.CambiadorDeCanvas(false, ventanaMejorasGrupo);
-                Metodos.CambiadorDeCanvas(true, ventanaLogrosGrupo);
+                ventanaPrincipalGrupo.gameObject.SetActive(false);
+                ventanaMejorasGrupo.gameObject.SetActive(false);
+                ventanaLogrosGrupo.gameObject.SetActive(true);
                 break;
         }
     }
@@ -465,6 +487,7 @@ public class IdleManager : MonoBehaviour
     public void FullReset()
     {
         data.FullReset();
+        CambiaVentanas("Principal");
     }
 }
 
