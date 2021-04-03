@@ -17,27 +17,27 @@ public class PlayerData
     public BigDouble recursosPorSegundo;
 
     //Clicks
-    public BigDouble clickMejora1Nivel;
+    public int clickMejora1Nivel;
     public BigDouble clickMejora1Coste;
 
     public BigDouble clickMejora2Coste;
-    public BigDouble clickMejora2Nivel;
+    public int clickMejora2Nivel;
 
     //Pasivos
     public BigDouble produccionMejora1Coste;
-    public BigDouble produccionMejora1Nivel;
+    public int produccionMejora1Nivel;
 
     public BigDouble produccionMejora2Coste;
     public BigDouble produccionMejora2Poder;
-    public BigDouble produccionMejora2Nivel;
+    public int produccionMejora2Nivel;
 
     //Prestigio
     public BigDouble diamantes;
     public BigDouble diamantesMejora;
     public BigDouble diamantesConseguidos;
 
-    public BigDouble logroNivel1;
-    public BigDouble logroNivel2;
+    public float logroNivel1;
+    public float logroNivel2;
 
     public PlayerData()
     {
@@ -127,25 +127,10 @@ public class IdleManager : MonoBehaviour
             ListaLogros.Add(obj);
         }
 
-        CambiadorDeCanvas(true, ventanaPrincipalGrupo);
-        CambiadorDeCanvas(false, ventanaMejorasGrupo);
+        Metodos.CambiadorDeCanvas(true, ventanaPrincipalGrupo);
+        Metodos.CambiadorDeCanvas(false, ventanaMejorasGrupo);
 
         SaveSystem.LoadPlayer(ref data);
-    }
-
-    public void CambiadorDeCanvas(bool x, CanvasGroup y)
-    {
-        if (x)
-        {
-            y.alpha = 1;
-            y.interactable = true;
-            y.blocksRaycasts = true;
-            return;
-        }
-
-        y.alpha = 0;
-        y.interactable = false;
-        y.blocksRaycasts = false;
     }
 
     // Update is called once per frame
@@ -202,14 +187,21 @@ public class IdleManager : MonoBehaviour
                                       " Recursos/s\nNivel: " +
                                       data.produccionMejora2Nivel;
 
+        //Comprar Max
+        textoMejoraClick1Max.text = ComprarTodoFormato(CompraClick1MaxContador());
+
+        string ComprarTodoFormato(BigDouble x)
+        {
+            return $"Comprar Todo ({x})";
+        }
+
+
+        //Update de recursos
         data.recursos += data.recursosPorSegundo * Time.deltaTime;
-
-
         data.recursosTotales += data.recursosPorSegundo * Time.deltaTime;
 
 
-        textoMejoraClick1Max.text = "Comprar todo (" + CompraClick1MaxContador() + ")";
-
+        //Guardado Automatico
         SaveSystem.SavePlayer(data);
     }
 
@@ -225,7 +217,7 @@ public class IdleManager : MonoBehaviour
             ref ListaLogros[1].titulo, ref ListaLogros[1].progreso);
     }
 
-    private void ActualizarLogros(string nombre, BigDouble numero, ref BigDouble nivel, ref Image rellenar,
+    private void ActualizarLogros(string nombre, BigDouble numero, ref float nivel, ref Image rellenar,
         ref Text titulo, ref Text progreso)
     {
         var capacidad = BigDouble.Pow(10, nivel);
@@ -243,7 +235,7 @@ public class IdleManager : MonoBehaviour
             niveles = Floor(Log10(numero / capacidad)) + 1;
         }
 
-        nivel += niveles;
+        nivel += (float) niveles;
     }
 
     public void BigDoubleRellenar(BigDouble x, BigDouble y, Image rellenar)
@@ -363,7 +355,7 @@ public class IdleManager : MonoBehaviour
 
                 if (data.recursos >= coste2)
                 {
-                    data.clickMejora1Nivel += n;
+                    data.clickMejora1Nivel += (int) n;
                     data.recursos -= coste2;
                     data.recursosClickValor += n;
                 }
@@ -412,21 +404,21 @@ public class IdleManager : MonoBehaviour
         switch (id)
         {
             case "Mejoras":
-                CambiadorDeCanvas(false, ventanaPrincipalGrupo);
-                CambiadorDeCanvas(true, ventanaMejorasGrupo);
-                CambiadorDeCanvas(false, ventanaLogrosGrupo);
+                Metodos.CambiadorDeCanvas(false, ventanaPrincipalGrupo);
+                Metodos.CambiadorDeCanvas(true, ventanaMejorasGrupo);
+                Metodos.CambiadorDeCanvas(false, ventanaLogrosGrupo);
                 break;
 
             case "Principal":
-                CambiadorDeCanvas(true, ventanaPrincipalGrupo);
-                CambiadorDeCanvas(false, ventanaMejorasGrupo);
-                CambiadorDeCanvas(false, ventanaLogrosGrupo);
+                Metodos.CambiadorDeCanvas(true, ventanaPrincipalGrupo);
+                Metodos.CambiadorDeCanvas(false, ventanaMejorasGrupo);
+                Metodos.CambiadorDeCanvas(false, ventanaLogrosGrupo);
                 break;
 
             case "Logros":
-                CambiadorDeCanvas(false, ventanaPrincipalGrupo);
-                CambiadorDeCanvas(false, ventanaMejorasGrupo);
-                CambiadorDeCanvas(true, ventanaLogrosGrupo);
+                Metodos.CambiadorDeCanvas(false, ventanaPrincipalGrupo);
+                Metodos.CambiadorDeCanvas(false, ventanaMejorasGrupo);
+                Metodos.CambiadorDeCanvas(true, ventanaLogrosGrupo);
                 break;
         }
     }
@@ -473,5 +465,15 @@ public class IdleManager : MonoBehaviour
     public void FullReset()
     {
         data.FullReset();
+    }
+}
+
+public class Metodos : MonoBehaviour
+{
+    public static void CambiadorDeCanvas(bool x, CanvasGroup y)
+    {
+        y.alpha = x ? 1 : 0;
+        y.interactable = x;
+        y.blocksRaycasts = x;
     }
 }
