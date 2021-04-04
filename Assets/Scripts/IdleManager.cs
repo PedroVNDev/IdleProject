@@ -36,8 +36,13 @@ public class PlayerData
     public BigDouble diamantesMejora;
     public BigDouble diamantesConseguidos;
 
+    //Nivel Logros
     public float logroNivel1;
     public float logroNivel2;
+
+    //Eventos
+    public BigDouble tokensEvento;
+    public float[] eventCooldown = new float[7];
 
     public PlayerData()
     {
@@ -65,8 +70,16 @@ public class PlayerData
         produccionMejora2Poder = 5;
         produccionMejora2Coste = 250;
 
+        //Nivel Logros
         logroNivel1 = 0;
         logroNivel2 = 0;
+
+        //Eventos
+        tokensEvento = 0;
+        for (int i = 0; i < eventCooldown.Length - 1; i++)
+        {
+            eventCooldown[i] = 0;
+        }
     }
 }
 
@@ -102,6 +115,7 @@ public class IdleManager : MonoBehaviour
     public Canvas ventanaPrincipalGrupo;
     public Canvas ventanaMejorasGrupo;
     public Canvas ventanaLogrosGrupo;
+    public Canvas ventanaEventosGrupo;
 
     //Opciones
     public GameObject opciones;
@@ -423,25 +437,32 @@ public class IdleManager : MonoBehaviour
 
     public void CambiaVentanas(string id)
     {
+        DesactivarTodo();
         switch (id)
         {
             case "Mejoras":
-                ventanaPrincipalGrupo.gameObject.SetActive(false);
                 ventanaMejorasGrupo.gameObject.SetActive(true);
-                ventanaLogrosGrupo.gameObject.SetActive(false);
                 break;
 
             case "Principal":
                 ventanaPrincipalGrupo.gameObject.SetActive(true);
-                ventanaMejorasGrupo.gameObject.SetActive(false);
-                ventanaLogrosGrupo.gameObject.SetActive(false);
                 break;
 
             case "Logros":
-                ventanaPrincipalGrupo.gameObject.SetActive(false);
-                ventanaMejorasGrupo.gameObject.SetActive(false);
                 ventanaLogrosGrupo.gameObject.SetActive(true);
                 break;
+
+            case "Eventos":
+                ventanaEventosGrupo.gameObject.SetActive(true);
+                break;
+        }
+
+        void DesactivarTodo()
+        {
+            ventanaPrincipalGrupo.gameObject.SetActive(false);
+            ventanaMejorasGrupo.gameObject.SetActive(false);
+            ventanaLogrosGrupo.gameObject.SetActive(false);
+            ventanaEventosGrupo.gameObject.SetActive(false);
         }
     }
 
