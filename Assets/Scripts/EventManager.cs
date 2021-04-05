@@ -10,9 +10,10 @@ public class EventManager : MonoBehaviour
     public IdleManager juego;
     public Text TextoTokensEvento;
 
-    public BigDouble tokensEventoMejora => juego.data.tokensEvento / 100;
+    public BigDouble tokensEventoMejora => (juego.data.tokensEvento / 100) + 1;
 
     public GameObject recompensaEventoPopUp;
+    public Text textoEventoRecompensa;
 
     public GameObject[] eventos = new GameObject[7];
     public GameObject[] eventosDesbloqueados = new GameObject[7];
@@ -25,24 +26,29 @@ public class EventManager : MonoBehaviour
     public BigDouble[] pingus = new BigDouble[7];
 
     public BigDouble[] costes = new BigDouble[7];
-    public int[] niveles = new int[7]; 
-
-    public bool eventoActivo;
-    public int eventoActivoID;
+    public int[] niveles = new int[7];
 
     public string DiaDelaSemana()
     {
         DateTime tiempo = DateTime.Now;
+
+        //Para hacer debug
+        //var tiempodebug = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day + 1);
 
         return tiempo.DayOfWeek.ToString();
     }
 
     public string diaAnteriorComprobar;
 
-    public void Start()
+    public void StartEventos()
     {
-        eventoActivo = false;
         diaAnteriorComprobar = DiaDelaSemana();
+
+        if (juego.data.eventoActivoID != 0)
+        {
+            juego.data.eventoActivoID = 0;
+            juego.data.eventCooldown = new float[7];
+        }
     }
 
     public void Update()
@@ -50,7 +56,7 @@ public class EventManager : MonoBehaviour
         var data = juego.data;
 
         TextoTokensEvento.text =
-            $"Tokens Evento: {juego.MetodoNotacion(data.tokensEvento, "F2")} ({juego.MetodoNotacion(tokensEventoMejora, "F2")})";
+            $"Tokens Evento: {juego.MetodoNotacion(data.tokensEvento, "F2")} ({juego.MetodoNotacion(tokensEventoMejora, "F2")}x)";
 
         recompensa[0] = BigDouble.Log10(pingus[0] + 1);
         recompensa[1] = BigDouble.Log10(pingus[1] / 5 + 1);
@@ -60,9 +66,9 @@ public class EventManager : MonoBehaviour
             costes[i] = 10 * BigDouble.Pow(1.15, niveles[i]);
         }
 
-        if (diaAnteriorComprobar != DiaDelaSemana() & eventoActivo)
+        if (diaAnteriorComprobar != DiaDelaSemana())
         {
-            eventoActivoID = 0;
+            data.eventoActivoID = 0;
             //2 Son los dias que tenemos (Lunes y Martes)
             for (int i = 0; i < 2; i++)
             {
@@ -73,43 +79,162 @@ public class EventManager : MonoBehaviour
         switch (DiaDelaSemana())
         {
             case "Monday":
-                IniciarEventoUI(1);
+                if (juego.ventanaEventosGrupo.gameObject.activeSelf)
+                {
+                    IniciarEventoUI(0);
+                }
+
+                EmpezarEvento(0);
                 break;
 
             case "Tuesday":
-                IniciarEventoUI(2);
+                if (juego.ventanaEventosGrupo.gameObject.activeSelf)
+                {
+                    IniciarEventoUI(1);
+                }
+
+                EmpezarEvento(1);
                 break;
+        }
+
+        if (data.eventoActivoID == 0 & juego.data.eventCooldown[DiaDeHoy()] > 0)
+        {
+            juego.data.eventCooldown[DiaDeHoy()] -= Time.deltaTime;
+        }
+        else if (data.eventoActivoID != 0 & juego.data.eventCooldown[DiaDeHoy()] > 0)
+        {
+            juego.data.eventCooldown[DiaDeHoy()] -= Time.deltaTime;
+        }
+        else if (data.eventoActivoID != 0 & juego.data.eventCooldown[DiaDeHoy()] <= 0)
+        {
+            EventoCompletado(DiaDeHoy());
         }
 
         diaAnteriorComprobar = DiaDelaSemana();
     }
 
-    private void IniciarEventoUI(int id)
+    public int DiaDeHoy()
     {
-
-        var data = juego.data;
-        
-        for (int i = 0; i < 2; i++)
+        switch (DiaDelaSemana())
         {
-            eventos[i].gameObject.SetActive(false);
+            case "Monday": return 0;
+            case "Tuesday": return 1;
         }
 
-        eventos[id].gameObject.SetActive(true);
+        return 0;
+    }
 
-        if (eventoActivoID == id)
+    public void Click(int id)
+    {
+        switch (id)
+        {
+            case 0:
+                pingus[id] += 1 + niveles[id];
+                break;
+
+            case 1:
+                pingus[id] += 1;
+                break;
+        }
+    }
+
+    public void Comprar(int id)
+    {
+        if (pingus[id] < costes[id]) return;
+        {
+            pingus[id] -= costes[id];
+            niveles[id]++;
+        }
+    }
+
+    public void ActivarEvento(int id)
+    {
+        var id2 = id - 1;
+        var data = juego.data;
+        var ahora = DateTime.Now;
+
+        //Empezar
+        if (data.eventoActivoID == 0 & data.eventCooldown[id2] <= 0 & !(ahora.Hour == 23 & ahora.Minute >= 55))
+        {
+            data.eventoActivoID = id;
+            data.eventCooldown[id] = 300;
+
+            pingus[id2] = 0;
+            niveles[id2] = 0;
+        }
+
+        else if (ahora.Hour == 23 & ahora.Minute >= 55 & data.eventoActivoID == 0) ;
+        else if (data.eventCooldown[id2] > 0 & data.eventoActivoID == 0) ;
+        else
+            EventoCompletado(id2);
+    }
+
+    private void EventoCompletado(int id)
+    {
+        var data = juego.data;
+
+        data.tokensEvento += recompensa[id];
+        textoEventoRecompensa.text = $"+{recompensa[id]} Tokens Evento";
+
+        pingus[id] = 0;
+        niveles[id] = 0;
+        //data.tokensEvento += recompensa[id];
+        data.eventoActivoID = 0;
+        data.eventCooldown[id] = 7200;
+
+        recompensaEventoPopUp.gameObject.SetActive(true);
+    }
+
+    public void CerrarRecompensaEvento()
+    {
+        recompensaEventoPopUp.gameObject.SetActive(false);
+    }
+
+    private void IniciarEventoUI(int id)
+    {
+        var data = juego.data;
+
+        for (var i = 0; i < 2; i++)
+        {
+            if (i == id)
+            {
+                eventos[id].gameObject.SetActive(true);
+            }
+            else
+            {
+                eventos[i].gameObject.SetActive(false);
+            }
+        }
+
+        if (data.eventoActivoID == 0)
+        {
+            var tiempo = TimeSpan.FromSeconds(data.eventCooldown[id]);
+            textoEmpezar[id].text = data.eventCooldown[id] > 0
+                ? tiempo.ToString(@"hh\:mm\:ss")
+                : "Empezar Evento";
+        }
+        else
+        {
+            textoEmpezar[id].text = "Salir del Evento";
+        }
+
+        if (data.eventoActivoID != id + 1) return;
         {
             eventosDesbloqueados[id].gameObject.SetActive(true);
 
-            textoRecompensa[id].text = $"+{recompensa[id]} Tokens Evento";
+            textoRecompensa[id].text = $"+{juego.MetodoNotacion(recompensa[id], "F2")} Tokens Evento";
             textoPingus[id].text = $"{pingus[id]} Pingus";
             textoCoste[id].text = $"Coste: {costes[id]}";
+        }
+    }
 
-            if (eventoActivoID == 0)
-            {
-                var tiempo = TimeSpan.FromSeconds(data.eventCooldown[id]);
-                textoEmpezar[id].text = (eventoActivoID == 0 & data.eventCooldown[id] > 0) ? tiempo.ToString("hh/:mm/:ss") : "Empezar Evento";
-            }
-            
+    private void EmpezarEvento(int id)
+    {
+        switch (id)
+        {
+            case 1:
+                pingus[id] += niveles[id] * Time.deltaTime;
+                break;
         }
     }
 }

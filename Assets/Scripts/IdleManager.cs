@@ -43,6 +43,7 @@ public class PlayerData
     //Eventos
     public BigDouble tokensEvento;
     public float[] eventCooldown = new float[7];
+    public int eventoActivoID;
 
     public PlayerData()
     {
@@ -76,16 +77,20 @@ public class PlayerData
 
         //Eventos
         tokensEvento = 0;
-        for (int i = 0; i < eventCooldown.Length - 1; i++)
+        for (int i = 0; i < eventCooldown.Length; i++)
         {
             eventCooldown[i] = 0;
         }
+
+        eventoActivoID = 0;
     }
 }
 
 public class IdleManager : MonoBehaviour
 {
     public PlayerData data;
+
+    public EventManager eventos;
 
     //Textos
     public Text textoRecursos;
@@ -144,6 +149,8 @@ public class IdleManager : MonoBehaviour
         ventanaPrincipalGrupo.gameObject.SetActive(true);
         ventanaMejorasGrupo.gameObject.SetActive(false);
 
+        eventos.StartEventos();
+
         SaveSystem.LoadPlayer(ref data);
     }
 
@@ -162,7 +169,7 @@ public class IdleManager : MonoBehaviour
 
         data.recursosPorSegundo =
             (data.produccionMejora1Nivel + (data.produccionMejora2Poder * data.produccionMejora2Nivel)) *
-            data.diamantesMejora;
+            data.diamantesMejora * eventos.tokensEventoMejora;
 
 
         if (ventanaPrincipalGrupo.gameObject.activeSelf)
@@ -170,7 +177,7 @@ public class IdleManager : MonoBehaviour
             textodiamantesConseguidos.text =
                 "Prestigio:\n+" + MetodoNotacion(Floor(data.diamantesConseguidos), "F0") + " Diamantes";
 
-            textoRecursosClick.text = "Click \n" + MetodoNotacion(data.recursosClickValor, "F0") + " Recursos";
+            textoRecursosClick.text = "Click \n" + MetodoNotacion((data.recursosClickValor * eventos.tokensEventoMejora), "F0") + " Recursos";
         }
 
 
@@ -200,14 +207,17 @@ public class IdleManager : MonoBehaviour
 
             textoMejoraProduccion1.text = "Produccion Mejora 1\nCoste: " +
                                           MetodoNotacion(data.produccionMejora1Coste, "F0") +
-                                          " recursos\nPoder + " + MetodoNotacion(data.diamantesMejora, "F0") +
+                                          " recursos\nPoder + " +
+                                          MetodoNotacion((data.diamantesMejora * eventos.tokensEventoMejora), "F0") +
                                           " Recursos/s\nNivel: " +
                                           data.produccionMejora1Nivel;
 
             textoMejoraProduccion2.text = "Produccion Mejora 2\nCoste: " +
                                           MetodoNotacion(data.produccionMejora2Coste, "F0") +
                                           " recursos\nPoder +" +
-                                          MetodoNotacion((data.produccionMejora2Poder * data.diamantesMejora), "F0") +
+                                          MetodoNotacion(
+                                              (data.produccionMejora2Poder * data.diamantesMejora *
+                                               eventos.tokensEventoMejora), "F0") +
                                           " Recursos/s\nNivel: " +
                                           data.produccionMejora2Nivel;
 
@@ -348,8 +358,8 @@ public class IdleManager : MonoBehaviour
 
     public void Click()
     {
-        data.recursos += data.recursosClickValor;
-        data.recursosTotales += data.recursosClickValor;
+        data.recursos += data.recursosClickValor * eventos.tokensEventoMejora;
+        data.recursosTotales += data.recursosClickValor * eventos.tokensEventoMejora;
     }
 
     //Mejoras
