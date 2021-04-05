@@ -19,6 +19,7 @@ public class EventManager : MonoBehaviour
     public GameObject[] eventosDesbloqueados = new GameObject[7];
     public Text[] textoRecompensa = new Text[7];
     public Text[] textoPingus = new Text[7];
+    public Text[] textoClick = new Text[7];
     public Text[] textoCoste = new Text[7];
     public Text[] textoEmpezar = new Text[7];
 
@@ -157,16 +158,20 @@ public class EventManager : MonoBehaviour
         if (data.eventoActivoID == 0 & data.eventCooldown[id2] <= 0 & !(ahora.Hour == 23 & ahora.Minute >= 55))
         {
             data.eventoActivoID = id;
-            data.eventCooldown[id] = 300;
+            data.eventCooldown[id2] = 300;
 
             pingus[id2] = 0;
             niveles[id2] = 0;
         }
 
         else if (ahora.Hour == 23 & ahora.Minute >= 55 & data.eventoActivoID == 0) ;
+
         else if (data.eventCooldown[id2] > 0 & data.eventoActivoID == 0) ;
+
         else
+        {
             EventoCompletado(id2);
+        }
     }
 
     private void EventoCompletado(int id)
@@ -206,16 +211,17 @@ public class EventManager : MonoBehaviour
             }
         }
 
+        var tiempo = TimeSpan.FromSeconds(data.eventCooldown[id]);
+
         if (data.eventoActivoID == 0)
         {
-            var tiempo = TimeSpan.FromSeconds(data.eventCooldown[id]);
             textoEmpezar[id].text = data.eventCooldown[id] > 0
                 ? tiempo.ToString(@"hh\:mm\:ss")
                 : "Empezar Evento";
         }
         else
         {
-            textoEmpezar[id].text = "Salir del Evento";
+            textoEmpezar[id].text = $"Salir del Evento: {(tiempo.ToString(@"hh\:mm\:ss"))}";
         }
 
         if (data.eventoActivoID != id + 1) return;
@@ -223,8 +229,13 @@ public class EventManager : MonoBehaviour
             eventosDesbloqueados[id].gameObject.SetActive(true);
 
             textoRecompensa[id].text = $"+{juego.MetodoNotacion(recompensa[id], "F2")} Tokens Evento";
-            textoPingus[id].text = $"{pingus[id]} Pingus";
-            textoCoste[id].text = $"Coste: {costes[id]}";
+            textoPingus[id].text = $"{juego.MetodoNotacion(pingus[id], "F2")} Pingus";
+            textoCoste[id].text = $"Coste: {juego.MetodoNotacion(costes[id], "F2")}";
+
+            if (id == 0)
+            {
+                textoClick[id].text = $"Crear {juego.MetodoNotacion(niveles[id] + 1, "F0")}\nPingus";
+            }
         }
     }
 
