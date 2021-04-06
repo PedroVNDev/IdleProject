@@ -92,6 +92,11 @@ public class IdleManager : MonoBehaviour
 
     public EventManager eventos;
 
+    public GameObject clickMejora1;
+    public GameObject clickMejora2;
+    public GameObject produccionMejora1;
+    public GameObject produccionMejora2;
+
     //Textos
     public Text textoRecursos;
     public Text textoRecursosClick;
@@ -177,7 +182,9 @@ public class IdleManager : MonoBehaviour
             textodiamantesConseguidos.text =
                 "Prestigio:\n+" + MetodoNotacion(Floor(data.diamantesConseguidos), "F0") + " Diamantes";
 
-            textoRecursosClick.text = "Click \n" + MetodoNotacion((data.recursosClickValor * eventos.tokensEventoMejora), "F0") + " Recursos";
+            textoRecursosClick.text = "Click \n" +
+                                      MetodoNotacion((data.recursosClickValor * eventos.tokensEventoMejora), "F0") +
+                                      " Recursos";
         }
 
 
@@ -223,6 +230,34 @@ public class IdleManager : MonoBehaviour
 
             //Comprar Max
             textoMejoraClick1Max.text = ComprarTodoFormato(CompraClick1MaxContador());
+
+            if (data.recursosTotales >= 10)
+                clickMejora1.SetActive(true);
+            else
+            {
+                clickMejora1.SetActive(false);
+            }
+            
+            if (data.recursosTotales >= 100)
+                clickMejora2.SetActive(true);
+            else
+            {
+                clickMejora2.SetActive(false);
+            }
+            
+            if (data.recursosTotales >= 25)
+                produccionMejora1.SetActive(true);
+            else
+            {
+                produccionMejora1.SetActive(false);
+            }
+            
+            if (data.recursosTotales >= 250)
+                produccionMejora2.SetActive(true);
+            else
+            {
+                produccionMejora2.SetActive(false);
+            }
         }
 
         string ComprarTodoFormato(BigDouble x)
