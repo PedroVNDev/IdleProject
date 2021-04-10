@@ -14,7 +14,6 @@ public class PlayerData
     public BigDouble recursos;
     public BigDouble recursosTotales;
     public BigDouble recursosClickValor;
-    public BigDouble recursosPorSegundo;
 
     //Clicks
     public int clickMejora1Nivel;
@@ -33,7 +32,6 @@ public class PlayerData
 
     //Prestigio
     public BigDouble diamantes;
-    public BigDouble diamantesMejora;
     public BigDouble diamantesConseguidos;
 
     //Nivel Logros
@@ -44,6 +42,14 @@ public class PlayerData
     public BigDouble tokensEvento;
     public float[] eventCooldown = new float[7];
     public int eventoActivoID;
+
+    #region Prestigio
+
+    public int prestigioMNivel1;
+    public int prestigioMNivel2;
+    public int prestigioMNivel3;
+
+    #endregion
 
     public PlayerData()
     {
@@ -56,8 +62,14 @@ public class PlayerData
         recursosTotales = 0;
         recursosClickValor = 1;
 
+        //Prestigio
         diamantes = 0;
 
+        prestigioMNivel1 = 0;
+        prestigioMNivel2 = 0;
+        prestigioMNivel3 = 0;
+        
+        //Mejoras
         clickMejora1Nivel = 0;
         clickMejora1Coste = 10;
 
@@ -89,8 +101,8 @@ public class PlayerData
 public class IdleManager : MonoBehaviour
 {
     public PlayerData data;
-
     public EventManager eventos;
+    public PrestigeManager prestigio;
 
     public GameObject clickMejora1;
     public GameObject clickMejora2;
@@ -153,8 +165,10 @@ public class IdleManager : MonoBehaviour
 
         ventanaPrincipalGrupo.gameObject.SetActive(true);
         ventanaMejorasGrupo.gameObject.SetActive(false);
+        prestigio.prestigio.gameObject.SetActive(false);
 
         eventos.StartEventos();
+        prestigio.EmpezarPrestigio();
 
         SaveSystem.LoadPlayer(ref data);
     }
@@ -163,18 +177,14 @@ public class IdleManager : MonoBehaviour
     void Update()
     {
         IniciarLogros();
+        prestigio.Run();
 
         //Barras de progreso
-        NumeroSuave(ref recursosTemporal, data.recursos);
-        BigDoubleRellenar(data.recursos, 10 * Pow(1.07, data.clickMejora1Nivel), mejoraBarraClick1);
-        BigDoubleRellenar(recursosTemporal, 10 * Pow(1.07, data.clickMejora1Nivel), mejoraBarraClick1Suave);
+        Metodos.NumeroSuave(ref recursosTemporal, data.recursos);
+        Metodos.BigDoubleRellenar(data.recursos, 10 * Pow(1.07, data.clickMejora1Nivel), ref mejoraBarraClick1);
+        Metodos.BigDoubleRellenar(recursosTemporal, 10 * Pow(1.07, data.clickMejora1Nivel), ref mejoraBarraClick1Suave);
 
         data.diamantesConseguidos = 150 * Sqrt(data.recursos / 1e7);
-        data.diamantesMejora = data.diamantes * 0.05 + 1;
-
-        data.recursosPorSegundo =
-            (data.produccionMejora1Nivel + (data.produccionMejora2Poder * data.produccionMejora2Nivel)) *
-            data.diamantesMejora * eventos.tokensEventoMejora;
 
 
         if (ventanaPrincipalGrupo.gameObject.activeSelf)
@@ -183,19 +193,19 @@ public class IdleManager : MonoBehaviour
                 "Prestigio:\n+" + MetodoNotacion(Floor(data.diamantesConseguidos), "F0") + " Diamantes";
 
             textoRecursosClick.text = "Click \n" +
-                                      MetodoNotacion((data.recursosClickValor * eventos.tokensEventoMejora), "F0") +
+                                      MetodoNotacion((ValorClickTotal()), "F0") +
                                       " Recursos";
         }
 
 
         textoDiamantes.text = "Diamantes: " + MetodoNotacion(Floor(data.diamantes), "F0");
-        textoMejoraDiamantes.text = MetodoNotacion(data.diamantesMejora, "F2") + "x Mejora";
+        textoMejoraDiamantes.text = MetodoNotacion(ValorTotalDiamantesMejora(), "F2") + "x Mejora";
 
 
         textoRecursos.text = "Recursos: " + MetodoNotacion(data.recursos, "F0");
 
 
-        textoRecursosPorSegundo.text = " Recursos/s " + MetodoNotacion(data.recursosPorSegundo, "F0");
+        textoRecursosPorSegundo.text = " Recursos/s " + MetodoNotacion(ValorTotalRecursosPorSegundo(), "F0");
 
 
         //Si hay autocompradores esto va fuera
@@ -215,7 +225,7 @@ public class IdleManager : MonoBehaviour
             textoMejoraProduccion1.text = "Produccion Mejora 1\nCoste: " +
                                           MetodoNotacion(data.produccionMejora1Coste, "F0") +
                                           " recursos\nPoder + " +
-                                          MetodoNotacion((data.diamantesMejora * eventos.tokensEventoMejora), "F0") +
+                                          MetodoNotacion((MejoraTotal() * Pow(1.1, prestigio.niveles[1])), "F0") +
                                           " Recursos/s\nNivel: " +
                                           data.produccionMejora1Nivel;
 
@@ -223,8 +233,8 @@ public class IdleManager : MonoBehaviour
                                           MetodoNotacion(data.produccionMejora2Coste, "F0") +
                                           " recursos\nPoder +" +
                                           MetodoNotacion(
-                                              (data.produccionMejora2Poder * data.diamantesMejora *
-                                               eventos.tokensEventoMejora), "F0") +
+                                              (data.produccionMejora2Poder * MejoraTotal() *
+                                               Pow(1.1, prestigio.niveles[1])), "F0") +
                                           " Recursos/s\nNivel: " +
                                           data.produccionMejora2Nivel;
 
@@ -237,21 +247,21 @@ public class IdleManager : MonoBehaviour
             {
                 clickMejora1.SetActive(false);
             }
-            
+
             if (data.recursosTotales >= 100)
                 clickMejora2.SetActive(true);
             else
             {
                 clickMejora2.SetActive(false);
             }
-            
+
             if (data.recursosTotales >= 25)
                 produccionMejora1.SetActive(true);
             else
             {
                 produccionMejora1.SetActive(false);
             }
-            
+
             if (data.recursosTotales >= 250)
                 produccionMejora2.SetActive(true);
             else
@@ -266,8 +276,8 @@ public class IdleManager : MonoBehaviour
         }
 
         //Update de recursos
-        data.recursos += data.recursosPorSegundo * Time.deltaTime;
-        data.recursosTotales += data.recursosPorSegundo * Time.deltaTime;
+        data.recursos += ValorTotalRecursosPorSegundo() * Time.deltaTime;
+        data.recursosTotales += ValorTotalRecursosPorSegundo() * Time.deltaTime;
 
 
         //Guardado Automatico
@@ -305,7 +315,7 @@ public class IdleManager : MonoBehaviour
             titulo.text = $"{nombre}\n({nivel})";
             progreso.text = $"{MetodoNotacion(numero, "F2")} / {MetodoNotacion(capacidad, "F2")}";
 
-            BigDoubleRellenar(numero, capacidad, rellenar);
+            Metodos.BigDoubleRellenar(numero, capacidad, ref rellenar);
         }
 
         if (numero < capacidad) return;
@@ -317,45 +327,6 @@ public class IdleManager : MonoBehaviour
         }
 
         nivel += (float) niveles;
-    }
-
-    public void BigDoubleRellenar(BigDouble x, BigDouble y, Image rellenar)
-    {
-        float z;
-        var a = x / y;
-        if (a < 0.001)
-        {
-            z = 0;
-        }
-        else if (a > 10)
-        {
-            z = 1;
-        }
-        else
-        {
-            z = (float) a.ToDouble();
-            rellenar.fillAmount = z;
-        }
-    }
-
-    public void NumeroSuave(ref BigDouble suave, BigDouble actual)
-    {
-        if (suave > actual & actual == 0)
-        {
-            suave -= (suave - actual) / 10 + 0.1 * Time.deltaTime;
-        }
-        else if (Floor(suave) < actual)
-        {
-            suave += (actual - suave) / 10 + 0.1 * Time.deltaTime;
-        }
-        else if (Floor(suave) > actual)
-        {
-            suave -= (suave - actual) / 10 + 0.1 * Time.deltaTime;
-        }
-        else
-        {
-            suave = actual;
-        }
     }
 
     public string MetodoNotacion(BigDouble x, string y)
@@ -391,10 +362,48 @@ public class IdleManager : MonoBehaviour
         }
     }
 
+    private BigDouble MejoraTotal()
+    {
+        BigDouble aux = ValorTotalDiamantesMejora();
+        aux *= eventos.tokensEventoMejora;
+        return aux;
+    }
+
+    private BigDouble ValorTotalDiamantesMejora()
+    {
+        var aux = data.diamantes;
+        aux *= 0.05 + prestigio.niveles[2] * 0.01;
+        return aux + 1;
+    }
+
+    private BigDouble ValorTotalRecursosPorSegundo()
+    {
+        BigDouble aux = 0;
+
+        aux += data.produccionMejora1Nivel;
+        aux += data.produccionMejora2Poder * data.produccionMejora2Nivel;
+        aux *= MejoraTotal();
+        aux *= eventos.tokensEventoMejora;
+        aux *= Pow(1.1, prestigio.niveles[1]);
+
+        return aux;
+    }
+
+    private BigDouble ValorClickTotal()
+    {
+        var aux = data.recursosClickValor;
+
+        aux *= eventos.tokensEventoMejora;
+        aux *= MejoraTotal();
+        aux *= Pow(1.5, prestigio.niveles[0]);
+
+        return aux;
+    }
+
     public void Click()
     {
-        data.recursos += data.recursosClickValor * eventos.tokensEventoMejora;
-        data.recursosTotales += data.recursosClickValor * eventos.tokensEventoMejora;
+        data.recursos += ValorClickTotal();
+        data.recursosTotales += ValorClickTotal();
     }
 
     //Mejoras
@@ -500,6 +509,10 @@ public class IdleManager : MonoBehaviour
             case "Eventos":
                 ventanaEventosGrupo.gameObject.SetActive(true);
                 break;
+
+            case "PrestigioMejoras":
+                prestigio.prestigio.gameObject.SetActive(true);
+                break;
         }
 
         void DesactivarTodo()
@@ -508,12 +521,14 @@ public class IdleManager : MonoBehaviour
             ventanaMejorasGrupo.gameObject.SetActive(false);
             ventanaLogrosGrupo.gameObject.SetActive(false);
             ventanaEventosGrupo.gameObject.SetActive(false);
+            prestigio.prestigio.gameObject.SetActive(false);
         }
     }
 
     public void IrAOpciones()
     {
         opciones.gameObject.SetActive(true);
+        prestigio.prestigio.gameObject.SetActive(false);
     }
 
     public void AtrasOpciones()
@@ -564,5 +579,44 @@ public class Metodos : MonoBehaviour
         y.alpha = x ? 1 : 0;
         y.interactable = x;
         y.blocksRaycasts = x;
+    }
+
+    public static void BigDoubleRellenar(BigDouble x, BigDouble y, ref Image rellenar)
+    {
+        float z;
+        var a = x / y;
+        if (a < 0.001)
+        {
+            z = 0;
+        }
+        else if (a > 10)
+        {
+            z = 1;
+        }
+        else
+        {
+            z = (float) a.ToDouble();
+            rellenar.fillAmount = z;
+        }
+    }
+
+    public static void NumeroSuave(ref BigDouble suave, BigDouble actual)
+    {
+        if (suave > actual & actual == 0)
+        {
+            suave -= (suave - actual) / 10 + 0.1 * Time.deltaTime;
+        }
+        else if (Floor(suave) < actual)
+        {
+            suave += (actual - suave) / 10 + 0.1 * Time.deltaTime;
+        }
+        else if (Floor(suave) > actual)
+        {
+            suave -= (suave - actual) / 10 + 0.1 * Time.deltaTime;
+        }
+        else
+        {
+            suave = actual;
+        }
     }
 }
