@@ -51,6 +51,12 @@ public class PlayerData
 
     #endregion
 
+    #region SuperNova
+
+    public BigDouble superNovas;
+
+    #endregion
+
     public PlayerData()
     {
         FullReset();
@@ -68,7 +74,7 @@ public class PlayerData
         prestigioMNivel1 = 0;
         prestigioMNivel2 = 0;
         prestigioMNivel3 = 0;
-        
+
         //Mejoras
         clickMejora1Nivel = 0;
         clickMejora1Coste = 10;
@@ -95,6 +101,8 @@ public class PlayerData
         }
 
         eventoActivoID = 0;
+
+        superNovas = 0;
     }
 }
 
@@ -138,6 +146,8 @@ public class IdleManager : MonoBehaviour
     public Canvas ventanaMejorasGrupo;
     public Canvas ventanaLogrosGrupo;
     public Canvas ventanaEventosGrupo;
+    public Canvas ventanaSuperNovaGrupo;
+
 
     //Opciones
     public GameObject opciones;

@@ -179,7 +179,7 @@ public class EventManager : MonoBehaviour
         var data = juego.data;
 
         data.tokensEvento += recompensa[id];
-        textoEventoRecompensa.text = $"+{recompensa[id]} Tokens Evento";
+        textoEventoRecompensa.text = $"+{juego.MetodoNotacion(recompensa[id] , "F2")} Tokens Evento";
 
         pingus[id] = 0;
         niveles[id] = 0;
