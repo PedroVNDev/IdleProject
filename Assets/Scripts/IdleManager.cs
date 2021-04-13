@@ -147,11 +147,13 @@ public class IdleManager : MonoBehaviour
     public BigDouble recursosTemporal;
 
     //Cambia Ventanas
+    public Canvas ventanacabeceraGrupo;
     public Canvas ventanaPrincipalGrupo;
     public Canvas ventanaMejorasGrupo;
     public Canvas ventanaLogrosGrupo;
     public Canvas ventanaEventosGrupo;
     public Canvas ventanaSuperNovaGrupo;
+    public Canvas ventanaOpcionesGrupo;
 
 
     //Opciones
@@ -512,6 +514,10 @@ public class IdleManager : MonoBehaviour
         DesactivarTodo();
         switch (id)
         {
+            case "Cabecera":
+                ventanacabeceraGrupo.gameObject.SetActive(true);
+                break;
+
             case "Mejoras":
                 ventanaMejorasGrupo.gameObject.SetActive(true);
                 break;
@@ -522,6 +528,17 @@ public class IdleManager : MonoBehaviour
 
             case "Logros":
                 ventanaLogrosGrupo.gameObject.SetActive(true);
+                break;
+
+            case "Opciones":
+                ventanacabeceraGrupo.gameObject.SetActive(false);
+                ventanaOpcionesGrupo.gameObject.SetActive(true);
+                break;
+
+            case "VolverOpciones":
+                ventanaOpcionesGrupo.gameObject.SetActive(false);
+                ventanacabeceraGrupo.gameObject.SetActive(true);
+                ventanaPrincipalGrupo.gameObject.SetActive(true);
                 break;
 
             case "Eventos":
@@ -545,6 +562,7 @@ public class IdleManager : MonoBehaviour
             ventanaEventosGrupo.gameObject.SetActive(false);
             prestigio.prestigio.gameObject.SetActive(false);
             ventanaSuperNovaGrupo.gameObject.SetActive(false);
+            ventanaOpcionesGrupo.gameObject.SetActive(false);
         }
     }
 
