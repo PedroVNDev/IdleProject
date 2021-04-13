@@ -10,11 +10,12 @@ public class SuperNovaManager : MonoBehaviour
 {
     public IdleManager juego;
 
-    public Text textoSuperNovas;
-    public Text textoSuperNovasObtener;
+    public Text textoAstros;
+    public Text textoAstrosMejora;
+    public Text textoAstrosObtener;
 
-    private BigDouble superNovasObtener => 150 * Sqrt(juego.data.diamantes / 1e4);
-    public BigDouble superNovasMejora => juego.data.superNovas * 0.001 + 1;
+    private BigDouble astrosObtener => 150 * Sqrt(juego.data.diamantes / 1e4);
+    public BigDouble astrosMejora => juego.data.astros * 0.001 + 1;
 
     public void Run()
     {
@@ -25,8 +26,9 @@ public class SuperNovaManager : MonoBehaviour
             var data = juego.data;
             if (!juego.ventanaSuperNovaGrupo.gameObject.activeSelf) return;
             {
-                textoSuperNovas.text = $"SuperNovas: {data.superNovas}";
-                textoSuperNovasObtener.text = $"+{superNovasObtener} SuperNovas";
+                textoAstros.text = $"Astros: {juego.MetodoNotacion(data.astros, "F2")}";
+                textoAstrosObtener.text = $"+{juego.MetodoNotacion(astrosObtener, "F2")} Astros";
+                textoAstrosMejora.text = $"Los Diamantes son {juego.MetodoNotacion(astrosMejora, "F2")} x Mas fuertes";
             }
         }
     }
@@ -35,10 +37,9 @@ public class SuperNovaManager : MonoBehaviour
     {
         var data = juego.data;
 
-        data.superNovas += superNovasObtener;
-        
+        data.astros += astrosObtener;
+
         data.recursos = 0;
-        data.recursosTotales = 0;
         data.recursosClickValor = 1;
         data.clickMejora1Nivel = 0;
         data.clickMejora2Nivel = 0;
@@ -46,7 +47,11 @@ public class SuperNovaManager : MonoBehaviour
         data.produccionMejora2Nivel = 0;
         data.produccionMejora2Poder = 0;
         data.diamantes = 0;
-        
+
+        data.prestigioMNivel1 = 0;
+        data.prestigioMNivel2 = 0;
+        data.prestigioMNivel3 = 0;
+
         juego.ventanaSuperNovaGrupo.gameObject.SetActive(false);
         juego.ventanaPrincipalGrupo.gameObject.SetActive(true);
     }

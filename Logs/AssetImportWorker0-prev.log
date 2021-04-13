@@ -1,0 +1,599 @@
+Using pre-set license
+Built from '2020.2/staging' branch; Version is '2020.2.3f1 (8ff31bc5bf5b) revision 9433883'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 10 Home; OS build 19041.867; Version 2004; 64bit' Language: 'es' Physical Memory: 16262 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+ COMMAND LINE ARGUMENTS:
+D:\Unity\2020.2.3f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+D:/Unity/Proyectos/IdleProject
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+49463
+Successfully changed project path to: D:/Unity/Proyectos/IdleProject
+D:/Unity/Proyectos/IdleProject
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 46.00 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2020.2.3f1 (8ff31bc5bf5b)
+[Subsystems] Discovering subsystems at path D:/Unity/2020.2.3f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path D:/Unity/Proyectos/IdleProject/Assets
+GfxDevice: creating device client; threaded=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce GTX 1050 Ti (ID=0x1c8c)
+    Vendor:   
+    VRAM:     4019 MB
+    Driver:   27.21.14.5655
+Initialize mono
+Mono path[0] = 'D:/Unity/2020.2.3f1/Editor/Data/Managed'
+Mono path[1] = 'D:/Unity/2020.2.3f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'D:/Unity/2020.2.3f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56640
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: D:/Unity/2020.2.3f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.001554 seconds.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 42.81 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.325 seconds
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.000853 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 42.02 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.051 seconds
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Refreshing native plugins compatible for Editor in 0.55 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1812 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 86.4 MB.
+System memory in use after: 86.4 MB.
+
+Unloading 24 unused Assets to reduce memory usage. Loaded Objects now: 2255.
+Total: 2.429400 ms (FindLiveObjects: 0.349200 ms CreateObjectMapping: 0.143800 ms MarkObjects: 1.765800 ms  DeleteObjects: 0.169100 ms)
+
+========================================================================
+Received Import Request.
+  path: Assets/Scripts/IdleManager.cs
+  artifactKey: Guid(9a828d3f70edc3149931a1ef6fad273d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/IdleManager.cs using Guid(9a828d3f70edc3149931a1ef6fad273d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f7ccf5ba5771b024e4e320fa20a3c476') in 0.045949 seconds
+  Import took 0.162358 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2167.074896 seconds.
+  path: Assets/Scripts/SuperNovaManager.cs
+  artifactKey: Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SuperNovaManager.cs using Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ebc204e1dc0320ece2766b79c86142cb') in 0.029639 seconds
+  Import took 0.033890 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.000972 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.36 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.030 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.36 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1795 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 85.4 MB.
+System memory in use after: 85.4 MB.
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 2259.
+Total: 2.218200 ms (FindLiveObjects: 0.191100 ms CreateObjectMapping: 0.076300 ms MarkObjects: 1.830700 ms  DeleteObjects: 0.119100 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 215.225228 seconds.
+  path: Assets/Scripts/SuperNovaManager.cs
+  artifactKey: Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SuperNovaManager.cs using Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5712bda163e7a8b5c11bbf62ec894a41') in 0.052867 seconds
+  Import took 0.059036 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.250918 seconds.
+  path: Assets/Scripts/SuperNovaManager.cs
+  artifactKey: Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SuperNovaManager.cs using Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5712bda163e7a8b5c11bbf62ec894a41') in 0.018813 seconds
+  Import took 0.034221 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 259.548558 seconds.
+  path: Assets/Scripts/SuperNovaManager.cs
+  artifactKey: Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SuperNovaManager.cs using Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1eff14446d650f8d1e63dce865cc563b') in 0.121505 seconds
+  Import took 0.148111 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.438791 seconds.
+  path: Assets/Scripts/SuperNovaManager.cs
+  artifactKey: Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SuperNovaManager.cs using Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1eff14446d650f8d1e63dce865cc563b') in 0.056518 seconds
+  Import took 0.193426 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 105.272691 seconds.
+  path: Assets/Scripts/SuperNovaManager.cs
+  artifactKey: Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SuperNovaManager.cs using Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fcc6f3b1ab28e2ac162b98f68c84505e') in 0.014612 seconds
+  Import took 0.064729 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.368025 seconds.
+  path: Assets/Scripts/SuperNovaManager.cs
+  artifactKey: Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SuperNovaManager.cs using Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fcc6f3b1ab28e2ac162b98f68c84505e') in 0.022157 seconds
+  Import took 0.051902 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 8.669608 seconds.
+  path: Assets/Scripts/SuperNovaManager.cs
+  artifactKey: Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SuperNovaManager.cs using Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f1e24e613ce11070e8a71ebb20a1e5e0') in 0.004723 seconds
+  Import took 0.084725 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 8.069043 seconds.
+  path: Assets/Scripts/SuperNovaManager.cs
+  artifactKey: Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SuperNovaManager.cs using Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '553ff4aa1abf50823f1033e5987a7479') in 0.002750 seconds
+  Import took 0.006769 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 39.734926 seconds.
+  path: Assets/Scripts/SuperNovaManager.cs
+  artifactKey: Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SuperNovaManager.cs using Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4c36c5e022208be303cf79ee6c3c0d73') in 0.003024 seconds
+  Import took 0.007213 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 25.352498 seconds.
+  path: Assets/Scripts/SuperNovaManager.cs
+  artifactKey: Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SuperNovaManager.cs using Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b9af46b13cf9a9c7358887623d1ab7b7') in 0.009953 seconds
+  Import took 0.039204 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.149004 seconds.
+  path: Assets/Scripts/SuperNovaManager.cs
+  artifactKey: Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SuperNovaManager.cs using Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b9af46b13cf9a9c7358887623d1ab7b7') in 0.002818 seconds
+  Import took 0.010548 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 145.733201 seconds.
+  path: Assets/Scripts/SuperNovaManager.cs
+  artifactKey: Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SuperNovaManager.cs using Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c91587a66e1dab7a79d14c270920986c') in 0.013175 seconds
+  Import took 0.021041 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.171614 seconds.
+  path: Assets/Scripts/SuperNovaManager.cs
+  artifactKey: Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SuperNovaManager.cs using Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c91587a66e1dab7a79d14c270920986c') in 0.003037 seconds
+  Import took 0.015896 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001248 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.81 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.120 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.47 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1795 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 85.4 MB.
+System memory in use after: 85.4 MB.
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 2262.
+Total: 2.673900 ms (FindLiveObjects: 0.216800 ms CreateObjectMapping: 0.147900 ms MarkObjects: 2.149100 ms  DeleteObjects: 0.158500 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 10.049760 seconds.
+  path: Assets/Scripts/SuperNovaManager.cs
+  artifactKey: Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SuperNovaManager.cs using Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a90f387fad0eff817e86fd351475db25') in 0.013300 seconds
+  Import took 0.023921 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001422 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.06 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  3.003 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.61 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1795 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 85.5 MB.
+System memory in use after: 85.5 MB.
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 2265.
+Total: 2.679400 ms (FindLiveObjects: 0.244900 ms CreateObjectMapping: 0.124200 ms MarkObjects: 2.155100 ms  DeleteObjects: 0.153900 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 8.839303 seconds.
+  path: Assets/Scripts/SuperNovaManager.cs
+  artifactKey: Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SuperNovaManager.cs using Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a7e1b066f96a2b88569b35dcd68c8254') in 0.005489 seconds
+  Import took 0.009292 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002338 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 1.37 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.237 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.47 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1795 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 85.5 MB.
+System memory in use after: 85.5 MB.
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 2268.
+Total: 4.512900 ms (FindLiveObjects: 1.591200 ms CreateObjectMapping: 0.207600 ms MarkObjects: 2.536600 ms  DeleteObjects: 0.171000 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 33.462561 seconds.
+  path: Assets/Scripts/SuperNovaManager.cs
+  artifactKey: Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SuperNovaManager.cs using Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fbf7785c3f163cfd162aa3b2d4dae105') in 0.008238 seconds
+  Import took 0.013832 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.074940 seconds.
+  path: Assets/Scripts/SuperNovaManager.cs
+  artifactKey: Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SuperNovaManager.cs using Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fbf7785c3f163cfd162aa3b2d4dae105') in 0.006721 seconds
+  Import took 0.012506 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001782 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.35 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.134 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.86 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1795 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 85.5 MB.
+System memory in use after: 85.5 MB.
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 2271.
+Total: 3.193200 ms (FindLiveObjects: 0.241400 ms CreateObjectMapping: 0.158700 ms MarkObjects: 2.661000 ms  DeleteObjects: 0.130400 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 13.711423 seconds.
+  path: Assets/Scripts/SuperNovaManager.cs
+  artifactKey: Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SuperNovaManager.cs using Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '31889ce37e602c8037a453e98d6a156d') in 0.069839 seconds
+  Import took 0.075307 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.245461 seconds.
+  path: Assets/Scripts/SuperNovaManager.cs
+  artifactKey: Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SuperNovaManager.cs using Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '31889ce37e602c8037a453e98d6a156d') in 0.002946 seconds
+  Import took 0.012124 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001989 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.49 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.036 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.66 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1795 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 85.5 MB.
+System memory in use after: 85.5 MB.
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 2274.
+Total: 3.195300 ms (FindLiveObjects: 0.310500 ms CreateObjectMapping: 0.169300 ms MarkObjects: 2.590200 ms  DeleteObjects: 0.123300 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 41.754191 seconds.
+  path: Assets/Scripts/SuperNovaManager.cs
+  artifactKey: Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SuperNovaManager.cs using Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '93bddcc51fb09c168c7c37bdd8816ea1') in 0.011409 seconds
+  Import took 0.030387 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.055185 seconds.
+  path: Assets/Scripts/SuperNovaManager.cs
+  artifactKey: Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SuperNovaManager.cs using Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '93bddcc51fb09c168c7c37bdd8816ea1') in 0.003714 seconds
+  Import took 0.008275 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.038923 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.39 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.124 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.35 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1795 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 85.5 MB.
+System memory in use after: 85.5 MB.
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 2277.
+Total: 2.434700 ms (FindLiveObjects: 0.359400 ms CreateObjectMapping: 0.081900 ms MarkObjects: 1.864400 ms  DeleteObjects: 0.127400 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 97.376378 seconds.
+  path: Assets/Scripts/SuperNovaManager.cs
+  artifactKey: Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SuperNovaManager.cs using Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd462f9ef21e34352f9861d4c5eb24292') in 0.005420 seconds
+  Import took 0.022031 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.320797 seconds.
+  path: Assets/Scripts/SuperNovaManager.cs
+  artifactKey: Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SuperNovaManager.cs using Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd462f9ef21e34352f9861d4c5eb24292') in 0.027448 seconds
+  Import took 0.034391 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001450 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.61 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.366 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.38 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1795 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 85.5 MB.
+System memory in use after: 85.5 MB.
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 2280.
+Total: 2.841300 ms (FindLiveObjects: 0.228800 ms CreateObjectMapping: 0.072900 ms MarkObjects: 2.385900 ms  DeleteObjects: 0.151800 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 20.165355 seconds.
+  path: Assets/Scripts/SuperNovaManager.cs
+  artifactKey: Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SuperNovaManager.cs using Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5b68be4c63b242adfd1e77f119c02110') in 0.047335 seconds
+  Import took 0.055500 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.053760 seconds.
+  path: Assets/Scripts/SuperNovaManager.cs
+  artifactKey: Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SuperNovaManager.cs using Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5b68be4c63b242adfd1e77f119c02110') in 0.071939 seconds
+  Import took 0.134471 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001845 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.36 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.142 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.38 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1795 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 85.5 MB.
+System memory in use after: 85.5 MB.
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 2283.
+Total: 2.789300 ms (FindLiveObjects: 0.183700 ms CreateObjectMapping: 0.080200 ms MarkObjects: 2.377400 ms  DeleteObjects: 0.146400 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 26.028369 seconds.
+  path: Assets/Scripts/SuperNovaManager.cs
+  artifactKey: Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SuperNovaManager.cs using Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dc62f35109b6afc9f6132b88011b123e') in 0.027273 seconds
+  Import took 0.148537 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.060071 seconds.
+  path: Assets/Scripts/SuperNovaManager.cs
+  artifactKey: Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SuperNovaManager.cs using Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dc62f35109b6afc9f6132b88011b123e') in 0.008595 seconds
+  Import took 0.017791 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.000987 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.47 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.976 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.36 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1795 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 85.5 MB.
+System memory in use after: 85.5 MB.
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 2286.
+Total: 2.266300 ms (FindLiveObjects: 0.201400 ms CreateObjectMapping: 0.098300 ms MarkObjects: 1.796200 ms  DeleteObjects: 0.169300 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 76.880061 seconds.
+  path: Assets/Scripts/SuperNovaManager.cs
+  artifactKey: Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SuperNovaManager.cs using Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '65a0a8ad3697689754986d0244dc92b1') in 0.083669 seconds
+  Import took 0.088000 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.185902 seconds.
+  path: Assets/Scripts/SuperNovaManager.cs
+  artifactKey: Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/SuperNovaManager.cs using Guid(1c0fef4965dcb16479973a2f30b46355) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '65a0a8ad3697689754986d0244dc92b1') in 0.043934 seconds
+  Import took 0.048660 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.000879 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.36 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.069 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.44 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1795 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 85.5 MB.
+System memory in use after: 85.5 MB.
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 2289.
+Total: 2.421400 ms (FindLiveObjects: 0.252700 ms CreateObjectMapping: 0.204400 ms MarkObjects: 1.773900 ms  DeleteObjects: 0.189200 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001373 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.35 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.949 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.73 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1795 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 85.6 MB.
+System memory in use after: 85.5 MB.
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 2292.
+Total: 2.466600 ms (FindLiveObjects: 0.279900 ms CreateObjectMapping: 0.117700 ms MarkObjects: 1.918900 ms  DeleteObjects: 0.148800 ms)
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file

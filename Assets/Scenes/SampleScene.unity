@@ -3888,7 +3888,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.52127093, y: 0.5}
   m_AnchorMax: {x: 0.52127093, y: 0.5}
-  m_AnchoredPosition: {x: -40.84, y: 277}
+  m_AnchoredPosition: {x: -40.84, y: 297}
   m_SizeDelta: {x: 759.7052, y: 148.27}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &615026149
@@ -4234,12 +4234,12 @@ RectTransform:
   m_Children:
   - {fileID: 290896185}
   m_Father: {fileID: 2026400123}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.52127093, y: 0.5}
   m_AnchorMax: {x: 0.52127093, y: 0.5}
-  m_AnchoredPosition: {x: -40.84, y: -210}
-  m_SizeDelta: {x: 546.9126, y: 206.8135}
+  m_AnchoredPosition: {x: -40.84, y: -200}
+  m_SizeDelta: {x: 531.1521, y: 195.556}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &683548676
 MonoBehaviour:
@@ -4300,9 +4300,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2110761604}
-        m_TargetAssemblyTypeName: IdleManager, Assembly-CSharp
-        m_MethodName: Prestigio
+      - m_Target: {fileID: 1021919434}
+        m_TargetAssemblyTypeName: SuperNovaManager, Assembly-CSharp
+        m_MethodName: SuperNova
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4847,7 +4847,7 @@ GameObject:
   - component: {fileID: 864161901}
   - component: {fileID: 864161900}
   m_Layer: 5
-  m_Name: Subtitulo2
+  m_Name: Titulo2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4865,7 +4865,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2026400123}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.52127093, y: 0.5}
   m_AnchorMax: {x: 0.52127093, y: 0.5}
@@ -5471,7 +5471,7 @@ GameObject:
   - component: {fileID: 979211651}
   - component: {fileID: 979211650}
   m_Layer: 5
-  m_Name: Titulo2
+  m_Name: AstrosObtener
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5489,7 +5489,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2026400123}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.52127093, y: 0.5}
   m_AnchorMax: {x: 0.52127093, y: 0.5}
@@ -5737,9 +5737,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c0fef4965dcb16479973a2f30b46355, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  juego: {fileID: 0}
-  textoSuperNovas: {fileID: 0}
-  textoSuperNovasObtener: {fileID: 0}
+  juego: {fileID: 2110761604}
+  textoAstros: {fileID: 1094239485}
+  textoAstrosMejora: {fileID: 1690648403}
+  textoAstrosObtener: {fileID: 979211651}
 --- !u!1 &1031707310
 GameObject:
   m_ObjectHideFlags: 0
@@ -6288,7 +6289,7 @@ RectTransform:
   m_Children:
   - {fileID: 186732663}
   m_Father: {fileID: 2026400123}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.52127093, y: 0.5}
   m_AnchorMax: {x: 0.52127093, y: 0.5}
@@ -6356,14 +6357,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2110761604}
         m_TargetAssemblyTypeName: IdleManager, Assembly-CSharp
-        m_MethodName: Prestigio
-        m_Mode: 1
+        m_MethodName: CambiaVentanas
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Principal
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1089913855
@@ -6417,7 +6418,7 @@ GameObject:
   - component: {fileID: 1094239485}
   - component: {fileID: 1094239484}
   m_Layer: 5
-  m_Name: SubTitulo1
+  m_Name: AstrosActuales
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6439,7 +6440,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.52127093, y: 0.5}
   m_AnchorMax: {x: 0.52127093, y: 0.5}
-  m_AnchoredPosition: {x: -40.84, y: 210}
+  m_AnchoredPosition: {x: -40.84, y: 233}
   m_SizeDelta: {x: 759.7052, y: 148.27}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1094239484
@@ -6512,7 +6513,7 @@ GameObject:
   - component: {fileID: 1103726593}
   - component: {fileID: 1103726592}
   m_Layer: 5
-  m_Name: BotonPrestigio2
+  m_Name: BotonSuperNova
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6591,7 +6592,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: PrestigioMejoras
+          m_StringArgument: SuperNova
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1103726593
@@ -10244,6 +10245,101 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1679618797}
   m_CullTransparentMesh: 1
+--- !u!1 &1690648400
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1690648401}
+  - component: {fileID: 1690648404}
+  - component: {fileID: 1690648403}
+  - component: {fileID: 1690648402}
+  m_Layer: 5
+  m_Name: AstrosMejora
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1690648401
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690648400}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2026400123}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.52127093, y: 0.5}
+  m_AnchorMax: {x: 0.52127093, y: 0.5}
+  m_AnchoredPosition: {x: -40.84, y: 170}
+  m_SizeDelta: {x: 759.7052, y: 148.27}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1690648402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690648400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 3, y: 2}
+  m_UseGraphicAlpha: 0
+--- !u!114 &1690648403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690648400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0, b: 0.8279877, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: f4c99a340a6e6504aa6e992b7a253612, type: 3}
+    m_FontSize: 35
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 3
+    m_MaxSize: 300
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Los diamantes son 1.00x Mas Fuertes
+--- !u!222 &1690648404
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690648400}
+  m_CullTransparentMesh: 1
 --- !u!1 &1702912879
 GameObject:
   m_ObjectHideFlags: 0
@@ -12533,12 +12629,12 @@ GameObject:
   - component: {fileID: 2026400125}
   - component: {fileID: 2026400124}
   m_Layer: 5
-  m_Name: VentanaPrestigio2
+  m_Name: VentanaSuperNova
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2026400123
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12553,6 +12649,7 @@ RectTransform:
   - {fileID: 366008148}
   - {fileID: 615026148}
   - {fileID: 1094239483}
+  - {fileID: 1690648401}
   - {fileID: 979211649}
   - {fileID: 864161899}
   - {fileID: 683548675}
@@ -13328,11 +13425,12 @@ MonoBehaviour:
     prestigioMNivel1: 0
     prestigioMNivel2: 0
     prestigioMNivel3: 0
-    superNovas:
+    astros:
       mantissa: 0
       exponent: 0
   eventos: {fileID: 1560611567}
   prestigio: {fileID: 248364484}
+  superNova: {fileID: 1021919434}
   clickMejora1: {fileID: 725683076}
   clickMejora2: {fileID: 1483331599}
   produccionMejora1: {fileID: 1506323003}
@@ -13357,7 +13455,7 @@ MonoBehaviour:
   ventanaMejorasGrupo: {fileID: 1719748569}
   ventanaLogrosGrupo: {fileID: 1354422493}
   ventanaEventosGrupo: {fileID: 113337785}
-  ventanaSuperNovaGrupo: {fileID: 0}
+  ventanaSuperNovaGrupo: {fileID: 2026400125}
   opciones: {fileID: 1458448060}
   textFieldImportar: {fileID: 1138838240}
   textFieldExportar: {fileID: 321400147}

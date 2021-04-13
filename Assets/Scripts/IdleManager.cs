@@ -53,7 +53,7 @@ public class PlayerData
 
     #region SuperNova
 
-    public BigDouble superNovas;
+    public BigDouble astros;
 
     #endregion
 
@@ -102,7 +102,11 @@ public class PlayerData
 
         eventoActivoID = 0;
 
-        superNovas = 0;
+        prestigioMNivel1 = 0;
+        prestigioMNivel2 = 0;
+        prestigioMNivel3 = 0;
+
+        astros = 0;
     }
 }
 
@@ -111,6 +115,7 @@ public class IdleManager : MonoBehaviour
     public PlayerData data;
     public EventManager eventos;
     public PrestigeManager prestigio;
+    public SuperNovaManager superNova;
 
     public GameObject clickMejora1;
     public GameObject clickMejora2;
@@ -188,6 +193,7 @@ public class IdleManager : MonoBehaviour
     {
         IniciarLogros();
         prestigio.Run();
+        superNova.Run();
 
         //Barras de progreso
         Metodos.NumeroSuave(ref recursosTemporal, data.recursos);
@@ -383,6 +389,8 @@ public class IdleManager : MonoBehaviour
     {
         var aux = data.diamantes;
         aux *= 0.05 + prestigio.niveles[2] * 0.01;
+        aux *= superNova.astrosMejora;
+
         return aux + 1;
     }
 
@@ -523,6 +531,10 @@ public class IdleManager : MonoBehaviour
             case "PrestigioMejoras":
                 prestigio.prestigio.gameObject.SetActive(true);
                 break;
+
+            case "SuperNova":
+                ventanaSuperNovaGrupo.gameObject.SetActive(true);
+                break;
         }
 
         void DesactivarTodo()
@@ -532,6 +544,7 @@ public class IdleManager : MonoBehaviour
             ventanaLogrosGrupo.gameObject.SetActive(false);
             ventanaEventosGrupo.gameObject.SetActive(false);
             prestigio.prestigio.gameObject.SetActive(false);
+            ventanaSuperNovaGrupo.gameObject.SetActive(false);
         }
     }
 
