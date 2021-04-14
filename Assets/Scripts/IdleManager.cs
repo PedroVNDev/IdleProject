@@ -566,17 +566,6 @@ public class IdleManager : MonoBehaviour
         }
     }
 
-    public void IrAOpciones()
-    {
-        opciones.gameObject.SetActive(true);
-        prestigio.prestigio.gameObject.SetActive(false);
-    }
-
-    public void AtrasOpciones()
-    {
-        opciones.gameObject.SetActive(false);
-    }
-
     public void BotonGuardar()
     {
         SaveSystem.SavePlayer(data);

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6511234675970058973}
   - component: {fileID: 6511234675970058979}
   - component: {fileID: 6511234675970058972}
+  - component: {fileID: 7997045588436655023}
   m_Layer: 5
   m_Name: Titulo
   m_TagString: Untagged
@@ -81,6 +82,21 @@ MonoBehaviour:
   m_Text: 'Nombre Logro
 
     (1)'
+--- !u!114 &7997045588436655023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6511234675970058974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 3, y: 1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &6511234676353975246
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,7 +186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 3, y: 3}
+  m_EffectDistance: {x: 1, y: 1}
   m_UseGraphicAlpha: 1
 --- !u!1 &6511234676433120758
 GameObject:
@@ -183,6 +199,7 @@ GameObject:
   - component: {fileID: 6511234676433120757}
   - component: {fileID: 6511234676433120763}
   - component: {fileID: 6511234676433120756}
+  - component: {fileID: 7645356202496177332}
   m_Layer: 5
   m_Name: Progreso
   m_TagString: Untagged
@@ -251,6 +268,21 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 0 / 100
+--- !u!114 &7645356202496177332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6511234676433120758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 3, y: 1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &6511234677251680234
 GameObject:
   m_ObjectHideFlags: 0
@@ -316,6 +348,7 @@ GameObject:
   - component: {fileID: 6511234677713680445}
   - component: {fileID: 6511234677713680451}
   - component: {fileID: 6511234677713680444}
+  - component: {fileID: 5852841740584592318}
   m_Layer: 5
   m_Name: MejoraBarraClick1BG
   m_TagString: Untagged
@@ -381,3 +414,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5852841740584592318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6511234677713680446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 5, y: 5}
+  m_UseGraphicAlpha: 1

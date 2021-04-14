@@ -395,7 +395,7 @@ namespace BreakInfinity
         {
             return (float) value.ToDouble();
         }
-        
+
         public static explicit operator int(BigDouble value)
         {
             return (int) value.ToDouble();

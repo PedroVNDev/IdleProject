@@ -45,7 +45,7 @@ public class SuperNovaManager : MonoBehaviour
         data.clickMejora2Nivel = 0;
         data.produccionMejora1Nivel = 0;
         data.produccionMejora2Nivel = 0;
-        data.produccionMejora2Poder = 0;
+        data.produccionMejora2Poder = 5;
         data.diamantes = 0;
 
         data.prestigioMNivel1 = 0;
