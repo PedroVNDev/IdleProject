@@ -232,13 +232,19 @@ public class IdleManager : MonoBehaviour
             var clickMejora1Coste = 10 * Pow(1.07, data.clickMejora1Nivel);
 
             //Texto de mejoras
-            textoMejoraClick1.text = "Click Mejora 1\nCoste: " + MetodoNotacion(clickMejora1Coste, "F0") +
-                                     " recursos\nPoder +1 Click\nNivel: " +
+            textoMejoraClick1.text = "Click Mejora 1\nCoste: " + MetodoNotacion(data.clickMejora1Coste, "F0") +
+                                     " recursos\nPoder +" +
+                                     MetodoNotacion(MejoraTotal() * Pow(1.5, prestigio.niveles[0]), "F0") +
+                                     " Click\nNivel: " +
                                      data.clickMejora1Nivel;
 
             textoMejoraClick2.text = "Click Mejora 2\nCoste: " + MetodoNotacion(data.clickMejora2Coste, "F0") +
-                                     " recursos\nPoder +5 Click\nNivel: " +
+                                     " recursos\nPoder +" +
+                                     MetodoNotacion((MejoraTotal() * 5) * Pow(1.5, prestigio.niveles[0]), "F0") +
+                                     " Click\nNivel: " +
                                      data.clickMejora2Nivel;
+
+            Debug.Log("Mejora total: " + MejoraTotal());
 
             textoMejoraProduccion1.text = "Produccion Mejora 1\nCoste: " +
                                           MetodoNotacion(data.produccionMejora1Coste, "F0") +

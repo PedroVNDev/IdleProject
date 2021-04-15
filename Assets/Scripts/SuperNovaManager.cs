@@ -41,11 +41,20 @@ public class SuperNovaManager : MonoBehaviour
 
         data.recursos = 0;
         data.recursosClickValor = 1;
+
         data.clickMejora1Nivel = 0;
+        data.clickMejora1Coste = 10;
+
         data.clickMejora2Nivel = 0;
+        data.clickMejora2Coste = 100;
+
         data.produccionMejora1Nivel = 0;
+        data.produccionMejora1Coste = 25;
+
         data.produccionMejora2Nivel = 0;
+        data.produccionMejora2Coste = 250;
         data.produccionMejora2Poder = 5;
+        
         data.diamantes = 0;
 
         data.prestigioMNivel1 = 0;
