@@ -57,6 +57,13 @@ public class PlayerData
 
     #endregion
 
+    #region Automatizadores
+
+    public int autoNivel1;
+    public int autoNivel2;
+
+    #endregion
+
     public PlayerData()
     {
         FullReset();
@@ -107,6 +114,13 @@ public class PlayerData
         prestigioMNivel3 = 0;
 
         astros = 0;
+
+        #region Automatizadores
+
+        autoNivel1 = 0;
+        autoNivel2 = 0;
+
+        #endregion
     }
 }
 
@@ -154,6 +168,7 @@ public class IdleManager : MonoBehaviour
     public Canvas ventanaEventosGrupo;
     public Canvas ventanaSuperNovaGrupo;
     public Canvas ventanaOpcionesGrupo;
+    public Canvas ventanaAutomaticoGrupo;
 
 
     //Opciones
@@ -498,6 +513,10 @@ public class IdleManager : MonoBehaviour
                 }
 
                 break;
+            
+            //Hay que hacerlo
+            case "M1Max":
+                break;
 
             case "M2":
                 if (data.recursos >= data.produccionMejora2Coste)
@@ -558,6 +577,10 @@ public class IdleManager : MonoBehaviour
             case "SuperNova":
                 ventanaSuperNovaGrupo.gameObject.SetActive(true);
                 break;
+
+            case "Automatico":
+                ventanaAutomaticoGrupo.gameObject.SetActive(true);
+                break;
         }
 
         void DesactivarTodo()
@@ -569,6 +592,7 @@ public class IdleManager : MonoBehaviour
             prestigio.prestigio.gameObject.SetActive(false);
             ventanaSuperNovaGrupo.gameObject.SetActive(false);
             ventanaOpcionesGrupo.gameObject.SetActive(false);
+            ventanaAutomaticoGrupo.gameObject.SetActive(false);
         }
     }
 
