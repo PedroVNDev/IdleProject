@@ -87,7 +87,7 @@ public class AutomatorManager : MonoBehaviour
                     case "C1":
                         if (juego.CompraClick1MaxContador() != 0)
                         {
-                            juego.CompraMejora("C1Max");
+                            //juego.CompraMejora("C1Max");
                         }
 
                         break;
@@ -95,7 +95,7 @@ public class AutomatorManager : MonoBehaviour
                     case "M1":
                         if (juego.CompraClick1MaxContador() != 0)
                         {
-                            juego.CompraMejora("M1Max");
+                            //juego.CompraMejora("M1Max");
                         }
 
                         break;
@@ -121,9 +121,11 @@ public class AutomatorManager : MonoBehaviour
 
         void Comprar(ref int nivel)
         {
-            if (data.recursos < costes[id] & nivel >= nivelesLimite[id]) return;
-            data.recursos -= costes[id];
-            nivel++;
+            if (!(data.recursos >= costes[id] & nivel < nivelesLimite[id])) return;
+            {
+                data.recursos -= costes[id];
+                nivel++;
+            }
         }
     }
 

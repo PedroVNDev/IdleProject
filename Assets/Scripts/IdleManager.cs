@@ -130,6 +130,7 @@ public class IdleManager : MonoBehaviour
     public EventManager eventos;
     public PrestigeManager prestigio;
     public SuperNovaManager superNova;
+    public AutomatorManager automatizador;
 
     public GameObject clickMejora1;
     public GameObject clickMejora2;
@@ -201,6 +202,7 @@ public class IdleManager : MonoBehaviour
 
         eventos.StartEventos();
         prestigio.EmpezarPrestigio();
+        automatizador.EmpezarAutomatizadores();
 
         SaveSystem.LoadPlayer(ref data);
     }
@@ -211,6 +213,7 @@ public class IdleManager : MonoBehaviour
         IniciarLogros();
         prestigio.Run();
         superNova.Run();
+        automatizador.Run();
 
         //Barras de progreso
         Metodos.NumeroSuave(ref recursosTemporal, data.recursos);
