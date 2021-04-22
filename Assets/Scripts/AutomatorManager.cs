@@ -68,17 +68,13 @@ public class AutomatorManager : MonoBehaviour
 
         void Auto(int id, string nombre)
         {
-            if (niveles[id] > 0)
+            if (niveles[id] <= 0) return;
+            if (niveles[id] != nivelesLimite[id])
             {
-                if (niveles[id] != nivelesLimite[id])
-                {
-                    timer[id] += Time.deltaTime;
-                    if (timer[id] >= intervalos[id])
-                    {
-                        juego.CompraMejora("C1");
-                        timer[0] = 0;
-                    }
-                }
+                timer[id] += Time.deltaTime;
+                if (!(timer[id] >= intervalos[id])) return;
+                juego.CompraMejora(nombre);
+                timer[id] = 0;
             }
             else
             {
@@ -87,15 +83,15 @@ public class AutomatorManager : MonoBehaviour
                     case "C1":
                         if (juego.CompraClick1MaxContador() != 0)
                         {
-                            //juego.CompraMejora("C1Max");
+                            juego.CompraClick1Max();
                         }
 
                         break;
 
                     case "M1":
-                        if (juego.CompraClick1MaxContador() != 0)
+                        if (juego.CompraProduccion1MaxContador() != 0)
                         {
-                            //juego.CompraMejora("M1Max");
+                            juego.CompraProduccion1Max();
                         }
 
                         break;

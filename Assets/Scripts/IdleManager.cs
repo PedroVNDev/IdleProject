@@ -43,6 +43,9 @@ public class PlayerData
     public float[] eventCooldown = new float[7];
     public int eventoActivoID;
 
+    //Opciones
+    public bool musicaFondo;
+
     #region Prestigio
 
     public int prestigioMNivel1;
@@ -95,6 +98,9 @@ public class PlayerData
         produccionMejora2Nivel = 0;
         produccionMejora2Poder = 5;
         produccionMejora2Coste = 250;
+
+        //Opciones
+        musicaFondo = true;
 
         //Nivel Logros
         logroNivel1 = 0;
@@ -178,7 +184,6 @@ public class IdleManager : MonoBehaviour
     public TMP_InputField textFieldImportar;
     public TMP_InputField textFieldExportar;
 
-    public bool musicaFondo = true;
     public Image musicaFondoIcono;
 
     public GameObject logroVentana;
@@ -204,6 +209,7 @@ public class IdleManager : MonoBehaviour
         prestigio.EmpezarPrestigio();
         automatizador.EmpezarAutomatizadores();
 
+
         SaveSystem.LoadPlayer(ref data);
     }
 
@@ -214,6 +220,19 @@ public class IdleManager : MonoBehaviour
         prestigio.Run();
         superNova.Run();
         automatizador.Run();
+
+        Debug.Log("Musica fondo: " + data.musicaFondo);
+
+        if (data.musicaFondo)
+        {
+            soundManager.gameObject.SetActive(true);
+            musicaFondoIcono.color = Color.green;
+        }
+        else if (!data.musicaFondo)
+        {
+            soundManager.gameObject.SetActive(false);
+            musicaFondoIcono.color = Color.red;
+        }
 
         //Barras de progreso
         Metodos.NumeroSuave(ref recursosTemporal, data.recursos);
@@ -451,12 +470,58 @@ public class IdleManager : MonoBehaviour
     }
 
     //Mejoras
+    public void CompraClick1Max()
+    {
+        var b = 10;
+        var c = data.recursos;
+        var r = 1.07;
+        var k = data.clickMejora1Nivel;
+        var n = Floor(Log(c * (r - 1) / (b * Pow(r, k)) + 1, r));
+
+        var coste = b * (Pow(r, k) * (Pow(r, n) - 1) / (r - 1));
+
+        if (data.recursos >= coste)
+        {
+            data.clickMejora1Nivel += (int) n;
+            data.recursos -= coste;
+            data.recursosClickValor += n;
+        }
+    }
+
     public BigDouble CompraClick1MaxContador()
     {
         var b = 10;
         var c = data.recursos;
         var r = 1.07;
         var k = data.clickMejora1Nivel;
+        var n = Floor(Log(c * (r - 1) / (b * Pow(r, k)) + 1, r));
+
+        return n;
+    }
+
+    public void CompraProduccion1Max()
+    {
+        var b = 10;
+        var c = data.recursos;
+        var r = 1.07;
+        var k = data.produccionMejora1Nivel;
+        var n = Floor(Log(c * (r - 1) / (b * Pow(r, k)) + 1, r));
+
+        var coste = b * (Pow(r, k) * (Pow(r, n) - 1) / (r - 1));
+
+        if (data.recursos >= coste)
+        {
+            data.produccionMejora1Nivel += (int) n;
+            data.recursos -= coste;
+        }
+    }
+
+    public BigDouble CompraProduccion1MaxContador()
+    {
+        var b = 10;
+        var c = data.recursos;
+        var r = 1.07;
+        var k = data.produccionMejora1Nivel;
         var n = Floor(Log(c * (r - 1) / (b * Pow(r, k)) + 1, r));
 
         return n;
@@ -516,7 +581,7 @@ public class IdleManager : MonoBehaviour
                 }
 
                 break;
-            
+
             //Hay que hacerlo
             case "M1Max":
                 break;
@@ -614,16 +679,16 @@ public class IdleManager : MonoBehaviour
 
     public void MusicaFondo()
     {
-        if (musicaFondo)
+        if (data.musicaFondo)
         {
-            soundManager.GetComponent<AudioSource>().enabled = false;
-            musicaFondo = false;
+            soundManager.gameObject.SetActive(false);
+            data.musicaFondo = false;
             musicaFondoIcono.color = Color.red;
         }
-        else if (!musicaFondo)
+        else if (!data.musicaFondo)
         {
-            soundManager.GetComponent<AudioSource>().enabled = true;
-            musicaFondo = true;
+            soundManager.gameObject.SetActive(true);
+            data.musicaFondo = true;
             musicaFondoIcono.color = Color.green;
         }
     }
