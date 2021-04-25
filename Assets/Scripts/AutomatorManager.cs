@@ -24,8 +24,6 @@ public class AutomatorManager : MonoBehaviour
     private BigDouble coste1 => 1e4 * BigDouble.Pow(1.5, juego.data.autoNivel1);
     private BigDouble coste2 => 1e5 * BigDouble.Pow(1.5, juego.data.autoNivel2);
 
-    public BigDouble diamantesAux;
-
 
     public void EmpezarAutomatizadores()
     {
@@ -64,7 +62,7 @@ public class AutomatorManager : MonoBehaviour
     void RunAuto()
     {
         Auto(0, "C1");
-        Auto(0, "M1");
+        Auto(1, "M1");
 
         void Auto(int id, string nombre)
         {
@@ -121,7 +119,7 @@ public class AutomatorManager : MonoBehaviour
             {
                 data.recursos -= costes[id];
                 nivel++;
-            }
+            }  
         }
     }
 
