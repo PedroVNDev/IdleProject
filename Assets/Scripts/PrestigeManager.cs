@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using BreakInfinity;
+using static BreakInfinity.BigDouble;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PrestigeManager : MonoBehaviour
 {
     public IdleManager juego;
+    public SuperNovaManager superNova;
 
     public Canvas prestigio;
 
@@ -24,6 +26,9 @@ public class PrestigeManager : MonoBehaviour
 
     public BigDouble diamantesAux;
 
+    public Text textoDiamantes;
+    public Text textoMejoraDiamantes;
+    public Text textodiamantesConseguidos;
 
     public void EmpezarPrestigio()
     {
@@ -38,8 +43,22 @@ public class PrestigeManager : MonoBehaviour
 
     public void Run()
     {
+        var data = juego.data;
+
         ArrayManager();
         UI();
+        
+        data.diamantesConseguidos = 150 * Sqrt(data.recursos / 1e7);
+
+        textoDiamantes.text = "Diamantes: " + Metodos.MetodoNotacion(Floor(data.diamantes), "F2");
+        textoMejoraDiamantes.text = Metodos.MetodoNotacion(ValorTotalDiamantesMejora(), "F2") + "x Mejora";
+
+        if (juego.ventanaPrincipalGrupo.gameObject.activeSelf)
+        {
+            textodiamantesConseguidos.text =
+                "Prestigio:\n+" + Metodos.MetodoNotacion(Floor(data.diamantesConseguidos), "F0") + " Diamantes";
+        }
+
 
         void UI()
         {
@@ -47,7 +66,8 @@ public class PrestigeManager : MonoBehaviour
             {
                 for (var i = 0; i < textoCoste.Length; i++)
                 {
-                    textoCoste[i].text = $"Nivel {niveles[i]}\n{costeDescripcion[i]}\nCoste: {juego.MetodoNotacion(costes[i], "F0")} Diamantes";
+                    textoCoste[i].text =
+                        $"Nivel {niveles[i]}\n{costeDescripcion[i]}\nCoste: {Metodos.MetodoNotacion(costes[i], "F0")} Diamantes";
                     Metodos.NumeroSuave(ref diamantesAux, juego.data.diamantes);
                     Metodos.BigDoubleRellenar(juego.data.diamantes, costes[i], ref barrasCoste[i]);
                     Metodos.BigDoubleRellenar(diamantesAux, costes[i], ref barrasCosteSuave[i]);
@@ -94,5 +114,36 @@ public class PrestigeManager : MonoBehaviour
         niveles[0] = data.prestigioMNivel1;
         niveles[1] = data.prestigioMNivel2;
         niveles[2] = data.prestigioMNivel3;
+    }
+
+    public void Prestigio()
+    {
+        var data = juego.data;
+
+        if (data.recursos > 1000)
+        {
+            data.recursos = 0;
+            data.recursosClickValor = 1;
+            data.clickMejora2Coste = 100;
+            data.produccionMejora1Coste = 25;
+            data.produccionMejora2Coste = 250;
+            data.produccionMejora2Poder = 5;
+
+            data.clickMejora1Nivel = 0;
+            data.clickMejora2Nivel = 0;
+            data.produccionMejora1Nivel = 0;
+            data.produccionMejora2Nivel = 0;
+
+            data.diamantes += data.diamantesConseguidos;
+        }
+    }
+
+    public BigDouble ValorTotalDiamantesMejora()
+    {
+        var aux = juego.data.diamantes;
+        aux *= 0.05 + niveles[2] * 0.01;
+        aux *= superNova.astrosMejora;
+
+        return aux + 1;
     }
 }

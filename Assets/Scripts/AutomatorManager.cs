@@ -9,6 +9,7 @@ using static BreakInfinity.BigDouble;
 public class AutomatorManager : MonoBehaviour
 {
     public IdleManager juego;
+    public UpgradeManager mejoras;
 
     public Text[] textoCoste = new Text[2];
     public Image[] barrasCoste = new Image[2];
@@ -51,7 +52,7 @@ public class AutomatorManager : MonoBehaviour
                 for (var i = 0; i < textoCoste.Length; i++)
                 {
                     textoCoste[i].text =
-                        $"{costeDescripcion[i]}\nCoste: {juego.MetodoNotacion(costes[i], "F0")} Recursos\nIntervalo: {(niveles[i] >= nivelesLimite[i] ? "Instantaneo" : intervalos[i].ToString("F1"))}";
+                        $"{costeDescripcion[i]}\nCoste: {Metodos.MetodoNotacion(costes[i], "F0")} Recursos\nIntervalo: {(niveles[i] >= nivelesLimite[i] ? "Instantaneo" : intervalos[i].ToString("F1"))}";
                     Metodos.BigDoubleRellenar(juego.data.recursos, costes[i], ref barrasCoste[i]);
                     Metodos.BigDoubleRellenar(juego.recursosTemporal, costes[i], ref barrasCosteSuave[i]);
                 }
@@ -61,40 +62,41 @@ public class AutomatorManager : MonoBehaviour
 
     void RunAuto()
     {
-        Auto(0, "C1");
-        Auto(1, "M1");
+        CAuto(0, 0);
+        MAuto(1, 0);
 
-        void Auto(int id, string nombre)
+        void CAuto(int id, int index)
         {
             if (niveles[id] <= 0) return;
             if (niveles[id] != nivelesLimite[id])
             {
-                timer[id] += Time.deltaTime;
-                if (!(timer[id] >= intervalos[id])) return;
-                juego.CompraMejora(nombre);
-                timer[id] = 0;
+                Comprar(id);
             }
             else
             {
-                switch (nombre)
-                {
-                    case "C1":
-                        if (juego.CompraClick1MaxContador() != 0)
-                        {
-                            juego.CompraClick1Max();
-                        }
-
-                        break;
-
-                    case "M1":
-                        if (juego.CompraProduccion1MaxContador() != 0)
-                        {
-                            juego.CompraProduccion1Max();
-                        }
-
-                        break;
-                }
+                if (mejoras.CompraClickMaxContador(index) != 0) mejoras.CompraClickMax(index);
             }
+        }
+
+        void MAuto(int id, int index)
+        {
+            if (niveles[id] <= 0) return;
+            if (niveles[id] != nivelesLimite[id])
+            {
+                Comprar(id);
+            }
+            else
+            {
+                if (mejoras.CompraProduccionMaxContador(index) != 0) mejoras.CompraProduccionMejora(index);
+            }
+        }
+
+        void Comprar(int id)
+        {
+            timer[id] += Time.deltaTime;
+            if (!(timer[id] >= intervalos[id])) return;
+            ComprarMejora(id);
+            timer[id] = 0;
         }
     }
 
@@ -119,7 +121,7 @@ public class AutomatorManager : MonoBehaviour
             {
                 data.recursos -= costes[id];
                 nivel++;
-            }  
+            }
         }
     }
 

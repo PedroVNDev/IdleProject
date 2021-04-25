@@ -26,9 +26,9 @@ public class SuperNovaManager : MonoBehaviour
             var data = juego.data;
             if (!juego.ventanaSuperNovaGrupo.gameObject.activeSelf) return;
             {
-                textoAstros.text = $"Astros: {juego.MetodoNotacion(data.astros, "F2")}";
-                textoAstrosObtener.text = $"+{juego.MetodoNotacion(astrosObtener, "F2")} Astros";
-                textoAstrosMejora.text = $"Los Diamantes son {juego.MetodoNotacion(astrosMejora, "F2")} x Mas fuertes";
+                textoAstros.text = $"Astros: {Metodos.MetodoNotacion(data.astros, "F2")}";
+                textoAstrosObtener.text = $"+{Metodos.MetodoNotacion(astrosObtener, "F2")} Astros";
+                textoAstrosMejora.text = $"Los Diamantes son {Metodos.MetodoNotacion(astrosMejora, "F2")} x Mas fuertes";
             }
         }
     }

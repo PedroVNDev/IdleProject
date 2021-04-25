@@ -57,7 +57,7 @@ public class EventManager : MonoBehaviour
         var data = juego.data;
 
         TextoTokensEvento.text =
-            $"Tokens Evento: {juego.MetodoNotacion(data.tokensEvento, "F2")} ({juego.MetodoNotacion(tokensEventoMejora, "F2")}x)";
+            $"Tokens Evento: {Metodos.MetodoNotacion(data.tokensEvento, "F2")} ({Metodos.MetodoNotacion(tokensEventoMejora, "F2")}x)";
 
         recompensa[0] = BigDouble.Log10(pingus[0] + 1);
         recompensa[1] = BigDouble.Log10(pingus[1] / 5 + 1);
@@ -179,7 +179,7 @@ public class EventManager : MonoBehaviour
         var data = juego.data;
 
         data.tokensEvento += recompensa[id];
-        textoEventoRecompensa.text = $"+{juego.MetodoNotacion(recompensa[id] , "F2")} Tokens Evento";
+        textoEventoRecompensa.text = $"+{Metodos.MetodoNotacion(recompensa[id] , "F2")} Tokens Evento";
 
         pingus[id] = 0;
         niveles[id] = 0;
@@ -228,13 +228,13 @@ public class EventManager : MonoBehaviour
         {
             eventosDesbloqueados[id].gameObject.SetActive(true);
 
-            textoRecompensa[id].text = $"+{juego.MetodoNotacion(recompensa[id], "F2")} Tokens Evento";
-            textoPingus[id].text = $"{juego.MetodoNotacion(pingus[id], "F2")} Pingus";
-            textoCoste[id].text = $"Coste: {juego.MetodoNotacion(costes[id], "F2")}";
+            textoRecompensa[id].text = $"+{Metodos.MetodoNotacion(recompensa[id], "F2")} Tokens Evento";
+            textoPingus[id].text = $"{Metodos.MetodoNotacion(pingus[id], "F2")} Pingus";
+            textoCoste[id].text = $"Coste: {Metodos.MetodoNotacion(costes[id], "F2")}";
 
             if (id == 0)
             {
-                textoClick[id].text = $"Crear {juego.MetodoNotacion(niveles[id] + 1, "F0")}\nPingus";
+                textoClick[id].text = $"Crear {Metodos.MetodoNotacion(niveles[id] + 1, "F0")}\nPingus";
             }
         }
     }
