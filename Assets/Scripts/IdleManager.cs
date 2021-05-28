@@ -33,6 +33,7 @@ public class IdleManager : MonoBehaviour
     public Canvas ventanaSuperNovaGrupo;
     public Canvas ventanaOpcionesGrupo;
     public Canvas ventanaAutomaticoGrupo;
+    public Canvas ventanaPlanetasGrupo;
 
 
     //Opciones
@@ -75,8 +76,6 @@ public class IdleManager : MonoBehaviour
         }
 
         mejoras.EmpezarMejoras();
-
-        Debug.Log("Musica fondo: " + data.musicaFondo);
 
         if (data.musicaFondo)
         {
@@ -215,6 +214,11 @@ public class IdleManager : MonoBehaviour
             case "Automatico":
                 ventanaAutomaticoGrupo.gameObject.SetActive(true);
                 break;
+            
+            case "Planetas":
+                ventanaPlanetasGrupo.gameObject.SetActive(true);
+                break;
+            
         }
 
         void DesactivarTodo()
@@ -227,6 +231,7 @@ public class IdleManager : MonoBehaviour
             ventanaSuperNovaGrupo.gameObject.SetActive(false);
             ventanaOpcionesGrupo.gameObject.SetActive(false);
             ventanaAutomaticoGrupo.gameObject.SetActive(false);
+            ventanaPlanetasGrupo.gameObject.SetActive(false);
         }
     }
 

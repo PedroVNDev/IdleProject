@@ -7,41 +7,60 @@ using UnityEngine;
 [Serializable]
 public class PlayerData
 {
+    #region Tierra
+
+    #region Basicos
+
     // Recursos
     public BigDouble recursos;
     public BigDouble recursosTotales;
     public BigDouble recursosClickValor;
 
+    #endregion
+
+    #region Mejoras
+
     //Clicks
     public int clickMejora1Nivel;
-    public BigDouble clickMejora1Coste;
-
-    public BigDouble clickMejora2Coste;
     public int clickMejora2Nivel;
 
-    //Pasivos
-    public BigDouble produccionMejora1Coste;
-    public int produccionMejora1Nivel;
+    public BigDouble clickMejora1Coste;
+    public BigDouble clickMejora2Coste;
 
-    public BigDouble produccionMejora2Coste;
+    //Pasivos
+    public int produccionMejora1Nivel;
     public BigDouble produccionMejora2Poder;
     public int produccionMejora2Nivel;
+
+    public BigDouble produccionMejora1Coste;
+    public BigDouble produccionMejora2Coste;
+
+    #endregion
+
+    #region Prestigio
 
     //Prestigio
     public BigDouble diamantes;
     public BigDouble diamantesConseguidos;
 
+    #endregion
+
+    #region Logros
+
     //Nivel Logros
     public float logroNivel1;
     public float logroNivel2;
 
-    //Eventos
-    public BigDouble tokensEvento;
-    public float[] eventCooldown = new float[7];
-    public int eventoActivoID;
+    #endregion
+
+
+    #region Opciones
 
     //Opciones
     public bool musicaFondo;
+
+    #endregion
+
 
     #region Prestigio
 
@@ -64,6 +83,24 @@ public class PlayerData
 
     #endregion
 
+    #endregion
+
+    #region Marte
+
+    public BigDouble marshalls;
+
+    #endregion
+
+    #region Eventos
+
+    //Eventos
+    public BigDouble tokensEvento;
+    public float[] eventCooldown = new float[7];
+    public int eventoActivoID;
+
+    #endregion
+
+
     public PlayerData()
     {
         FullReset();
@@ -71,9 +108,17 @@ public class PlayerData
 
     public void FullReset()
     {
+        #region Tierra
+
+        #region Basicos
+
         recursos = 0;
         recursosTotales = 0;
         recursosClickValor = 1;
+
+        #endregion
+
+        #region Prestigio
 
         //Prestigio
         diamantes = 0;
@@ -81,6 +126,10 @@ public class PlayerData
         prestigioMNivel1 = 0;
         prestigioMNivel2 = 0;
         prestigioMNivel3 = 0;
+
+        #endregion
+
+        #region Mejoras
 
         //Mejoras
         clickMejora1Nivel = 0;
@@ -96,12 +145,18 @@ public class PlayerData
         produccionMejora2Poder = 5;
         produccionMejora2Coste = 250;
 
-        //Opciones
-        musicaFondo = true;
+        #endregion
+
+
+        #region Logros
 
         //Nivel Logros
         logroNivel1 = 0;
         logroNivel2 = 0;
+
+        #endregion
+
+        #region Eventos
 
         //Eventos
         tokensEvento = 0;
@@ -112,16 +167,46 @@ public class PlayerData
 
         eventoActivoID = 0;
 
-        prestigioMNivel1 = 0;
-        prestigioMNivel2 = 0;
-        prestigioMNivel3 = 0;
+        #endregion
+
+        #region Astros
 
         astros = 0;
+
+        #endregion
 
         #region Automatizadores
 
         autoNivel1 = 0;
         autoNivel2 = 0;
+
+        #endregion
+
+        #endregion
+
+        #region Marte
+
+        marshalls = 1;
+
+        #endregion
+
+        #region Opciones
+
+        //Opciones
+        musicaFondo = true;
+
+        #endregion
+
+        #region Eventos
+
+        //Eventos
+        tokensEvento = 0;
+        for (int i = 0; i < eventCooldown.Length; i++)
+        {
+            eventCooldown[i] = 0;
+        }
+
+        eventoActivoID = 0;
 
         #endregion
     }
