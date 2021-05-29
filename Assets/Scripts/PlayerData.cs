@@ -89,6 +89,17 @@ public class PlayerData
 
     public BigDouble marshalls;
 
+    #region MejorasMarte
+
+    /*
+    public BigDouble marteCosteMejora1;
+    public BigDouble marteCosteMejora2;*/
+
+    public int marteNivelesMejora1;
+    public int marteNivelesMejora2;
+
+    #endregion
+
     #endregion
 
     #region Eventos
@@ -187,6 +198,13 @@ public class PlayerData
         #region Marte
 
         marshalls = 1;
+
+        #region MarteMejoras
+
+        marteNivelesMejora1 = 0;
+        marteNivelesMejora2 = 0;
+
+        #endregion
 
         #endregion
 

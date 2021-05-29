@@ -64,4 +64,17 @@ public class Metodos : MonoBehaviour
 
         return x.ToString(y);
     }
+
+    public static void CompraMax(ref BigDouble c, BigDouble b, float r, ref int k)
+    {
+        var n = Floor(Log(c * (r - 1) / (b * Pow(r, k)) + 1, r));
+
+        var coste = b * (Pow(r, k) * (Pow(r, n) - 1) / (r - 1));
+
+        if (c >= coste)
+        {
+            k += (int) n;
+            c -= coste;
+        }
+    }
 }
