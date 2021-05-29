@@ -17,6 +17,7 @@ public class IdleManager : MonoBehaviour
     public AutomatorManager automatizador;
     public AchievementManager logros;
     public UpgradeManager mejoras;
+    public PlanetManager planetas;
 
     public Text textoRecursos;
     public Text textoRecursosClick;
@@ -146,7 +147,8 @@ public class IdleManager : MonoBehaviour
         aux *= MejoraTotal();
         aux *= eventos.tokensEventoMejora;
         aux *= Pow(1.1, prestigio.niveles[1]);
-
+        aux *= planetas.TMMejora;
+        
         return aux;
     }
 
