@@ -9,6 +9,8 @@ public class MarsManager : MonoBehaviour
 {
     public IdleManager juego;
     public Text textoMarshalls;
+    public Text textoClickMarshalls;
+    public Text textoMarshallsPorSegundo;
 
     public Canvas ventanaMejorasGrupo;
 
@@ -24,6 +26,7 @@ public class MarsManager : MonoBehaviour
     public Image[] rellenoMejoraSuave;
 
     private BigDouble marshallsAux;
+    private BigDouble marshallsPorSegundo => juego.data.marshalls * ((BigDouble)marteNivelesMejora[1] * 0.0001);
 
     private void Start()
     {
@@ -42,32 +45,38 @@ public class MarsManager : MonoBehaviour
         ArrayManager();
         UI();
 
-        if (marteNivelesMejora[1] > 0)
-        {
-            data.marshalls *= 1 + marteNivelesMejora[1] * 0.0001;
-        }
-
+        if (marteNivelesMejora[1] > 0) 
+            data.marshalls *= 1 + marteNivelesMejora[1] * 0.0001 * Time.deltaTime;
+        
         void UI()
         {
-            if (!ventanaMejorasGrupo.gameObject.activeSelf) return;
-            textoMarshalls.text = $"{Metodos.MetodoNotacion(data.marshalls, "F2")}";
-            Metodos.NumeroSuave(ref marshallsAux, data.marshalls);
-
-            for (var i = 0; i < 2; i++)
+            if (ventanaMejorasGrupo.gameObject.activeSelf)
             {
-                textoMejora[i].text =
-                    $"({marteNivelesMejora[i]}) {nombresMejora}\nCoste: {Metodos.MetodoNotacion(marteCosteMejora[i], "F2")} Marshalls";
-                Metodos.BigDoubleRellenar(data.marshalls, marteCosteMejora[i], ref rellenoMejora[i]);
-                Metodos.BigDoubleRellenar(marshallsAux, marteCosteMejora[i], ref rellenoMejoraSuave[i]);
+                Metodos.NumeroSuave(ref marshallsAux, data.marshalls);
+
+                for (var i = 0; i < 2; i++)
+                {
+                    textoMejora[i].text =
+                        $"({marteNivelesMejora[i]}) {nombresMejora[i]}\nCoste: {Metodos.MetodoNotacion(marteCosteMejora[i], "F2")} Marshalls";
+                    Metodos.BigDoubleRellenar(data.marshalls, marteCosteMejora[i], ref rellenoMejora[i]);
+                    Metodos.BigDoubleRellenar(marshallsAux, marteCosteMejora[i], ref rellenoMejoraSuave[i]);
+                }
             }
+            
+            if (!juego.planetas.Marte.gameObject.activeSelf) return;
+            textoMarshalls.text = $"{Metodos.MetodoNotacion(data.marshalls, "F2")} Marshalls";
+            textoClickMarshalls.text = $"Click\n {1.01 + 0.01 * marteNivelesMejora[0]:F2}x Marshalls";
+            textoMarshallsPorSegundo.text = $"{Metodos.MetodoNotacion(marshallsPorSegundo, "F2")} Marshalls/s";
         }
     }
 
     public void Click()
     {
         var data = juego.data;
-        data.marshalls *= 1.01 + 0.01 * marteNivelesMejora[0];
+        data.marshalls *= poderClick;
     }
+
+    public float poderClick => 1.01f + 0.01f * marteNivelesMejora[0];
 
     public void ComprarMejora(int index)
     {
@@ -121,8 +130,9 @@ public class MarsManager : MonoBehaviour
     {
         var data = juego.data;
         marteNivelesMejora[0] = data.marteNivelesMejora1;
-        marteCosteMejora[0] = marteCosteBase[0] * Pow(marteNivelesMejora[0], marteNivelesMejora[0]);
-        marteCosteMejora[1] = marteCosteBase[1] * Pow(marteNivelesMejora[1], marteNivelesMejora[1]);
+        marteNivelesMejora[1] = data.marteNivelesMejora2;
+        marteCosteMejora[0] = marteCosteBase[0] * Pow(marteMejoraMultiplicadorCoste[0], (BigDouble)marteNivelesMejora[0]);
+        marteCosteMejora[1] = marteCosteBase[1] * Pow(marteMejoraMultiplicadorCoste[1], (BigDouble)marteNivelesMejora[1]);
     }
 
     private void NonArrayManager()
