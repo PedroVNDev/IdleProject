@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using BreakInfinity;
+using static BreakInfinity.BigDouble;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -215,6 +216,7 @@ public class EventManager : MonoBehaviour
 
         if (data.eventoActivoID == 0)
         {
+            Debug.Log("El id es: " + id);
             textoEmpezar[id].text = data.eventCooldown[id] > 0
                 ? tiempo.ToString(@"hh\:mm\:ss")
                 : "Empezar Evento";

@@ -108,24 +108,7 @@ public class MarsManager : MonoBehaviour
                 break;
         }
     }
-
-    /*public void CambiaVentanas(string id)
-    {
-        DesactivarTodo();
-        switch (id)
-        {
-
-            case "Mejoras":
-                ventanaMejorasGrupo.gameObject.SetActive(true);
-                break;
-        }
-
-        void DesactivarTodo()
-        {
-            //En progreso
-        }
-    }*/
-
+    
     private void ArrayManager()
     {
         var data = juego.data;

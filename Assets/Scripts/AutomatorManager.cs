@@ -69,9 +69,8 @@ public class AutomatorManager : MonoBehaviour
         {
             if (niveles[id] <= 0) return;
             if (niveles[id] != nivelesLimite[id])
-            {
-                Comprar(id);
-            }
+                Comprar(index);
+
             else
             {
                 if (mejoras.CompraClickMaxContador(index) != 0) mejoras.CompraClickMax(index);
@@ -82,12 +81,11 @@ public class AutomatorManager : MonoBehaviour
         {
             if (niveles[id] <= 0) return;
             if (niveles[id] != nivelesLimite[id])
-            {
-                Comprar(id);
-            }
+                Comprar(index);
+
             else
             {
-                if (mejoras.CompraProduccionMaxContador(index) != 0) mejoras.CompraProduccionMejora(index);
+                if (mejoras.CompraProduccionMaxContador(index) != 0) mejoras.CompraProduccionMax(index);
             }
         }
 
@@ -118,10 +116,8 @@ public class AutomatorManager : MonoBehaviour
         void Comprar(ref int nivel)
         {
             if (!(data.recursos >= costes[id] & nivel < nivelesLimite[id])) return;
-            {
-                data.recursos -= costes[id];
-                nivel++;
-            }
+            data.recursos -= costes[id];
+            nivel++;
         }
     }
 
@@ -136,13 +132,10 @@ public class AutomatorManager : MonoBehaviour
         niveles[1] = data.autoNivel2;
 
         if (data.autoNivel1 > 0)
-        {
             intervalos[0] = 10 - (data.autoNivel1 - 1) * 0.5f;
-        }
+
 
         if (data.autoNivel2 > 0)
-        {
             intervalos[1] = 10 - (data.autoNivel2 - 1) * 0.5f;
-        }
     }
 }

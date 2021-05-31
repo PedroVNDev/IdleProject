@@ -2358,8 +2358,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1844032604}
-  m_RootOrder: 0
+  m_Father: {fileID: 955974463}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3866,8 +3866,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1844032604}
-  m_RootOrder: 4
+  m_Father: {fileID: 955974463}
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -8237,6 +8237,11 @@ RectTransform:
   - {fileID: 1560611566}
   - {fileID: 793549970}
   - {fileID: 1386796431}
+  - {fileID: 248364485}
+  - {fileID: 1021919433}
+  - {fileID: 1810162102}
+  - {fileID: 1944027968}
+  - {fileID: 473137708}
   - {fileID: 1351912023}
   - {fileID: 1109047750}
   m_Father: {fileID: 0}
@@ -8990,8 +8995,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1844032604}
-  m_RootOrder: 1
+  m_Father: {fileID: 955974463}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -10334,7 +10339,7 @@ RectTransform:
   m_Children:
   - {fileID: 1844032604}
   m_Father: {fileID: 955974463}
-  m_RootOrder: 7
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -10424,8 +10429,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2110761604}
-        m_TargetAssemblyTypeName: IdleManager, Assembly-CSharp
+      - m_Target: {fileID: 248364484}
+        m_TargetAssemblyTypeName: PrestigeManager, Assembly-CSharp
         m_MethodName: Prestigio
         m_Mode: 1
         m_Arguments:
@@ -12826,7 +12831,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1332678939
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12960,7 +12965,7 @@ RectTransform:
   m_Children:
   - {fileID: 1872618751}
   m_Father: {fileID: 955974463}
-  m_RootOrder: 6
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -15429,7 +15434,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   textoEmpezar:
-  - {fileID: 0}
+  - {fileID: 815013992}
   - {fileID: 851332637}
   - {fileID: 0}
   - {fileID: 0}
@@ -17510,7 +17515,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1788394737
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17770,8 +17775,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1844032604}
-  m_RootOrder: 2
+  m_Father: {fileID: 955974463}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -17791,7 +17796,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   juego: {fileID: 2110761604}
-  mejoras: {fileID: 0}
+  mejoras: {fileID: 473137709}
   textoCoste:
   - {fileID: 540053449}
   - {fileID: 1555526641}
@@ -18003,12 +18008,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 248364485}
-  - {fileID: 1021919433}
-  - {fileID: 1810162102}
-  - {fileID: 1944027968}
-  - {fileID: 473137708}
+  m_Children: []
   m_Father: {fileID: 1109047750}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -18898,8 +18898,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1844032604}
-  m_RootOrder: 3
+  m_Father: {fileID: 955974463}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
