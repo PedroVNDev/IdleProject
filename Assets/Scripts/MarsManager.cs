@@ -11,6 +11,11 @@ public class MarsManager : MonoBehaviour
     public Text textoMarshalls;
     public Text textoClickMarshalls;
     public Text textoMarshallsPorSegundo;
+    public Text textoMarteImpuestos;
+
+    public BigDouble exponenteImpuestos => Pow(Log10(juego.data.marshalls + 1) + 1, 0.01);
+    public BigDouble exponenteImpuestosClick => Pow(Log10(juego.data.marshalls + 1) + 1, 0.75);
+    public BigDouble marteImpuestos => juego.data.marshalls;
 
     public Canvas ventanaMejorasGrupo;
 
@@ -26,12 +31,12 @@ public class MarsManager : MonoBehaviour
     public Image[] rellenoMejoraSuave;
 
     private BigDouble marshallsAux;
-    private BigDouble marshallsPorSegundo => juego.data.marshalls * ((BigDouble)marteNivelesMejora[1] * 0.0001);
+    private BigDouble marshallsPorSegundo => Pow(juego.data.marshalls * ((BigDouble) marteNivelesMejora[1] * 0.0001), 1 / exponenteImpuestos);
 
     private void Start()
     {
-        marteMejoraMultiplicadorCoste = new float[] {2, 5};
-        marteCosteBase = new BigDouble[] {10, 100};
+        marteMejoraMultiplicadorCoste = new [] {2.5f, 5};
+        marteCosteBase = new BigDouble[] {2, 20};
         marteCosteMejora = new BigDouble[2];
         marteNivelesMejora = new int[2];
         nombresMejora = new[] {"Poder Click + 0.01x", "Gana + 0.01% de tus Marshalls por segundo"};
@@ -45,9 +50,9 @@ public class MarsManager : MonoBehaviour
         ArrayManager();
         UI();
 
-        if (marteNivelesMejora[1] > 0) 
-            data.marshalls *= 1 + marteNivelesMejora[1] * 0.0001 * Time.deltaTime;
-        
+        if (marteNivelesMejora[1] > 0)
+            data.marshalls += marshallsPorSegundo * Time.deltaTime;
+
         void UI()
         {
             if (ventanaMejorasGrupo.gameObject.activeSelf)
@@ -62,18 +67,32 @@ public class MarsManager : MonoBehaviour
                     Metodos.BigDoubleRellenar(marshallsAux, marteCosteMejora[i], ref rellenoMejoraSuave[i]);
                 }
             }
-            
+
             if (!juego.planetas.Marte.gameObject.activeSelf) return;
             textoMarshalls.text = $"{Metodos.MetodoNotacion(data.marshalls, "F2")} Marshalls";
-            textoClickMarshalls.text = $"Click\n {1.01 + 0.01 * marteNivelesMejora[0]:F2}x Marshalls";
+            textoClickMarshalls.text = $"Click\n {Pow(poderClick, 1 / exponenteImpuestosClick):F2}x Marshalls";
             textoMarshallsPorSegundo.text = $"{Metodos.MetodoNotacion(marshallsPorSegundo, "F2")} Marshalls/s";
+            textoMarteImpuestos.text =
+                $"Impuestos:\n{Metodos.MetodoNotacion(impuestosMultiplicadorPorSegundo(), "F2")}x menos Marhshalls por segundo\n{impuestosMultiplicadorClick():F2}x menos Marshalls por click";
+        }
+
+        BigDouble impuestosMultiplicadorPorSegundo()
+        {
+            if (marteNivelesMejora[1] == 0) return 1;
+
+            return juego.data.marshalls * ((BigDouble) marteNivelesMejora[1] * 0.0001) / marshallsPorSegundo;
+        }
+        
+        BigDouble impuestosMultiplicadorClick()
+        {
+            return poderClick / Pow(poderClick, 1 / exponenteImpuestosClick);
         }
     }
 
     public void Click()
     {
         var data = juego.data;
-        data.marshalls *= poderClick;
+        data.marshalls *= Pow(poderClick, 1 / exponenteImpuestosClick);
     }
 
     public float poderClick => 1.01f + 0.01f * marteNivelesMejora[0];
@@ -108,14 +127,16 @@ public class MarsManager : MonoBehaviour
                 break;
         }
     }
-    
+
     private void ArrayManager()
     {
         var data = juego.data;
         marteNivelesMejora[0] = data.marteNivelesMejora1;
         marteNivelesMejora[1] = data.marteNivelesMejora2;
-        marteCosteMejora[0] = marteCosteBase[0] * Pow(marteMejoraMultiplicadorCoste[0], (BigDouble)marteNivelesMejora[0]);
-        marteCosteMejora[1] = marteCosteBase[1] * Pow(marteMejoraMultiplicadorCoste[1], (BigDouble)marteNivelesMejora[1]);
+        marteCosteMejora[0] =
+            marteCosteBase[0] * Pow(marteMejoraMultiplicadorCoste[0], (BigDouble) marteNivelesMejora[0]);
+        marteCosteMejora[1] =
+            marteCosteBase[1] * Pow(marteMejoraMultiplicadorCoste[1], (BigDouble) marteNivelesMejora[1]);
     }
 
     private void NonArrayManager()

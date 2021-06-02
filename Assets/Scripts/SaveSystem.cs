@@ -145,8 +145,6 @@ public class SaveSystem : MonoBehaviour
         var base64EncodedBytes = Convert.FromBase64String(aes.DecryptString(stringConvert, encryptKey));
         return System.Text.Encoding.UTF8.GetString(base64EncodedBytes);
     }
-
-    //Falla cuando la clave no cumple los requisitos
     public void ImportPlayer(IdleManager playerData)
     {
         try

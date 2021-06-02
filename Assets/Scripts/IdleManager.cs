@@ -186,6 +186,10 @@ public class IdleManager : MonoBehaviour
         DesactivarTodo();
         switch (id)
         {
+            case "VentanaTierra":
+                ventanaTierraGrupo.gameObject.SetActive(true);
+                break;
+
             case "Principal":
                 ventanaPrincipalGrupo.gameObject.SetActive(true);
                 break;
@@ -279,6 +283,6 @@ public class IdleManager : MonoBehaviour
     public void FullReset()
     {
         data.FullReset();
-        CambiaVentanas("Principal");
+        CambiaVentanas("VentanaTierra");
     }
 }
