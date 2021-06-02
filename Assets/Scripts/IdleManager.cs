@@ -35,6 +35,8 @@ public class IdleManager : MonoBehaviour
     public Canvas ventanaOpcionesGrupo;
     public Canvas ventanaAutomaticoGrupo;
     public Canvas ventanaPlanetasGrupo;
+    public Canvas ventanaTierraGrupo;
+    public Canvas ventanaMenuGrupo;
 
 
     //Opciones
@@ -148,7 +150,7 @@ public class IdleManager : MonoBehaviour
         aux *= eventos.tokensEventoMejora;
         aux *= Pow(1.1, prestigio.niveles[1]);
         aux *= planetas.TMMejora;
-        
+
         return aux;
     }
 
@@ -169,11 +171,25 @@ public class IdleManager : MonoBehaviour
         data.recursosTotales += ValorClickTotal();
     }
 
+    public void PopUps(string id)
+    {
+        switch (id)
+        {
+            case "Menu":
+                ventanaMenuGrupo.gameObject.SetActive(!ventanaMenuGrupo.gameObject.activeSelf);
+                break;
+        }
+    }
+
     public void CambiaVentanas(string id)
     {
         DesactivarTodo();
         switch (id)
         {
+            case "Principal":
+                ventanaPrincipalGrupo.gameObject.SetActive(true);
+                break;
+
             case "Cabecera":
                 ventanacabeceraGrupo.gameObject.SetActive(true);
                 break;
@@ -182,23 +198,18 @@ public class IdleManager : MonoBehaviour
                 ventanaMejorasGrupo.gameObject.SetActive(true);
                 break;
 
-            case "Principal":
-                ventanaPrincipalGrupo.gameObject.SetActive(true);
-                break;
-
             case "Logros":
                 ventanaLogrosGrupo.gameObject.SetActive(true);
                 break;
 
             case "Opciones":
-                ventanacabeceraGrupo.gameObject.SetActive(false);
+                ventanaTierraGrupo.gameObject.SetActive(false);
                 ventanaOpcionesGrupo.gameObject.SetActive(true);
                 break;
 
             case "VolverOpciones":
                 ventanaOpcionesGrupo.gameObject.SetActive(false);
-                ventanacabeceraGrupo.gameObject.SetActive(true);
-                ventanaPrincipalGrupo.gameObject.SetActive(true);
+                ventanaTierraGrupo.gameObject.SetActive(true);
                 break;
 
             case "Eventos":
@@ -216,11 +227,10 @@ public class IdleManager : MonoBehaviour
             case "Automatico":
                 ventanaAutomaticoGrupo.gameObject.SetActive(true);
                 break;
-            
+
             case "Planetas":
                 ventanaPlanetasGrupo.gameObject.SetActive(true);
                 break;
-            
         }
 
         void DesactivarTodo()
@@ -272,4 +282,3 @@ public class IdleManager : MonoBehaviour
         CambiaVentanas("Principal");
     }
 }
-
