@@ -10,7 +10,7 @@ public class AchievementManager : MonoBehaviour
 
     public IdleManager juego;
     private static string[] LogrosString => new string[] {"Recursos actuales", "Recursos totales"};
-    private BigDouble[] Logros => new BigDouble[] {juego.data.recursos, juego.data.recursosTotales};
+    private BigDouble[] Logros => new BigDouble[] {juego.data.terrans, juego.data.terransTotales};
 
     public GameObject logroVentana;
     public List<Logros> ListaLogros = new List<Logros>();

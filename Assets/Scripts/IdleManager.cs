@@ -19,11 +19,11 @@ public class IdleManager : MonoBehaviour
     public UpgradeManager mejoras;
     public PlanetManager planetas;
 
-    public Text textoRecursos;
-    public Text textoRecursosClick;
-    public Text textoRecursosPorSegundo;
+    public Text textoTerrans;
+    public Text textoTerransClick;
+    public Text textoTerransPorSegundo;
 
-    public BigDouble recursosTemporal;
+    public BigDouble terransTemporal;
 
     //Cambia Ventanas
     public Canvas ventanacabeceraGrupo;
@@ -93,20 +93,20 @@ public class IdleManager : MonoBehaviour
         }
 
         //Barras de progreso
-        Metodos.NumeroSuave(ref recursosTemporal, data.recursos);
+        Metodos.NumeroSuave(ref terransTemporal, data.terrans);
 
 
         if (ventanaPrincipalGrupo.gameObject.activeSelf)
         {
-            textoRecursosClick.text = "Click \n" +
+            textoTerransClick.text = "Click \n" +
                                       Metodos.MetodoNotacion((ValorClickTotal()), "F0") +
-                                      " Recursos";
+                                      " Terrans";
         }
 
-        textoRecursos.text = "Recursos: " + Metodos.MetodoNotacion(data.recursos, "F0");
+        textoTerrans.text = "Terrans: " + Metodos.MetodoNotacion(data.terrans, "F0");
 
 
-        textoRecursosPorSegundo.text = " Recursos/s " + Metodos.MetodoNotacion(ValorTotalRecursosPorSegundo(), "F0");
+        textoTerransPorSegundo.text = " Terrans/s " + Metodos.MetodoNotacion(ValorTotalTerransPorSegundo(), "F0");
 
 
         string ComprarTodoFormato(BigDouble x)
@@ -114,9 +114,9 @@ public class IdleManager : MonoBehaviour
             return $"Comprar Todo ({x})";
         }
 
-        //Update de recursos
-        data.recursos += ValorTotalRecursosPorSegundo() * Time.deltaTime;
-        data.recursosTotales += ValorTotalRecursosPorSegundo() * Time.deltaTime;
+        //Update de terrans
+        data.terrans += ValorTotalTerransPorSegundo() * Time.deltaTime;
+        data.terransTotales += ValorTotalTerransPorSegundo() * Time.deltaTime;
 
 
         //Guardado Automatico
@@ -141,7 +141,7 @@ public class IdleManager : MonoBehaviour
     }
 
 
-    private BigDouble ValorTotalRecursosPorSegundo()
+    private BigDouble ValorTotalTerransPorSegundo()
     {
         BigDouble aux = 0;
 
@@ -157,7 +157,7 @@ public class IdleManager : MonoBehaviour
 
     private BigDouble ValorClickTotal()
     {
-        var aux = data.recursosClickValor;
+        var aux = data.terransClickValor;
 
         aux *= eventos.tokensEventoMejora;
         aux *= MejoraTotal();
@@ -168,8 +168,8 @@ public class IdleManager : MonoBehaviour
 
     public void Click()
     {
-        data.recursos += ValorClickTotal();
-        data.recursosTotales += ValorClickTotal();
+        data.terrans += ValorClickTotal();
+        data.terransTotales += ValorClickTotal();
     }
 
     public void PopUps(string id)

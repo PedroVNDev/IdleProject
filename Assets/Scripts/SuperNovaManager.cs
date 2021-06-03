@@ -39,8 +39,8 @@ public class SuperNovaManager : MonoBehaviour
 
         data.astros += astrosObtener;
 
-        data.recursos = 0;
-        data.recursosClickValor = 1;
+        data.terrans = 0;
+        data.terransClickValor = 1;
 
         data.clickMejora1Nivel = 0;
         data.clickMejora1Coste = 10;

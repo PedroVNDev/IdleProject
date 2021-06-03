@@ -19,7 +19,7 @@ public class PlanetManager : MonoBehaviour
     {
         var data = juego.data;
 
-        textoTerrans.text = $"{Metodos.MetodoNotacion(data.recursos, "F2")} Terrans";
+        textoTerrans.text = $"{Metodos.MetodoNotacion(data.terrans, "F2")} Terrans";
         textoMarshalls.text = $"{Metodos.MetodoNotacion(data.marshalls, "F2")} Marshalls";
         textoTMMejora.text = $"{Metodos.MetodoNotacion(TMMejora, "F2")}x Mejora";
     }

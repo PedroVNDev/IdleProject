@@ -77,21 +77,21 @@ public class UpgradeManager : MonoBehaviour
         for (var i = 0; i < 2; i++)
         {
             textoMejoraClick[i].text =
-                $"Mejora Click {i + 1}\nCoste: {ObtenerMejoraCoste(i, clickMejoraCoste)} Recursos\nPoder: + {clickMejoraPoder[i]} Click\n Nivel: {ObtenerMejoraNivel(i, clickMejoraNiveles)}";
+                $"Mejora Click {i + 1}\nCoste: {ObtenerMejoraCoste(i, clickMejoraCoste)} Terrans\nPoder: + {clickMejoraPoder[i]} Click\n Nivel: {ObtenerMejoraNivel(i, clickMejoraNiveles)}";
 
             textoMejoraClickMax[i].text = $"Compra Max ({CompraClickMaxContador(i)})";
 
             textoMejoraProduccion[i].text =
-                $"Mejora Produccion {i + 1}\nCoste: {ObtenerMejoraCoste(i, produccionMejoraCoste)} Recursos\nPoder: + {Metodos.MetodoNotacion(juego.MejoraTotal() * Pow(1.1, juego.prestigio.niveles[1]), "F2")}\n Nivel: {ObtenerMejoraNivel(i, produccionMejoraNiveles)}";
+                $"Mejora Produccion {i + 1}\nCoste: {ObtenerMejoraCoste(i, produccionMejoraCoste)} Terrans\nPoder: + {Metodos.MetodoNotacion(juego.MejoraTotal() * Pow(1.1, juego.prestigio.niveles[1]), "F2")}\n Nivel: {ObtenerMejoraNivel(i, produccionMejoraNiveles)}";
 
             textoMejoraProduccionMax[i].text = $"Compra Max ({CompraProduccionMaxContador(i)})";
 
-            clickMejora[i].gameObject.SetActive(data.recursosTotales >= clickMejoraDesbloqueoCoste[i]);
-            produccionMejora[i].gameObject.SetActive(data.recursosTotales >= produccionMejoraDesbloqueoCoste[i]);
+            clickMejora[i].gameObject.SetActive(data.terransTotales >= clickMejoraDesbloqueoCoste[i]);
+            produccionMejora[i].gameObject.SetActive(data.terransTotales >= produccionMejoraDesbloqueoCoste[i]);
         }
 
-        Metodos.BigDoubleRellenar(data.recursos, clickMejoraCoste[0], ref mejoraBarraClick1);
-        Metodos.BigDoubleRellenar(juego.recursosTemporal, clickMejoraCoste[0], ref mejoraBarraClick1Suave);
+        Metodos.BigDoubleRellenar(data.terrans, clickMejoraCoste[0], ref mejoraBarraClick1);
+        Metodos.BigDoubleRellenar(juego.terransTemporal, clickMejoraCoste[0], ref mejoraBarraClick1Suave);
 
         string ObtenerMejoraCoste(int index, BigDouble[] mejora)
         {
@@ -108,11 +108,11 @@ public class UpgradeManager : MonoBehaviour
     {
         var data = juego.data;
 
-        if (data.recursos >= clickMejoraCoste[index])
+        if (data.terrans >= clickMejoraCoste[index])
         {
             clickMejoraNiveles[index]++;
-            data.recursos -= clickMejoraCoste[index];
-            data.recursosClickValor += clickMejoraPoder[index];
+            data.terrans -= clickMejoraCoste[index];
+            data.terransClickValor += clickMejoraPoder[index];
         }
 
         NoArrayManager();
@@ -122,10 +122,10 @@ public class UpgradeManager : MonoBehaviour
     {
         var data = juego.data;
 
-        if (data.recursos >= produccionMejoraCoste[index])
+        if (data.terrans >= produccionMejoraCoste[index])
         {
             produccionMejoraNiveles[index]++;
-            data.recursos -= produccionMejoraCoste[index];
+            data.terrans -= produccionMejoraCoste[index];
         }
 
         NoArrayManager();
@@ -137,18 +137,18 @@ public class UpgradeManager : MonoBehaviour
         var data = juego.data;
 
         var b = clickMejoraCosteBase[index];
-        var c = data.recursos;
+        var c = data.terrans;
         var r = clickMejoraCosteMultiplicadores[index];
         var k = clickMejoraNiveles[index];
         var n = Floor(Log(c * (r - 1) / (b * Pow(r, k)) + 1, r));
 
         var coste = b * (Pow(r, k) * (Pow(r, n) - 1) / (r - 1));
 
-        if (data.recursos >= coste)
+        if (data.terrans >= coste)
         {
             clickMejoraNiveles[index] += (int) n;
-            data.recursos -= coste;
-            data.recursosClickValor += n * clickMejoraPoder[index];
+            data.terrans -= coste;
+            data.terransClickValor += n * clickMejoraPoder[index];
         }
 
         NoArrayManager();
@@ -159,7 +159,7 @@ public class UpgradeManager : MonoBehaviour
         var data = juego.data;
 
         var b = clickMejoraCosteBase[index];
-        var c = data.recursos;
+        var c = data.terrans;
         var r = clickMejoraCosteMultiplicadores[index];
         var k = clickMejoraNiveles[index];
         var n = Floor(Log(c * (r - 1) / (b * Pow(r, k)) + 1, r));
@@ -172,19 +172,19 @@ public class UpgradeManager : MonoBehaviour
         var data = juego.data;
 
         var b = produccionMejoraCosteBase[index];
-        var c = data.recursos;
+        var c = data.terrans;
         var r = produccionMejoraCosteMultiplicadores[index];
         var k = produccionMejoraNiveles[index];
         var n = Floor(Log(c * (r - 1) / (b * Pow(r, k)) + 1, r));
 
         var coste = b * (Pow(r, k) * (Pow(r, n) - 1) / (r - 1));
-        Metodos.BigDoubleRellenar(data.recursos, clickMejoraCoste[0], ref mejoraBarraClick1);
+        Metodos.BigDoubleRellenar(data.terrans, clickMejoraCoste[0], ref mejoraBarraClick1);
 
 
-        if (data.recursos >= coste)
+        if (data.terrans >= coste)
         {
             produccionMejoraNiveles[index] += (int) n;
-            data.recursos -= coste;
+            data.terrans -= coste;
         }
 
         NoArrayManager();
@@ -195,7 +195,7 @@ public class UpgradeManager : MonoBehaviour
         var data = juego.data;
 
         var b = produccionMejoraCosteBase[index];
-        var c = data.recursos;
+        var c = data.terrans;
         var r = produccionMejoraCosteMultiplicadores[index];
         var k = produccionMejoraNiveles[index];
         var n = Floor(Log(c * (r - 1) / (b * Pow(r, k)) + 1, r));

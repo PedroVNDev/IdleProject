@@ -48,7 +48,7 @@ public class PrestigeManager : MonoBehaviour
         ArrayManager();
         UI();
         
-        data.bitcoinsConseguidos = 150 * Sqrt(data.recursos / 1e7);
+        data.bitcoinsConseguidos = 150 * Sqrt(data.terrans / 1e7);
 
         textoBitcoins.text = "Bitcoins: " + Metodos.MetodoNotacion(Floor(data.bitcoins), "F2");
         textoMejoraBitcoins.text = Metodos.MetodoNotacion(ValorTotalBitcoinsMejora(), "F2") + "x Mejora";
@@ -120,10 +120,10 @@ public class PrestigeManager : MonoBehaviour
     {
         var data = juego.data;
 
-        if (data.recursos > 1000)
+        if (data.terrans > 1000)
         {
-            data.recursos = 0;
-            data.recursosClickValor = 1;
+            data.terrans = 0;
+            data.terransClickValor = 1;
             data.clickMejora2Coste = 100;
             data.produccionMejora1Coste = 25;
             data.produccionMejora2Coste = 250;

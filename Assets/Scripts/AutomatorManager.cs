@@ -53,8 +53,8 @@ public class AutomatorManager : MonoBehaviour
                 {
                     textoCoste[i].text =
                         $"{costeDescripcion[i]}\nCoste: {Metodos.MetodoNotacion(costes[i], "F0")} Recursos\nIntervalo: {(niveles[i] >= nivelesLimite[i] ? "Instantaneo" : intervalos[i].ToString("F1"))}";
-                    Metodos.BigDoubleRellenar(juego.data.recursos, costes[i], ref barrasCoste[i]);
-                    Metodos.BigDoubleRellenar(juego.recursosTemporal, costes[i], ref barrasCosteSuave[i]);
+                    Metodos.BigDoubleRellenar(juego.data.terrans, costes[i], ref barrasCoste[i]);
+                    Metodos.BigDoubleRellenar(juego.terransTemporal, costes[i], ref barrasCosteSuave[i]);
                 }
             }
         }
@@ -115,8 +115,8 @@ public class AutomatorManager : MonoBehaviour
 
         void Comprar(ref int nivel)
         {
-            if (!(data.recursos >= costes[id] & nivel < nivelesLimite[id])) return;
-            data.recursos -= costes[id];
+            if (!(data.terrans >= costes[id] & nivel < nivelesLimite[id])) return;
+            data.terrans -= costes[id];
             nivel++;
         }
     }

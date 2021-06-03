@@ -11,10 +11,10 @@ public class PlayerData
 
     #region Basicos
 
-    // Recursos
-    public BigDouble recursos;
-    public BigDouble recursosTotales;
-    public BigDouble recursosClickValor;
+    // Terrans
+    public BigDouble terrans;
+    public BigDouble terransTotales;
+    public BigDouble terransClickValor;
 
     #endregion
 
@@ -123,9 +123,9 @@ public class PlayerData
 
         #region Basicos
 
-        recursos = 0;
-        recursosTotales = 0;
-        recursosClickValor = 1;
+        terrans = 0;
+        terransTotales = 0;
+        terransClickValor = 1;
 
         #endregion
 
