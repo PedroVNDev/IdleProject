@@ -24,11 +24,11 @@ public class PrestigeManager : MonoBehaviour
     private BigDouble coste2 => 10 * BigDouble.Pow(1.5, juego.data.prestigioMNivel2);
     private BigDouble coste3 => 100 * BigDouble.Pow(2.5, juego.data.prestigioMNivel3);
 
-    public BigDouble diamantesAux;
+    public BigDouble bitcoinsAux;
 
-    public Text textoDiamantes;
-    public Text textoMejoraDiamantes;
-    public Text textodiamantesConseguidos;
+    public Text textoBitcoins;
+    public Text textoMejoraBitcoins;
+    public Text textobitcoinsConseguidos;
 
     public void EmpezarPrestigio()
     {
@@ -37,7 +37,7 @@ public class PrestigeManager : MonoBehaviour
         costeDescripcion = new[]
         {
             "Los Clicks son 50% mas eficientes", "La produccion por segundo mejora un 10%",
-            "Los diamantes son 1.01x mas eficientes"
+            "Los Bitcoins son 1.01x mas eficientes"
         };
     }
 
@@ -48,15 +48,15 @@ public class PrestigeManager : MonoBehaviour
         ArrayManager();
         UI();
         
-        data.diamantesConseguidos = 150 * Sqrt(data.recursos / 1e7);
+        data.bitcoinsConseguidos = 150 * Sqrt(data.recursos / 1e7);
 
-        textoDiamantes.text = "Diamantes: " + Metodos.MetodoNotacion(Floor(data.diamantes), "F2");
-        textoMejoraDiamantes.text = Metodos.MetodoNotacion(ValorTotalDiamantesMejora(), "F2") + "x Mejora";
+        textoBitcoins.text = "Bitcoins: " + Metodos.MetodoNotacion(Floor(data.bitcoins), "F2");
+        textoMejoraBitcoins.text = Metodos.MetodoNotacion(ValorTotalBitcoinsMejora(), "F2") + "x Mejora";
 
         if (juego.ventanaPrincipalGrupo.gameObject.activeSelf)
         {
-            textodiamantesConseguidos.text =
-                "Prestigio:\n+" + Metodos.MetodoNotacion(Floor(data.diamantesConseguidos), "F0") + " Diamantes";
+            textobitcoinsConseguidos.text =
+                "Prestigio:\n+" + Metodos.MetodoNotacion(Floor(data.bitcoinsConseguidos), "F0") + " Bitcoins";
         }
 
 
@@ -67,10 +67,10 @@ public class PrestigeManager : MonoBehaviour
                 for (var i = 0; i < textoCoste.Length; i++)
                 {
                     textoCoste[i].text =
-                        $"Nivel {niveles[i]}\n{costeDescripcion[i]}\nCoste: {Metodos.MetodoNotacion(costes[i], "F0")} Diamantes";
-                    Metodos.NumeroSuave(ref diamantesAux, juego.data.diamantes);
-                    Metodos.BigDoubleRellenar(juego.data.diamantes, costes[i], ref barrasCoste[i]);
-                    Metodos.BigDoubleRellenar(diamantesAux, costes[i], ref barrasCosteSuave[i]);
+                        $"Nivel {niveles[i]}\n{costeDescripcion[i]}\nCoste: {Metodos.MetodoNotacion(costes[i], "F0")} Bitcoins";
+                    Metodos.NumeroSuave(ref bitcoinsAux, juego.data.bitcoins);
+                    Metodos.BigDoubleRellenar(juego.data.bitcoins, costes[i], ref barrasCoste[i]);
+                    Metodos.BigDoubleRellenar(bitcoinsAux, costes[i], ref barrasCosteSuave[i]);
                 }
             }
         }
@@ -97,8 +97,8 @@ public class PrestigeManager : MonoBehaviour
 
         void Comprar(ref int nivel)
         {
-            if (data.diamantes < costes[id]) return;
-            data.diamantes -= costes[id];
+            if (data.bitcoins < costes[id]) return;
+            data.bitcoins -= costes[id];
             nivel++;
         }
     }
@@ -134,13 +134,13 @@ public class PrestigeManager : MonoBehaviour
             data.produccionMejora1Nivel = 0;
             data.produccionMejora2Nivel = 0;
 
-            data.diamantes += data.diamantesConseguidos;
+            data.bitcoins += data.bitcoinsConseguidos;
         }
     }
 
-    public BigDouble ValorTotalDiamantesMejora()
+    public BigDouble ValorTotalBitcoinsMejora()
     {
-        var aux = juego.data.diamantes;
+        var aux = juego.data.bitcoins;
         aux *= 0.05 + niveles[2] * 0.01;
         aux *= superNova.astrosMejora;
 

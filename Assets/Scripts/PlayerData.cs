@@ -40,8 +40,8 @@ public class PlayerData
     #region Prestigio
 
     //Prestigio
-    public BigDouble diamantes;
-    public BigDouble diamantesConseguidos;
+    public BigDouble bitcoins;
+    public BigDouble bitcoinsConseguidos;
 
     #endregion
 
@@ -132,7 +132,7 @@ public class PlayerData
         #region Prestigio
 
         //Prestigio
-        diamantes = 0;
+        bitcoins = 0;
 
         prestigioMNivel1 = 0;
         prestigioMNivel2 = 0;

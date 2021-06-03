@@ -36,7 +36,8 @@ public class IdleManager : MonoBehaviour
     public Canvas ventanaAutomaticoGrupo;
     public Canvas ventanaPlanetasGrupo;
     public Canvas ventanaTierraGrupo;
-    public Canvas ventanaMenuGrupo;
+    public Canvas ventanaMenuJuegoGrupo;
+    public Canvas ventanaMenuUsuarioGrupo;
 
 
     //Opciones
@@ -134,7 +135,7 @@ public class IdleManager : MonoBehaviour
     //Prestigio 
     public BigDouble MejoraTotal()
     {
-        BigDouble aux = prestigio.ValorTotalDiamantesMejora();
+        BigDouble aux = prestigio.ValorTotalBitcoinsMejora();
         aux *= eventos.tokensEventoMejora;
         return aux;
     }
@@ -175,8 +176,12 @@ public class IdleManager : MonoBehaviour
     {
         switch (id)
         {
-            case "Menu":
-                ventanaMenuGrupo.gameObject.SetActive(!ventanaMenuGrupo.gameObject.activeSelf);
+            case "MenuJuego":
+                ventanaMenuJuegoGrupo.gameObject.SetActive(!ventanaMenuJuegoGrupo.gameObject.activeSelf);
+                break;
+            
+            case "MenuUsuario":
+                ventanaMenuUsuarioGrupo.gameObject.SetActive(!ventanaMenuUsuarioGrupo.gameObject.activeSelf);
                 break;
         }
     }
@@ -214,6 +219,7 @@ public class IdleManager : MonoBehaviour
             case "VolverOpciones":
                 ventanaOpcionesGrupo.gameObject.SetActive(false);
                 ventanaTierraGrupo.gameObject.SetActive(true);
+                ventanaPrincipalGrupo.gameObject.SetActive(true);
                 break;
 
             case "Eventos":

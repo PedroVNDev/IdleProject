@@ -14,7 +14,7 @@ public class SuperNovaManager : MonoBehaviour
     public Text textoAstrosMejora;
     public Text textoAstrosObtener;
 
-    private BigDouble astrosObtener => 150 * Sqrt(juego.data.diamantes / 1e4);
+    private BigDouble astrosObtener => 150 * Sqrt(juego.data.bitcoins / 1e4);
     public BigDouble astrosMejora => juego.data.astros * 0.001 + 1;
 
     public void Run()
@@ -55,7 +55,7 @@ public class SuperNovaManager : MonoBehaviour
         data.produccionMejora2Coste = 250;
         data.produccionMejora2Poder = 5;
         
-        data.diamantes = 0;
+        data.bitcoins = 0;
 
         data.prestigioMNivel1 = 0;
         data.prestigioMNivel2 = 0;
