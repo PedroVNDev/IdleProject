@@ -50,6 +50,8 @@ public class PlayerData
     //Nivel Logros
     public float logroNivel1;
     public float logroNivel2;
+    public float logroNivel3;
+    public float logroNivel4;
 
     #endregion
 
@@ -164,6 +166,8 @@ public class PlayerData
         //Nivel Logros
         logroNivel1 = 0;
         logroNivel2 = 0;
+        logroNivel3 = 0;
+        logroNivel4 = 0;
 
         #endregion
 
