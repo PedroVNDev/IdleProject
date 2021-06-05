@@ -18,6 +18,7 @@ public class IdleManager : MonoBehaviour
     public AchievementManager logros;
     public UpgradeManager mejoras;
     public PlanetManager planetas;
+    public OfflineManager offline;
 
     public Text textoTerrans;
     public Text textoTerransClick;
@@ -58,12 +59,13 @@ public class IdleManager : MonoBehaviour
         ventanaMejorasGrupo.gameObject.SetActive(false);
         prestigio.prestigio.gameObject.SetActive(false);
 
+        SaveSystem.LoadPlayer(ref data);
         eventos.StartEventos();
         prestigio.EmpezarPrestigio();
         automatizador.EmpezarAutomatizadores();
-
-
-        SaveSystem.LoadPlayer(ref data);
+        ValorTotalTerransPorSegundo();
+        offline.LoadProduccionOffline();
+        
     }
 
     // Update is called once per frame
@@ -141,7 +143,7 @@ public class IdleManager : MonoBehaviour
     }
 
 
-    private BigDouble ValorTotalTerransPorSegundo()
+    public BigDouble ValorTotalTerransPorSegundo()
     {
         BigDouble aux = 0;
 

@@ -77,7 +77,9 @@ public class SaveSystem : MonoBehaviour
             ConvertStringToBase64(writer, json);
             writer.Close();
         }
-
+        
+        PlayerPrefs.SetString("OfflineTime", DateTime.Now.ToBinary().ToString());
+        data.progresoOfflineActivado = true;
         backUpCount = (backUpCount + 1) % 5;
     }
 

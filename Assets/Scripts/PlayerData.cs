@@ -7,6 +7,8 @@ using UnityEngine;
 [Serializable]
 public class PlayerData
 {
+    public bool progresoOfflineActivado;
+
     #region Tierra
 
     #region Basicos
@@ -121,6 +123,8 @@ public class PlayerData
 
     public void FullReset()
     {
+        progresoOfflineActivado = false;
+
         #region Tierra
 
         #region Basicos
