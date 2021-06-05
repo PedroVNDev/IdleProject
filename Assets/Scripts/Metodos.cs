@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,8 @@ using static BreakInfinity.BigDouble;
 
 public class Metodos : MonoBehaviour
 {
+    public static int OpcionesNotacion;
+
     public static void CambiadorDeCanvas(bool x, CanvasGroup y)
     {
         y.alpha = x ? 1 : 0;
@@ -55,21 +58,33 @@ public class Metodos : MonoBehaviour
 
     public static string MetodoNotacion(BigDouble x, string y)
     {
-        if (x > 1000)
+        if (x <= 1000) return x.ToString(y);
+        switch (OpcionesNotacion)
         {
-            var exponente = Floor(Log10(Abs(x)));
-            var mantissa = x / Pow(10, exponente);
-            return mantissa.ToString("F2") + "e" + exponente;
-        }
+            case 0:
+            {
+                var exponente = Floor(Log10(Abs(x)));
+                var mantissa = x / Pow(10, exponente);
+                return mantissa.ToString("F2") + "e" + exponente;
+            }
 
-        return x.ToString(y);
+
+            case 1:
+            {
+                var exponente = 3 * Floor(Floor(Log10(x)) / 3);
+                var mantissa = x / Pow(10, exponente);
+                return mantissa.ToString("F2") + "e" + exponente;
+            }
+        }
+        
+        return "";
     }
 
     public static void CompraMax(ref BigDouble c, BigDouble b, BigDouble r, ref int k)
     {
-        var n = Floor(Log(c * (r - 1) / (b * Pow(r, (BigDouble)k)) + 1, r));
+        var n = Floor(Log(c * (r - 1) / (b * Pow(r, (BigDouble) k)) + 1, r));
 
-        var coste = b * (Pow(r, (BigDouble)k) * (Pow(r, n) - 1) / (r - 1));
+        var coste = b * (Pow(r, (BigDouble) k) * (Pow(r, n) - 1) / (r - 1));
 
         if (c >= coste)
         {

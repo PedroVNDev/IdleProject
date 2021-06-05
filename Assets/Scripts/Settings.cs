@@ -24,9 +24,6 @@ public class Settings : MonoBehaviour
             case 1:
                 textoTipoNotacion.text = "Notacion:\n Ingeniera";
                 break;
-            case 2:
-                textoTipoNotacion.text = "Notacion:\n Letras";
-                break;
         }
     }
 
@@ -40,14 +37,12 @@ public class Settings : MonoBehaviour
                 notacion = 1;
                 break;
             case 1:
-                notacion = 2;
-                break;
-            case 2:
                 notacion = 0;
                 break;
         }
 
         juego.data.tipoNotacion = notacion;
+        Metodos.OpcionesNotacion = juego.data.tipoNotacion;
         ActualizarTextoNotacion();
         
     }

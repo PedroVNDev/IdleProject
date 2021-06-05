@@ -19,7 +19,7 @@ public class IdleManager : MonoBehaviour
     public UpgradeManager mejoras;
     public PlanetManager planetas;
     public OfflineManager offline;
-    public Settings settings;
+    public Settings settingsManager;
 
     public Text textoTerrans;
     public Text textoTerransClick;
@@ -66,6 +66,8 @@ public class IdleManager : MonoBehaviour
         automatizador.EmpezarAutomatizadores();
         ValorTotalTerransPorSegundo();
         offline.LoadProduccionOffline();
+        settingsManager.StartSettings();
+        Metodos.OpcionesNotacion = data.tipoNotacion;
         
     }
 
