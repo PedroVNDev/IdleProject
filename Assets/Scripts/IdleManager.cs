@@ -19,6 +19,7 @@ public class IdleManager : MonoBehaviour
     public UpgradeManager mejoras;
     public PlanetManager planetas;
     public OfflineManager offline;
+    public Settings settings;
 
     public Text textoTerrans;
     public Text textoTerransClick;

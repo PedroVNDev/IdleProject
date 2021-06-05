@@ -56,16 +56,7 @@ public class PlayerData
     public float logroNivel4;
 
     #endregion
-
-
-    #region Opciones
-
-    //Opciones
-    public bool musicaFondo;
-
-    #endregion
-
-
+    
     #region Prestigio
 
     public int prestigioMNivel1;
@@ -112,6 +103,13 @@ public class PlayerData
     public BigDouble tokensEvento;
     public float[] eventCooldown = new float[7];
     public int eventoActivoID;
+
+    #endregion
+
+    #region Opciones
+
+    public bool musicaFondo;
+    public short tipoNotacion;
 
     #endregion
 
@@ -217,9 +215,9 @@ public class PlayerData
         #endregion
 
         #region Opciones
-
-        //Opciones
+        
         musicaFondo = true;
+        tipoNotacion = 0;
 
         #endregion
 
