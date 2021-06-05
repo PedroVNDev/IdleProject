@@ -27,12 +27,22 @@ public class OfflineManager : MonoBehaviour
 
             offlinePopUp.gameObject.SetActive(true);
             TimeSpan timer = TimeSpan.FromSeconds(tiempoBruto);
-            textoTiempoFuera.text = $"Estuviste fuera por:\n<color=#00FF00>{timer:dd\\:hh\\:mm\\:ss}</color>";
+            
+            if (juego.data.idiomaSeleccionado == 0) 
+                textoTiempoFuera.text = $"Estuviste fuera por:\n<color=#00FF00>{timer:dd\\:hh\\:mm\\:ss}</color>";
+            else if (juego.data.idiomaSeleccionado == 1)
+                textoTiempoFuera.text = $"You were away for:\n<color=#00FF00>{timer:dd\\:hh\\:mm\\:ss}</color>";
+            
+
 
             BigDouble gananciasTerrans = juego.ValorTotalTerransPorSegundo() * tiempoOffline;
             juego.data.terrans += gananciasTerrans;
             juego.data.terransTotales += gananciasTerrans;
-            textoGananciasTierra.text = $"<color=#00aeff>Ganaste\n + {Metodos.MetodoNotacion(gananciasTerrans, "F2")} Terrans</color>";
+            
+            if (juego.data.idiomaSeleccionado == 0) 
+                textoGananciasTierra.text = $"<color=#00aeff>Ganancias:\n + {Metodos.MetodoNotacion(gananciasTerrans, "F2")} Terrans</color>";
+            else if (juego.data.idiomaSeleccionado == 1)
+                textoGananciasTierra.text = $"<color=#00aeff>Gains:\n + {Metodos.MetodoNotacion(gananciasTerrans, "F2")} Terrans</color>";
         }
     }
 

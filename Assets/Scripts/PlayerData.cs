@@ -110,6 +110,7 @@ public class PlayerData
 
     public bool musicaFondo;
     public short tipoNotacion;
+    public short idiomaSeleccionado;
 
     #endregion
 
@@ -218,6 +219,7 @@ public class PlayerData
         
         musicaFondo = true;
         tipoNotacion = 0;
+        idiomaSeleccionado = 0;
 
         #endregion
 

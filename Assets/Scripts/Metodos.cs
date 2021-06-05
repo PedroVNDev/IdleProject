@@ -68,17 +68,61 @@ public class Metodos : MonoBehaviour
                 return mantissa.ToString("F2") + "e" + exponente;
             }
 
-
             case 1:
             {
                 var exponente = 3 * Floor(Floor(Log10(x)) / 3);
                 var mantissa = x / Pow(10, exponente);
                 return mantissa.ToString("F2") + "e" + exponente;
             }
+
+            case 2:
+            {
+                var exponente = Floor(Log10(x));
+                var tercerExponente = 3 * Floor(exponente / 3);
+                var mantissa = x / Pow(10, tercerExponente);
+
+                if (x <= 1000) return x.ToString("F2");
+                if (x >= 1e93) return mantissa.ToString("F2") + "e" + tercerExponente;
+                return mantissa.ToString("F2") + prefijos[(int)tercerExponente];
+            }
         }
-        
+
         return "";
     }
+
+    private static readonly Dictionary<int, string> prefijos = new Dictionary<int, string>
+    {
+        {3, " K"},
+        {6, " M"},
+        {9, " B"},
+        {12, " T"},
+        {15, " QA"},
+        {18, " QI"},
+        {21, " S"},
+        {24, " Sp"},
+        {27, " O"},
+        {30, " N"},
+        {33, " D"},
+        {36, " UD"},
+        {39, " DD"},
+        {42, " TD"},
+        {45, " QAD"},
+        {48, " QID"},
+        {51, " SD"},
+        {54, " SPD"},
+        {57, " OD"},
+        {60, " ND"},
+        {63, " V"},
+        {66, " UV"},
+        {69, " DV"},
+        {72, " TV"},
+        {75, " QAV"},
+        {78, " QIV"},
+        {81, " SV"},
+        {84, " SPV"},
+        {87, " OV"},
+        {90, " NV"}
+    };
 
     public static void CompraMax(ref BigDouble c, BigDouble b, BigDouble r, ref int k)
     {
