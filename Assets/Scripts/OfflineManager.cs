@@ -33,8 +33,6 @@ public class OfflineManager : MonoBehaviour
             else if (juego.data.idiomaSeleccionado == 1)
                 textoTiempoFuera.text = $"You were away for:\n<color=#00FF00>{timer:dd\\:hh\\:mm\\:ss}</color>";
             
-
-
             BigDouble gananciasTerrans = juego.ValorTotalTerransPorSegundo() * tiempoOffline;
             juego.data.terrans += gananciasTerrans;
             juego.data.terransTotales += gananciasTerrans;
