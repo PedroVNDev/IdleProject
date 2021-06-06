@@ -15,6 +15,7 @@ public class EventManager : MonoBehaviour
 
     public GameObject recompensaEventoPopUp;
     public Text textoEventoRecompensa;
+    public Text textoPingusSegundo;
 
     public GameObject[] eventos = new GameObject[7];
     public GameObject[] eventosDesbloqueados = new GameObject[7];
@@ -22,6 +23,7 @@ public class EventManager : MonoBehaviour
     public Text[] textoPingus = new Text[7];
     public Text[] textoClick = new Text[7];
     public Text[] textoCoste = new Text[7];
+    public Text[] textoMejora = new Text[7];
     public Text[] textoEmpezar = new Text[7];
 
     public BigDouble[] recompensa = new BigDouble[7];
@@ -60,19 +62,19 @@ public class EventManager : MonoBehaviour
         TextoTokensEvento.text =
             $"Tokens Evento: {Metodos.MetodoNotacion(data.tokensEvento, "F2")} ({Metodos.MetodoNotacion(tokensEventoMejora, "F2")}x)";
 
-        recompensa[0] = BigDouble.Log10(pingus[0] + 1);
-        recompensa[1] = BigDouble.Log10(pingus[1] / 5 + 1);
+        recompensa[0] = Log10(pingus[0] + 1);
+        recompensa[1] = Log10(pingus[1] / 5 + 1);
 
         for (int i = 0; i < 2; i++)
         {
-            costes[i] = 10 * BigDouble.Pow(1.15, niveles[i]);
+            costes[i] = 10 * Pow(1.15, niveles[i]);
         }
 
         if (diaAnteriorComprobar != DiaDelaSemana())
         {
             data.eventoActivoID = 0;
             //2 Son los dias que tenemos (Lunes y Martes)
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 7; i++)
             {
                 data.eventCooldown[i] = 0;
             }
@@ -90,6 +92,51 @@ public class EventManager : MonoBehaviour
                 break;
 
             case "Tuesday":
+                if (juego.ventanaEventosGrupo.gameObject.activeSelf)
+                {
+                    IniciarEventoUI(0);
+                }
+
+                EmpezarEvento(0);
+                break;
+
+            case "Wednesday":
+                if (juego.ventanaEventosGrupo.gameObject.activeSelf)
+                {
+                    IniciarEventoUI(0);
+                }
+
+                EmpezarEvento(0);
+                break;
+
+            case "Thursday":
+                if (juego.ventanaEventosGrupo.gameObject.activeSelf)
+                {
+                    IniciarEventoUI(0);
+                }
+
+                EmpezarEvento(0);
+                break;
+
+            case "Friday":
+                if (juego.ventanaEventosGrupo.gameObject.activeSelf)
+                {
+                    IniciarEventoUI(0);
+                }
+
+                EmpezarEvento(0);
+                break;
+
+            case "Saturday":
+                if (juego.ventanaEventosGrupo.gameObject.activeSelf)
+                {
+                    IniciarEventoUI(1);
+                }
+
+                EmpezarEvento(1);
+                break;
+
+            case "Sunday":
                 if (juego.ventanaEventosGrupo.gameObject.activeSelf)
                 {
                     IniciarEventoUI(1);
@@ -120,7 +167,12 @@ public class EventManager : MonoBehaviour
         switch (DiaDelaSemana())
         {
             case "Monday": return 0;
-            case "Tuesday": return 1;
+            case "Tuesday": return 0;
+            case "Wednesday": return 0;
+            case "Thursday": return 0;
+            case "Friday": return 0;
+            case "Saturday": return 1;
+            case "Sunday": return 1;
         }
 
         return 0;
@@ -131,11 +183,11 @@ public class EventManager : MonoBehaviour
         switch (id)
         {
             case 0:
-                pingus[id] += 1 + niveles[id];
+                pingus[id] += 1 + niveles[id] * juego.MejoraTotal();
                 break;
 
             case 1:
-                pingus[id] += 1;
+                pingus[id] += 1 * juego.MejoraTotal();
                 break;
         }
     }
@@ -180,7 +232,7 @@ public class EventManager : MonoBehaviour
         var data = juego.data;
 
         data.tokensEvento += recompensa[id];
-        textoEventoRecompensa.text = $"+{Metodos.MetodoNotacion(recompensa[id] , "F2")} Tokens Evento";
+        textoEventoRecompensa.text = $"+{Metodos.MetodoNotacion(recompensa[id], "F2")} Tokens Evento";
 
         pingus[id] = 0;
         niveles[id] = 0;
@@ -216,7 +268,6 @@ public class EventManager : MonoBehaviour
 
         if (data.eventoActivoID == 0)
         {
-            Debug.Log("El id es: " + id);
             textoEmpezar[id].text = data.eventCooldown[id] > 0
                 ? tiempo.ToString(@"hh\:mm\:ss")
                 : "Empezar Evento";
@@ -232,11 +283,22 @@ public class EventManager : MonoBehaviour
 
             textoRecompensa[id].text = $"+{Metodos.MetodoNotacion(recompensa[id], "F2")} Tokens Evento";
             textoPingus[id].text = $"{Metodos.MetodoNotacion(pingus[id], "F2")} Pingus";
-            textoCoste[id].text = $"Coste: {Metodos.MetodoNotacion(costes[id], "F2")}";
+            textoCoste[id].text = $"Coste: {Metodos.MetodoNotacion(costes[id], "F2")} ({niveles[id]})";
 
             if (id == 0)
             {
-                textoClick[id].text = $"Crear {Metodos.MetodoNotacion(niveles[id] + 1, "F0")}\nPingus";
+                textoClick[id].text =
+                    $"Crear {Metodos.MetodoNotacion(niveles[id] + 1 * juego.MejoraTotal(), "F2")}\nPingus";
+                textoMejora[id].text =
+                    $"Mejora Click 1\nGanar +{Metodos.MetodoNotacion(1 * juego.MejoraTotal(), "F2")} Pingus";
+            }
+            else if (id == 1)
+            {
+                textoMejora[id].text =
+                    $"Mejora Producción 1\nGanar +{Metodos.MetodoNotacion(1 * juego.MejoraTotal(), "F2")} Pingu/s";
+                textoClick[id].text = $"Crear {Metodos.MetodoNotacion(1 * juego.MejoraTotal(), "F2")}\nPingus";
+                textoPingusSegundo.text =
+                    $"Pingus/s {Metodos.MetodoNotacion(niveles[id] * juego.MejoraTotal(), "F2")}";
             }
         }
     }
@@ -246,7 +308,7 @@ public class EventManager : MonoBehaviour
         switch (id)
         {
             case 1:
-                pingus[id] += niveles[id] * Time.deltaTime;
+                pingus[id] += niveles[id] * Time.deltaTime * juego.MejoraTotal();
                 break;
         }
     }
