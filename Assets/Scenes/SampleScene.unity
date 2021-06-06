@@ -723,6 +723,101 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 32052286}
   m_CullTransparentMesh: 1
+--- !u!1 &36481533
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 36481534}
+  - component: {fileID: 36481537}
+  - component: {fileID: 36481536}
+  - component: {fileID: 36481535}
+  m_Layer: 5
+  m_Name: PingusSegundo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &36481534
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 36481533}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 251876590}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.0012208, y: -134}
+  m_SizeDelta: {x: 662.95, y: 99.0626}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &36481535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 36481533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 3, y: 3}
+  m_UseGraphicAlpha: 1
+--- !u!114 &36481536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 36481533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 1, b: 0.69803923, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: f4c99a340a6e6504aa6e992b7a253612, type: 3}
+    m_FontSize: 50
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 300
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Pingus/s '
+--- !u!222 &36481537
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 36481533}
+  m_CullTransparentMesh: 1
 --- !u!1 &40179315
 GameObject:
   m_ObjectHideFlags: 0
@@ -2299,6 +2394,7 @@ GameObject:
   - component: {fileID: 186966663}
   - component: {fileID: 186966662}
   - component: {fileID: 186966661}
+  - component: {fileID: 186966664}
   m_Layer: 5
   m_Name: Click
   m_TagString: Untagged
@@ -2420,6 +2516,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 186966659}
   m_CullTransparentMesh: 1
+--- !u!114 &186966664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186966659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 3, y: 2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &191135839
 GameObject:
   m_ObjectHideFlags: 0
@@ -3116,6 +3227,7 @@ RectTransform:
   - {fileID: 186966660}
   - {fileID: 1529574758}
   - {fileID: 1285297799}
+  - {fileID: 36481534}
   m_Father: {fileID: 1142483186}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5465,8 +5577,8 @@ MonoBehaviour:
   textoMejoraProduccionMax:
   - {fileID: 1723358112}
   - {fileID: 1835947426}
-  mejoraBarraClick1: {fileID: 1402242524}
-  mejoraBarraClick1Suave: {fileID: 1281914184}
+  mejoraBarraClick1: {fileID: 0}
+  mejoraBarraClick1Suave: {fileID: 0}
   clickMejoraCoste: []
   clickMejoraPoder: []
   clickMejoraCosteBase: []
@@ -5923,6 +6035,7 @@ GameObject:
   - component: {fileID: 509543916}
   - component: {fileID: 509543915}
   - component: {fileID: 509543914}
+  - component: {fileID: 509543917}
   m_Layer: 5
   m_Name: Click
   m_TagString: Untagged
@@ -6044,6 +6157,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 509543912}
   m_CullTransparentMesh: 1
+--- !u!114 &509543917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509543912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 3, y: 2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &510803514
 GameObject:
   m_ObjectHideFlags: 0
@@ -7794,8 +7922,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 21.4326}
-  m_SizeDelta: {x: 0, y: -12.8653}
+  m_AnchoredPosition: {x: 0, y: 43.172}
+  m_SizeDelta: {x: 0, y: -56.3441}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &666919851
 MonoBehaviour:
@@ -8427,7 +8555,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1762328893}
-  - {fileID: 1781860806}
   - {fileID: 1954453443}
   m_Father: {fileID: 1719748567}
   m_RootOrder: 1
@@ -8825,6 +8952,7 @@ GameObject:
   - component: {fileID: 812758000}
   - component: {fileID: 812757999}
   - component: {fileID: 812757998}
+  - component: {fileID: 812758001}
   m_Layer: 5
   m_Name: BotonMejoraProduccion1Max
   m_TagString: Untagged
@@ -8946,6 +9074,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 812757996}
   m_CullTransparentMesh: 1
+--- !u!114 &812758001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 812757996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 3, y: 2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &815013990
 GameObject:
   m_ObjectHideFlags: 0
@@ -10338,6 +10481,7 @@ GameObject:
   - component: {fileID: 1007530044}
   - component: {fileID: 1007530043}
   - component: {fileID: 1007530042}
+  - component: {fileID: 1007530045}
   m_Layer: 5
   m_Name: BotonMejoraClick2Max
   m_TagString: Untagged
@@ -10459,6 +10603,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1007530040}
   m_CullTransparentMesh: 1
+--- !u!114 &1007530045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007530040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 3, y: 2}
+  m_UseGraphicAlpha: 1
 --- !u!1001 &1007828035
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10952,6 +11111,7 @@ GameObject:
   - component: {fileID: 1031707314}
   - component: {fileID: 1031707313}
   - component: {fileID: 1031707312}
+  - component: {fileID: 1031707315}
   m_Layer: 5
   m_Name: BotonMejoraPasiva2
   m_TagString: Untagged
@@ -11073,6 +11233,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1031707310}
   m_CullTransparentMesh: 1
+--- !u!114 &1031707315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1031707310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 3, y: 2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1062525230
 GameObject:
   m_ObjectHideFlags: 0
@@ -11085,6 +11260,7 @@ GameObject:
   - component: {fileID: 1062525234}
   - component: {fileID: 1062525233}
   - component: {fileID: 1062525232}
+  - component: {fileID: 1062525235}
   m_Layer: 5
   m_Name: BotonMejoraPasiva1
   m_TagString: Untagged
@@ -11206,6 +11382,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1062525230}
   m_CullTransparentMesh: 1
+--- !u!114 &1062525235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1062525230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 3, y: 2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1065422651
 GameObject:
   m_ObjectHideFlags: 0
@@ -12657,12 +12848,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1142483186}
   m_Layer: 5
-  m_Name: Martes
+  m_Name: EventoProduccion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1142483186
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14185,97 +14376,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1281914181
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1281914182}
-  - component: {fileID: 1281914185}
-  - component: {fileID: 1281914184}
-  - component: {fileID: 1281914183}
-  m_Layer: 5
-  m_Name: MejoraBarraClickSuave1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1281914182
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1281914181}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1781860806}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000076292, y: -0.00017452}
-  m_SizeDelta: {x: 398.72, y: 28.215}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1281914183
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1281914181}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 2, y: 2}
-  m_UseGraphicAlpha: 1
---- !u!114 &1281914184
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1281914181}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: d1fe0bc1ac9782f4c8f875e1a7cea6d7, type: 3}
-  m_Color: {r: 0.10215378, g: 1, b: 0, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a093780a76b8e8c4c8b121e123d21a82, type: 3}
-  m_Type: 3
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 0
-  m_FillAmount: 0.866
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1281914185
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1281914181}
-  m_CullTransparentMesh: 1
 --- !u!1 &1285297798
 GameObject:
   m_ObjectHideFlags: 0
@@ -14288,6 +14388,7 @@ GameObject:
   - component: {fileID: 1285297802}
   - component: {fileID: 1285297801}
   - component: {fileID: 1285297800}
+  - component: {fileID: 1285297803}
   m_Layer: 5
   m_Name: Empezar
   m_TagString: Untagged
@@ -14409,6 +14510,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1285297798}
   m_CullTransparentMesh: 1
+--- !u!114 &1285297803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1285297798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 3, y: 2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1293099484
 GameObject:
   m_ObjectHideFlags: 0
@@ -14628,12 +14744,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1299938101}
   m_Layer: 5
-  m_Name: Lunes
+  m_Name: EventoClick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1299938101
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15713,6 +15829,7 @@ GameObject:
   - component: {fileID: 1392553568}
   - component: {fileID: 1392553567}
   - component: {fileID: 1392553566}
+  - component: {fileID: 1392553569}
   m_Layer: 5
   m_Name: BotonMejoraProduccion2Max
   m_TagString: Untagged
@@ -15834,6 +15951,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1392553564}
   m_CullTransparentMesh: 1
+--- !u!114 &1392553569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1392553564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 3, y: 2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1396465999
 GameObject:
   m_ObjectHideFlags: 0
@@ -15990,97 +16122,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1400964220}
   m_CullTransparentMesh: 1
---- !u!1 &1402242522
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1402242523}
-  - component: {fileID: 1402242525}
-  - component: {fileID: 1402242524}
-  - component: {fileID: 1402242526}
-  m_Layer: 5
-  m_Name: MejoraBarraClick1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1402242523
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1402242522}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1781860806}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000076292, y: -0.00017452}
-  m_SizeDelta: {x: 398.72, y: 28.215}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1402242524
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1402242522}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: d1fe0bc1ac9782f4c8f875e1a7cea6d7, type: 3}
-  m_Color: {r: 0, g: 0.7511432, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a093780a76b8e8c4c8b121e123d21a82, type: 3}
-  m_Type: 3
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 0
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1402242525
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1402242522}
-  m_CullTransparentMesh: 1
---- !u!114 &1402242526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1402242522}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 3, y: 3}
-  m_UseGraphicAlpha: 1
 --- !u!1 &1417101212
 GameObject:
   m_ObjectHideFlags: 0
@@ -16997,6 +17038,7 @@ GameObject:
   - component: {fileID: 1504921922}
   - component: {fileID: 1504921921}
   - component: {fileID: 1504921920}
+  - component: {fileID: 1504921923}
   m_Layer: 5
   m_Name: 'Empezar '
   m_TagString: Untagged
@@ -17118,6 +17160,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1504921918}
   m_CullTransparentMesh: 1
+--- !u!114 &1504921923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1504921918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 3, y: 2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1506323003
 GameObject:
   m_ObjectHideFlags: 0
@@ -17432,6 +17489,7 @@ GameObject:
   - component: {fileID: 1529574761}
   - component: {fileID: 1529574760}
   - component: {fileID: 1529574759}
+  - component: {fileID: 1529574762}
   m_Layer: 5
   m_Name: MejoraProduccion
   m_TagString: Untagged
@@ -17554,6 +17612,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1529574757}
   m_CullTransparentMesh: 1
+--- !u!114 &1529574762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1529574757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 3, y: 2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1533699910
 GameObject:
   m_ObjectHideFlags: 0
@@ -18040,6 +18113,7 @@ MonoBehaviour:
   TextoTokensEvento: {fileID: 1920274628}
   recompensaEventoPopUp: {fileID: 416997686}
   textoEventoRecompensa: {fileID: 1484859959}
+  textoPingusSegundo: {fileID: 36481536}
   eventos:
   - {fileID: 1299938100}
   - {fileID: 1142483185}
@@ -18083,6 +18157,14 @@ MonoBehaviour:
   textoCoste:
   - {fileID: 1706430563}
   - {fileID: 486730857}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  textoMejora:
+  - {fileID: 435549340}
+  - {fileID: 666919851}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -18627,7 +18709,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Evento Lunes - Click
+  m_Text: Evento Semanal - Click
 --- !u!222 &1591928262
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -19055,7 +19137,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Los diamantes son 1.00x Mas Fuertes
+  m_Text: Los Bitcoins son 1.00x Mas Fuertes
 --- !u!222 &1690648404
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -19250,6 +19332,7 @@ GameObject:
   - component: {fileID: 1707729795}
   - component: {fileID: 1707729794}
   - component: {fileID: 1707729793}
+  - component: {fileID: 1707729796}
   m_Layer: 5
   m_Name: MejoraClick
   m_TagString: Untagged
@@ -19372,6 +19455,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1707729791}
   m_CullTransparentMesh: 1
+--- !u!114 &1707729796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707729791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 3, y: 2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1712640648
 GameObject:
   m_ObjectHideFlags: 0
@@ -20276,6 +20374,7 @@ GameObject:
   - component: {fileID: 1762328896}
   - component: {fileID: 1762328895}
   - component: {fileID: 1762328894}
+  - component: {fileID: 1762328897}
   m_Layer: 5
   m_Name: BotonMejoraClick1
   m_TagString: Untagged
@@ -20397,6 +20496,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1762328892}
   m_CullTransparentMesh: 1
+--- !u!114 &1762328897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762328892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 3, y: 2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1765027369
 GameObject:
   m_ObjectHideFlags: 0
@@ -20654,83 +20768,6 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1770763956}
-  m_CullTransparentMesh: 1
---- !u!1 &1781860805
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1781860806}
-  - component: {fileID: 1781860808}
-  - component: {fileID: 1781860807}
-  m_Layer: 5
-  m_Name: MejoraBarraClick1BG
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1781860806
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1781860805}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1402242523}
-  - {fileID: 1281914182}
-  m_Father: {fileID: 725683077}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -53.615967}
-  m_SizeDelta: {x: 398.72, y: 28.2146}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1781860807
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1781860805}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3973caf801ba6864d98890213e90590b, type: 3}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1781860808
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1781860805}
   m_CullTransparentMesh: 1
 --- !u!1 &1788394736
 GameObject:
@@ -22218,8 +22255,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.001159668, y: -29.907001}
-  m_SizeDelta: {x: 795.9696, y: 50.8818}
+  m_AnchoredPosition: {x: -0.000061035156, y: -25.440998}
+  m_SizeDelta: {x: 1103.9795, y: 50.8818}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1939181954
 MonoBehaviour:
@@ -22269,7 +22306,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Evento Martes - Produccion
+  m_Text: Evento Fin de semana - Produccion
 --- !u!222 &1939181956
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -22529,6 +22566,7 @@ GameObject:
   - component: {fileID: 1954453446}
   - component: {fileID: 1954453445}
   - component: {fileID: 1954453444}
+  - component: {fileID: 1954453447}
   m_Layer: 5
   m_Name: BotonMejoraClick1Max
   m_TagString: Untagged
@@ -22549,7 +22587,7 @@ RectTransform:
   m_Children:
   - {fileID: 24839940}
   m_Father: {fileID: 725683077}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.52127093, y: 0.5}
   m_AnchorMax: {x: 0.52127093, y: 0.5}
@@ -22650,6 +22688,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1954453442}
   m_CullTransparentMesh: 1
+--- !u!114 &1954453447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1954453442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 3, y: 2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1962860182
 GameObject:
   m_ObjectHideFlags: 0
@@ -23370,7 +23423,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2026400123
 RectTransform:
   m_ObjectHideFlags: 0
@@ -24020,6 +24073,7 @@ GameObject:
   - component: {fileID: 2082915515}
   - component: {fileID: 2082915514}
   - component: {fileID: 2082915513}
+  - component: {fileID: 2082915516}
   m_Layer: 5
   m_Name: BotonMejoraClick2
   m_TagString: Untagged
@@ -24141,6 +24195,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2082915511}
   m_CullTransparentMesh: 1
+--- !u!114 &2082915516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2082915511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 3, y: 2}
+  m_UseGraphicAlpha: 1
 --- !u!1 &2090789237
 GameObject:
   m_ObjectHideFlags: 0

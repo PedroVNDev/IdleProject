@@ -61,13 +61,14 @@ public class IdleManager : MonoBehaviour
         prestigio.prestigio.gameObject.SetActive(false);
 
         SaveSystem.LoadPlayer(ref data);
+        settingsManager.StartSettings();
+        Metodos.OpcionesNotacion = data.tipoNotacion;
         eventos.StartEventos();
         prestigio.EmpezarPrestigio();
         automatizador.EmpezarAutomatizadores();
         ValorTotalTerransPorSegundo();
         offline.LoadProduccionOffline();
-        settingsManager.StartSettings();
-        Metodos.OpcionesNotacion = data.tipoNotacion;
+        
         
     }
 
