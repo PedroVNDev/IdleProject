@@ -47,6 +47,11 @@ public class MarsManager : MonoBehaviour
     {
         var data = juego.data;
 
+        if (data.marshalls <= 0.95)
+        {
+            data.marshalls = 1;
+        }
+
         ArrayManager();
         UI();
 

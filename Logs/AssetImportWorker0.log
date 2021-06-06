@@ -1266,3 +1266,100 @@ System memory in use after: 86.4 MB.
 Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 2408.
 Total: 2.144100 ms (FindLiveObjects: 0.225500 ms CreateObjectMapping: 0.070700 ms MarkObjects: 1.731900 ms  DeleteObjects: 0.114500 ms)
 
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 1.82 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 10 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 51.0 MB.
+System memory in use after: 51.0 MB.
+
+Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 2408.
+Total: 2.355100 ms (FindLiveObjects: 0.225400 ms CreateObjectMapping: 0.096500 ms MarkObjects: 1.865300 ms  DeleteObjects: 0.166700 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 1614.530390 seconds.
+  path: Assets/Scripts/MarsManager.cs
+  artifactKey: Guid(fe9bcada90cb16a48b70edafeaa944ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MarsManager.cs using Guid(fe9bcada90cb16a48b70edafeaa944ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '25da02ce2a5ba7a513028328d54d69e6') in 0.031415 seconds
+  Import took 0.034459 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001085 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.42 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.977 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.37 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1804 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 86.4 MB.
+System memory in use after: 86.4 MB.
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 2411.
+Total: 2.880500 ms (FindLiveObjects: 0.229500 ms CreateObjectMapping: 0.054300 ms MarkObjects: 2.426800 ms  DeleteObjects: 0.168600 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 114.573787 seconds.
+  path: Assets/Scripts/MarsManager.cs
+  artifactKey: Guid(fe9bcada90cb16a48b70edafeaa944ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MarsManager.cs using Guid(fe9bcada90cb16a48b70edafeaa944ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8626a4ae37409770aebe665938919d0a') in 0.004692 seconds
+  Import took 0.008127 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.003736 seconds.
+  path: Assets/Scripts/MarsManager.cs
+  artifactKey: Guid(fe9bcada90cb16a48b70edafeaa944ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MarsManager.cs using Guid(fe9bcada90cb16a48b70edafeaa944ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8626a4ae37409770aebe665938919d0a') in 0.002177 seconds
+  Import took 0.005018 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.000920 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.39 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Invoked RoslynAnalysisRunner static constructor.
+RoslynAnalysisRunner will not be running.
+RoslynAnalysisRunner has terminated.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.956 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.55 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1804 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 86.4 MB.
+System memory in use after: 86.4 MB.
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 2414.
+Total: 2.724300 ms (FindLiveObjects: 0.401400 ms CreateObjectMapping: 0.156100 ms MarkObjects: 2.042700 ms  DeleteObjects: 0.122900 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 46.582699 seconds.
+  path: Assets/Scripts/MarsManager.cs
+  artifactKey: Guid(fe9bcada90cb16a48b70edafeaa944ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MarsManager.cs using Guid(fe9bcada90cb16a48b70edafeaa944ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6a76cbe10c680fe94a0facd5a9614568') in 0.005738 seconds
+  Import took 0.056874 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.059797 seconds.
+  path: Assets/Scripts/MarsManager.cs
+  artifactKey: Guid(fe9bcada90cb16a48b70edafeaa944ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MarsManager.cs using Guid(fe9bcada90cb16a48b70edafeaa944ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6a76cbe10c680fe94a0facd5a9614568') in 0.002704 seconds
+  Import took 0.006200 seconds .
+
