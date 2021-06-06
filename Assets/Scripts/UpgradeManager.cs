@@ -89,10 +89,7 @@ public class UpgradeManager : MonoBehaviour
             clickMejora[i].gameObject.SetActive(data.terransTotales >= clickMejoraDesbloqueoCoste[i]);
             produccionMejora[i].gameObject.SetActive(data.terransTotales >= produccionMejoraDesbloqueoCoste[i]);
         }
-
-        Metodos.BigDoubleRellenar(data.terrans, clickMejoraCoste[0], ref mejoraBarraClick1);
-        Metodos.BigDoubleRellenar(juego.terransTemporal, clickMejoraCoste[0], ref mejoraBarraClick1Suave);
-
+        
         string ObtenerMejoraCoste(int index, BigDouble[] mejora)
         {
             return Metodos.MetodoNotacion(mejora[index], "F2");
