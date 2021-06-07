@@ -11,9 +11,11 @@ public class AutomatorManager : MonoBehaviour
     public IdleManager juego;
     public UpgradeManager mejoras;
 
-    public Text[] textoCoste = new Text[2];
-    public Image[] barrasCoste = new Image[2];
-    public Image[] barrasCosteSuave = new Image[2];
+    public Text textoAutoEnabled;
+
+    public Text[] textoCoste = new Text[4];
+    public Image[] barrasCoste = new Image[4];
+    public Image[] barrasCosteSuave = new Image[4];
 
     public string[] costeDescripcion;
     public BigDouble[] costes;
@@ -43,7 +45,11 @@ public class AutomatorManager : MonoBehaviour
     {
         ArrayManager();
         UI();
-        RunAuto();
+        ActualizarTextoAutoActivado();
+        if (juego.data.autosEnabled == 1)
+        {
+            RunAuto();
+        }
 
         void UI()
         {
@@ -68,32 +74,18 @@ public class AutomatorManager : MonoBehaviour
         void CAuto(int id, int index)
         {
             if (niveles[id] <= 0) return;
-            if (niveles[id] != nivelesLimite[id])
-                Comprar(index);
-
-            else
-            {
-                if (mejoras.CompraClickMaxContador(index) != 0) mejoras.CompraClickMax(index);
-            }
+            if (!(timer[id] >= intervalos[id])) return;
+            if (juego.data.terrans < juego.mejoras.clickMejoraCoste[index]) return;
+            mejoras.CompraClickMejora(index);
+            timer[id] = 0;
         }
 
         void MAuto(int id, int index)
         {
             if (niveles[id] <= 0) return;
-            if (niveles[id] != nivelesLimite[id])
-                Comprar(index);
-
-            else
-            {
-                if (mejoras.CompraProduccionMaxContador(index) != 0) mejoras.CompraProduccionMax(index);
-            }
-        }
-
-        void Comprar(int id)
-        {
-            timer[id] += Time.deltaTime;
             if (!(timer[id] >= intervalos[id])) return;
-            ComprarMejora(id);
+            if (juego.data.terrans < juego.mejoras.produccionMejoraCoste[index]) return;
+            mejoras.CompraProduccionMejora(index);
             timer[id] = 0;
         }
     }
@@ -137,5 +129,38 @@ public class AutomatorManager : MonoBehaviour
 
         if (data.autoNivel2 > 0)
             intervalos[1] = 10 - (data.autoNivel2 - 1) * 0.5f;
+    }
+
+    public void ActivarAutos()
+    {
+        var autosActivados = juego.data.autosEnabled;
+
+        switch (autosActivados)
+        {
+            case 0:
+                autosActivados = 1;
+                break;
+            case 1:
+                autosActivados = 0;
+                break;
+        }
+
+        juego.data.autosEnabled = autosActivados;
+        ActualizarTextoAutoActivado();
+    }
+
+    private void ActualizarTextoAutoActivado()
+    {
+        var autosActivados = juego.data.autosEnabled;
+
+        switch (autosActivados)
+        {
+            case 0:
+                textoAutoEnabled.text = $"Desactivados";
+                break;
+            case 1:
+                textoAutoEnabled.text = $"Activados";
+                break;
+        }
     }
 }

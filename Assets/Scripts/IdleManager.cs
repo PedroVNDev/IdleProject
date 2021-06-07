@@ -1,10 +1,7 @@
 using UnityEngine.UI;
 using UnityEngine;
 using BreakInfinity;
-using System;
-using System.Collections.Generic;
 using TMPro;
-using UnityEngine.SocialPlatforms.Impl;
 using static BreakInfinity.BigDouble;
 
 
@@ -68,8 +65,6 @@ public class IdleManager : MonoBehaviour
         automatizador.EmpezarAutomatizadores();
         ValorTotalTerransPorSegundo();
         offline.LoadProduccionOffline();
-        
-        
     }
 
     // Update is called once per frame
@@ -79,7 +74,8 @@ public class IdleManager : MonoBehaviour
         prestigio.Run();
         superNova.Run();
         automatizador.Run();
-
+        
+        
         if (ventanaMejorasGrupo.gameObject.activeSelf)
         {
             mejoras.EmpezarMejorasUI();
@@ -105,8 +101,8 @@ public class IdleManager : MonoBehaviour
         if (ventanaPrincipalGrupo.gameObject.activeSelf)
         {
             textoTerransClick.text = "Click \n" +
-                                      Metodos.MetodoNotacion((ValorClickTotal()), "F0") +
-                                      " Terrans";
+                                     Metodos.MetodoNotacion((ValorClickTotal()), "F0") +
+                                     " Terrans";
         }
 
         textoTerrans.text = "Terrans: " + Metodos.MetodoNotacion(data.terrans, "F0");
@@ -185,7 +181,7 @@ public class IdleManager : MonoBehaviour
             case "MenuJuego":
                 ventanaMenuJuegoGrupo.gameObject.SetActive(!ventanaMenuJuegoGrupo.gameObject.activeSelf);
                 break;
-            
+
             case "MenuUsuario":
                 ventanaMenuUsuarioGrupo.gameObject.SetActive(!ventanaMenuUsuarioGrupo.gameObject.activeSelf);
                 break;

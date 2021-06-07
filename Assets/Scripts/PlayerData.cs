@@ -56,7 +56,7 @@ public class PlayerData
     public float logroNivel4;
 
     #endregion
-    
+
     #region Prestigio
 
     public int prestigioMNivel1;
@@ -75,6 +75,10 @@ public class PlayerData
 
     public int autoNivel1;
     public int autoNivel2;
+    public int autoNivel3;
+    public int autoNivel4;
+
+    public short autosEnabled;
 
     #endregion
 
@@ -197,6 +201,10 @@ public class PlayerData
 
         autoNivel1 = 0;
         autoNivel2 = 0;
+        autoNivel3 = 0;
+        autoNivel4 = 0;
+
+        autosEnabled = 0;
 
         #endregion
 
@@ -216,7 +224,7 @@ public class PlayerData
         #endregion
 
         #region Opciones
-        
+
         musicaFondo = true;
         tipoNotacion = 0;
         idiomaSeleccionado = 0;

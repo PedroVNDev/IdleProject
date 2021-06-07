@@ -175,9 +175,7 @@ public class UpgradeManager : MonoBehaviour
         var n = Floor(Log(c * (r - 1) / (b * Pow(r, k)) + 1, r));
 
         var coste = b * (Pow(r, k) * (Pow(r, n) - 1) / (r - 1));
-        Metodos.BigDoubleRellenar(data.terrans, clickMejoraCoste[0], ref mejoraBarraClick1);
-
-
+        
         if (data.terrans >= coste)
         {
             produccionMejoraNiveles[index] += (int) n;
