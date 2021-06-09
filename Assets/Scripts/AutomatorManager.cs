@@ -21,8 +21,6 @@ public class AutomatorManager : MonoBehaviour
     public BigDouble[] costes;
     public int[] niveles;
     public int[] nivelesLimite;
-    public float[] intervalos;
-    public float[] timer;
 
     private BigDouble coste1 => 1e4 * BigDouble.Pow(1.5, juego.data.autoNivel1);
     private BigDouble coste2 => 1e5 * BigDouble.Pow(1.5, juego.data.autoNivel2);
@@ -32,12 +30,10 @@ public class AutomatorManager : MonoBehaviour
     {
         costes = new BigDouble[2];
         niveles = new int[2];
-        nivelesLimite = new[] {21, 21};
-        intervalos = new float[2];
-        timer = new float[2];
+        nivelesLimite = new[] {1, 1};
         costeDescripcion = new[]
         {
-            "Click Mejora 1\n AutoComprador", "Produccion Mejora 1 AutoComprador"
+            "Click \nAutoComprador", "Produccion \nAutoComprador"
         };
     }
 
@@ -57,10 +53,15 @@ public class AutomatorManager : MonoBehaviour
             {
                 for (var i = 0; i < textoCoste.Length; i++)
                 {
-                    textoCoste[i].text =
-                        $"{costeDescripcion[i]}\nCoste: {Metodos.MetodoNotacion(costes[i], "F0")} Recursos\nIntervalo: {(niveles[i] >= nivelesLimite[i] ? "Instantaneo" : intervalos[i].ToString("F1"))}";
-                    Metodos.BigDoubleRellenar(juego.data.terrans, costes[i], ref barrasCoste[i]);
-                    Metodos.BigDoubleRellenar(juego.terransTemporal, costes[i], ref barrasCosteSuave[i]);
+                    if (niveles[i] == 1)
+                    {
+                        textoCoste[i].text = $"Comprado";
+                    }
+                    else
+                    {
+                        textoCoste[i].text =
+                            $"{costeDescripcion[i]}\nCoste: {Metodos.MetodoNotacion(costes[i], "F0")}";
+                    }
                 }
             }
         }
@@ -74,19 +75,32 @@ public class AutomatorManager : MonoBehaviour
         void CAuto(int id, int index)
         {
             if (niveles[id] <= 0) return;
-            if (!(timer[id] >= intervalos[id])) return;
             if (juego.data.terrans < juego.mejoras.clickMejoraCoste[index]) return;
-            mejoras.CompraClickMejora(index);
-            timer[id] = 0;
+            mejoras.CompraClickMax(index);
         }
 
         void MAuto(int id, int index)
         {
             if (niveles[id] <= 0) return;
-            if (!(timer[id] >= intervalos[id])) return;
             if (juego.data.terrans < juego.mejoras.produccionMejoraCoste[index]) return;
-            mejoras.CompraProduccionMejora(index);
-            timer[id] = 0;
+            mejoras.CompraProduccionMax(index);
+        }
+        
+        CAuto2(0, 1);
+        MAuto2(1, 1);
+
+        void CAuto2(int id, int index)
+        {
+            if (niveles[id] <= 0) return;
+            if (juego.data.terrans < juego.mejoras.clickMejoraCoste[index]) return;
+            mejoras.CompraClickMax(index);
+        }
+
+        void MAuto2(int id, int index)
+        {
+            if (niveles[id] <= 0) return;
+            if (juego.data.terrans < juego.mejoras.produccionMejoraCoste[index]) return;
+            mejoras.CompraProduccionMax(index);
         }
     }
 
@@ -122,13 +136,6 @@ public class AutomatorManager : MonoBehaviour
 
         niveles[0] = data.autoNivel1;
         niveles[1] = data.autoNivel2;
-
-        if (data.autoNivel1 > 0)
-            intervalos[0] = 10 - (data.autoNivel1 - 1) * 0.5f;
-
-
-        if (data.autoNivel2 > 0)
-            intervalos[1] = 10 - (data.autoNivel2 - 1) * 0.5f;
     }
 
     public void ActivarAutos()

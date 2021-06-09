@@ -99,7 +99,7 @@ public class Metodos : MonoBehaviour
         {15, " QA"},
         {18, " QI"},
         {21, " S"},
-        {24, " Sp"},
+        {24, " SP"},
         {27, " O"},
         {30, " N"},
         {33, " D"},
