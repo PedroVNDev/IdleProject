@@ -16,7 +16,7 @@ El juego es completamente gratuito y puedes descargarlo en el siguiente enlace: 
 
 ## Ejecución del programa ⚙️
 
-Simplemente haz doble click izquierdo el archivo IdleImpact.exe
+Simplemente haz doble click izquierdo en el archivo IdleImpact.exe
 
 ### El juego en acción VERSION 1.0⌨️
 
