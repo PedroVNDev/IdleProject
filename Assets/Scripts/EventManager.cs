@@ -183,7 +183,14 @@ public class EventManager : MonoBehaviour
         switch (id)
         {
             case 0:
-                pingus[id] += 1 + niveles[id] * juego.MejoraTotal();
+                if (niveles[id] == 0)
+                {
+                    pingus[id] += 1 * juego.MejoraTotal();
+                }
+                else
+                {
+                    pingus[id] += 1  + niveles[id] * juego.MejoraTotal();
+                }
                 break;
 
             case 1:
@@ -288,7 +295,7 @@ public class EventManager : MonoBehaviour
             if (id == 0)
             {
                 textoClick[id].text =
-                    $"Crear {Metodos.MetodoNotacion(niveles[id] + 1 * juego.MejoraTotal(), "F2")}\nPingus";
+                    $"Crear {Metodos.MetodoNotacion((1 + niveles[id]) * juego.MejoraTotal(), "F2")}\nPingus";
                 textoMejora[id].text =
                     $"Mejora Click 1\nGanar +{Metodos.MetodoNotacion(1 * juego.MejoraTotal(), "F2")} Pingus";
             }
