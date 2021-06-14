@@ -890,7 +890,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Mejora Click 1
 
-    Coste: 10 Recursos
+    Coste: 10 Terrans
 
     Poder: + 1 Click
 
@@ -1295,7 +1295,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Los bitcoins son 1.01x mas eficientes
+  m_Text: 'Los Bitcoins son 1.01x mas eficientes
 
     Coste: 100 Bitcoins'
 --- !u!222 &101275666
@@ -1804,6 +1804,7 @@ GameObject:
   - component: {fileID: 147693816}
   - component: {fileID: 147693815}
   - component: {fileID: 147693814}
+  - component: {fileID: 147693817}
   m_Layer: 5
   m_Name: BotonMejoras
   m_TagString: Untagged
@@ -1925,6 +1926,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 147693812}
   m_CullTransparentMesh: 1
+--- !u!114 &147693817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147693812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 3, y: 3}
+  m_UseGraphicAlpha: 1
 --- !u!1 &151520596
 GameObject:
   m_ObjectHideFlags: 0
@@ -3417,6 +3433,7 @@ GameObject:
   - component: {fileID: 280307439}
   - component: {fileID: 280307438}
   - component: {fileID: 280307437}
+  - component: {fileID: 280307440}
   m_Layer: 5
   m_Name: BotonPlanetas
   m_TagString: Untagged
@@ -3538,6 +3555,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 280307435}
   m_CullTransparentMesh: 1
+--- !u!114 &280307440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280307435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 3, y: 3}
+  m_UseGraphicAlpha: 1
 --- !u!1 &290896184
 GameObject:
   m_ObjectHideFlags: 0
@@ -4716,7 +4748,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Click
 
-    +1 Recurso'
+    +1 Terran'
 --- !u!222 &360807989
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6010,7 +6042,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Mejora Click 2
 
-    Coste: 10 Recursos
+    Coste: 10 Terrans
 
     Poder: + 5 Click
 
@@ -16446,9 +16478,9 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Productor 2
 
-    Coste: 250 Recursos
+    Coste: 250 Terrans
 
-    Poder: +5 Recurso/s
+    Poder: +5 Terrans/s
 
     Nivel:
     1'
@@ -19294,9 +19326,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'La produccion por segundo mejora un 10%
-
-    Coste: 10 Bitcoins'
+  m_Text: "La producci\xF3n por segundo mejora un 10%\nCoste: 10 Bitcoins"
 --- !u!222 &1712640651
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -19377,9 +19407,9 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Productor 1
 
-    Coste: 25 Recursos
+    Coste: 25 Terrans
 
-    Poder: +1 Recurso/s
+    Poder: +1 Terrans/s
 
     Nivel:
     1'
