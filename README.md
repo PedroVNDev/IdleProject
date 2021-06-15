@@ -10,17 +10,17 @@ IdleImpact es un juego incremental o idlegame creado en Unity, basado en Cookie 
 * Procesador 2GHZ 1 Nucleo o Superior
 * 200MB Disco duro
 
+### Documentación 🧮
+
+Puedes encontrar la documentación del proyecto y los diagramas de clases aqui [Documentacion](https://pinguextremo.github.io/IdleImpact-DOC/html/index.html)
+
 ### Instalación 🔧
 
-El juego es completamente gratuito y puedes descargarlo en el siguiente enlace: https://mega.nz/file/XMpQCRRa#92HdvfoflhlbHI26awwckhZwCnpVmpoQ0c-pWq-iE7o
+El juego es completamente gratuito y puedes descargarlo en el siguiente enlace de [Mega](https://mega.nz/file/uIZ3RYDL#wc_0JNYEfVCc_KEJ5ghT9bEt3MSrHYmN-4xwXveGa3Y)
 
 ## Ejecución del programa ⚙️
 
 Simplemente haz doble click izquierdo en el archivo IdleImpact.exe
-
-### El juego en acción VERSION 1.0⌨️
-
-
 
 ## Construido con 🛠️
 
@@ -29,6 +29,7 @@ Simplemente haz doble click izquierdo en el archivo IdleImpact.exe
 * [BreakInfinity](https://github.com/Razenpok/BreakInfinity.cs) - Libreria para permitir numeros mayores a 1.79e308 creado por Razenpok y Patashu
 * [Pixel Planet Generator](https://deep-fold.itch.io/pixel-planet-generator) - Generador de planetas creado por Deep-Fold
 * [Doxygen](https://www.doxygen.nl/index.html) – Generador de documentación y diagramas de clases para C# en Unity.
+* [Rider](https://www.jetbrains.com/es-es/rider/) - Entorno de desarrollo.
 
 ## Creado por ✒️
 
