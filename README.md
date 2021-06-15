@@ -10,6 +10,10 @@ IdleImpact es un juego incremental o idlegame creado en Unity, basado en Cookie 
 * Procesador 2GHZ 1 Nucleo o Superior
 * 200MB Disco duro
 
+### Documentación 🧮
+
+Puedes encontrar la documentación del proyecto y los diagramas de clases aqui [Documentacion](https://pinguextremo.github.io/IdleImpact-DOC/html/index.html)
+
 ### Instalación 🔧
 
 El juego es completamente gratuito y puedes descargarlo en el siguiente enlace de [Mega](https://mega.nz/file/uIZ3RYDL#wc_0JNYEfVCc_KEJ5ghT9bEt3MSrHYmN-4xwXveGa3Y)
