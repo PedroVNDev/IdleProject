@@ -29,6 +29,7 @@ Simplemente haz doble click izquierdo en el archivo IdleImpact.exe
 * [BreakInfinity](https://github.com/Razenpok/BreakInfinity.cs) - Libreria para permitir numeros mayores a 1.79e308 creado por Razenpok y Patashu
 * [Pixel Planet Generator](https://deep-fold.itch.io/pixel-planet-generator) - Generador de planetas creado por Deep-Fold
 * [Doxygen](https://www.doxygen.nl/index.html) – Generador de documentación y diagramas de clases para C# en Unity.
+* [Rider](https://www.jetbrains.com/es-es/rider/) - Entorno de desarrollo.
 
 ## Creado por ✒️
 
